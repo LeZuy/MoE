@@ -1,5 +1,5 @@
-## 🧠 Open-Source MoE Models
-
+## Toward Decentralized MoE Models
+#### Open source MoE
 | Model | Params (Total / Active) | Experts (k/N) | MMLU (%) | HuggingFace | Tuning (QLoRA)  | GitHub |
 |:----|:----:|:----:|:----:|:----:|:----:|:----:|
 |[Switch Transformer (2021) ](https://arxiv.org/abs/2101.03961)| 1.6T / ~7B | 1 / 2048 | N/A | N/A | |  |
