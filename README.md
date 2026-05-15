@@ -1,7 +1,7 @@
 ## 🧠 Open-Source MoE Models
 
 | Model | Params (Total / Active) | Experts (k/N) | MMLU (%) | HuggingFace | Tuning (QLoRA)  | GitHub |
-|:------|:-----------------------:|:-------------:|:--------:|:-----------:|:-----:|:----:|
+|:----|:----:|:----:|:----:|:----:|:----:|:----:|
 |[Switch Transformer (2021) ](https://arxiv.org/abs/2101.03961)| 1.6T / ~7B | 1 / 2048 | N/A | N/A | |  |
 | [OpenMoE (2024)](https://arxiv.org/abs/2402.01739)| 8B–34B / ~2B | 4 / 32 | ~52.0 | [Model](https://huggingface.co/OrionZheng/openmoe-8b) |  |  |
 |  [DeepSeekMoE (2024)](https://arxiv.org/abs/2401.06066)| 16B / 2.8B | 6+2 / 64 | 79.0 | [Model](https://huggingface.co/deepseek-ai/deepseek-moe-16b-base) |  |  |
