@@ -26,4 +26,5 @@
 + [MATH](https://github.com/hendrycks/math)
 
 #### Fine tuning a LLM
-[Guide to fine tuning a LLM](https://github.com/geronimi73/qlora-minimal/tree/main)
+[Fine tuning a LLM](https://github.com/geronimi73/qlora-minimal/tree/main)
+[Unsloth](https://unsloth.ai/docs/get-started/fine-tuning-llms-guide)
