@@ -13,12 +13,12 @@
 
 #### Papers to read
 | Paper |  | 
-|:----|:----:|
+|:----|:----|
 |[Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538)| Mixture of Experts |
-|[A Comprehensive Survey of Mixture-of-Experts: Algorithms, Theory, and Applications](https://arxiv.org/abs/2503.07137)||Survey|
-|[A Survey on Mixture of Experts in Large Language Models](https://arxiv.org/abs/2407.06204)||Survey|
+|[A Comprehensive Survey of Mixture-of-Experts: Algorithms, Theory, and Applications](https://arxiv.org/abs/2503.07137)|Survey|
+|[A Survey on Mixture of Experts in Large Language Models](https://arxiv.org/abs/2407.06204)|Survey|
 |[Unified Scaling Laws for Routed Language Models](https://arxiv.org/abs/2202.01169)|Studied the scaling law of MoE language models|
-|[Mixture of A Million Experts](https://arxiv.org/abs/2407.04153)||Experimental proof that scaling experts improve inference ([Implementation](https://github.com/huyphan168/PEER))|
+|[Mixture of A Million Experts](https://arxiv.org/abs/2407.04153)|Experimental proof that scaling experts improve inference ([Implementation](https://github.com/huyphan168/PEER))|
 
 #### Datasets
 + [MMLU](https://huggingface.co/datasets/cais/mmlu)
