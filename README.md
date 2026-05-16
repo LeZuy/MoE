@@ -10,3 +10,20 @@
 | [OLMoE (2024)](https://arxiv.org/abs/2409.02060) | __7B / 1B__ | __8 / 64__ | 64.3 | [Model](https://huggingface.co/allenai/OLMoE-1B-7B-0924) | 12 GB VRAM / 32 GB RAM| [MoE-PEFT](https://github.com/TUDB-Labs/MoE-PEFT) |
 | [Llama-4 Scout (2025)](https://ai.meta.com/blog/llama-4-multimodal-intelligence/) | 109B / 17B | 1 / 16 | 74.3 (*) | [Model](https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct) | |  |
 |[Qwen3-30B-A3B (2025)](https://arxiv.org/abs/2505.09388)| __30B / 3B__ | __8 / 128__ | __79.6__ | [Model](https://huggingface.co/Qwen/Qwen3-30B-A3B) | 24 GB VRAM / 128 GB RAM| [qwen3-8b from scratch](https://github.com/Chen-Oliver/qwen3-8b-base) |
+
+#### Papers to read
+| Paper |  | 
+|:----|:----:|
+|[Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538)| Mixture of Experts |
+|[A Comprehensive Survey of Mixture-of-Experts: Algorithms, Theory, and Applications](https://arxiv.org/abs/2503.07137)||Survey|
+|[A Survey on Mixture of Experts in Large Language Models](https://arxiv.org/abs/2407.06204)||Survey|
+|[Unified Scaling Laws for Routed Language Models](https://arxiv.org/abs/2202.01169)|Studied the scaling law of MoE language models|
+|[Mixture of A Million Experts](https://arxiv.org/abs/2407.04153)||Experimental proof that scaling experts improve inference ([Implementation](https://github.com/huyphan168/PEER))|
+
+#### Datasets
++ [MMLU](https://huggingface.co/datasets/cais/mmlu)
++ [GSM8K](https://huggingface.co/datasets/openai/gsm8k)
++ [MATH](https://github.com/hendrycks/math)
+
+#### Fine tuning a LLM
+[Guide to fine tuning a LLM](https://github.com/geronimi73/qlora-minimal/tree/main)
