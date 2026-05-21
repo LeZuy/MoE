@@ -16,14 +16,14 @@ from collections.abc import Callable
 import torch
 from torch import nn
 
-from ... import initialization as init
-from ...cache_utils import Cache, DynamicCache
-from ...generation import GenerationMixin
-from ...masking_utils import create_causal_mask
-from ...modeling_outputs import MoeModelOutputWithPast
-from ...modeling_utils import ALL_ATTENTION_FUNCTIONS, PreTrainedModel
-from ...processing_utils import Unpack
-from ...utils import TransformersKwargs, auto_docstring, logging
+from transformers import initialization as init
+from transformers.cache_utils import Cache, DynamicCache
+from transformers.generation import GenerationMixin
+from transformers.masking_utils import create_causal_mask
+from transformers.modeling_outputs import MoeModelOutputWithPast
+from transformers.modeling_utils import ALL_ATTENTION_FUNCTIONS, PreTrainedModel
+from transformers.processing_utils import Unpack
+from transformers.utils import TransformersKwargs, auto_docstring, logging
 from ...utils.output_capturing import OutputRecorder
 from ..gemma.modeling_gemma import GemmaMLP
 from ..llama.modeling_llama import (

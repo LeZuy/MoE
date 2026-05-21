@@ -10,16 +10,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """OLMoE model configuration"""
-
 from huggingface_hub.dataclasses import strict
 
-from ...configuration_utils import PreTrainedConfig
-from ...modeling_rope_utils import RopeParameters
-from ...utils import auto_docstring
+from transformers.configuration_utils import PreTrainedConfig
+from transformers.modeling_rope_utils import RopeParameters
+from transformers.utils import auto_docstring
 
-
-@auto_docstring(checkpoint="allenai/OLMoE-1B-7B-0924")
-@strict
+@auto_docstring(checkpoint="allenai/OLMoE-1B-7B-0924",
+                custom_intro="Configuration class for OLMoE model.")
 class OlmoeConfig(PreTrainedConfig):
     r"""
     clip_qkv (`float`, *optional*):
