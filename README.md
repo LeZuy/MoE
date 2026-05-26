@@ -19,6 +19,7 @@
 |[A Survey on Mixture of Experts in Large Language Models](https://arxiv.org/abs/2407.06204)|Survey|
 |[Unified Scaling Laws for Routed Language Models](https://arxiv.org/abs/2202.01169)|Studied the scaling law of MoE language models|
 |[Mixture of A Million Experts](https://arxiv.org/abs/2407.04153)|Experimental proof that scaling experts improve inference ([Implementation](https://github.com/huyphan168/PEER))|
+|[TA-MoE](https://arxiv.org/pdf/2302.09915)| Graph-topology aware MoE routing to take communication cost in MoE training loss function|
 
 #### Datasets
 + [MMLU](https://huggingface.co/datasets/cais/mmlu)
