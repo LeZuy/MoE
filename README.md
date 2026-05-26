@@ -12,7 +12,7 @@
 |[Qwen3-30B-A3B (2025)](https://arxiv.org/abs/2505.09388)| __30B / 3B__ | __8 / 128__ | __79.6__ | [Model](https://huggingface.co/Qwen/Qwen3-30B-A3B) | 24 GB VRAM / 128 GB RAM| [qwen3-8b from scratch](https://github.com/Chen-Oliver/qwen3-8b-base) |
 
 #### Papers to read
-| Paper |  | 
+| Paper | What's it about? | 
 |:----|:----|
 |[Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538)| Mixture of Experts |
 |[A Comprehensive Survey of Mixture-of-Experts: Algorithms, Theory, and Applications](https://arxiv.org/abs/2503.07137)|Survey|
@@ -20,11 +20,13 @@
 |[Unified Scaling Laws for Routed Language Models](https://arxiv.org/abs/2202.01169)|Studied the scaling law of MoE language models|
 |[Mixture of A Million Experts](https://arxiv.org/abs/2407.04153)|Experimental proof that scaling experts improve inference ([Implementation](https://github.com/huyphan168/PEER))|
 |[TA-MoE](https://arxiv.org/pdf/2302.09915)| Graph-topology aware MoE routing to take communication cost in MoE training loss function|
+|[DHT-MoE](https://arxiv.org/pdf/2002.04013)|MoE + DHT to work with millions of experts, experts are organized into a DHT for quick retrieval|
 
 #### Datasets
-+ [MMLU](https://huggingface.co/datasets/cais/mmlu)
-+ [GSM8K](https://huggingface.co/datasets/openai/gsm8k)
++ [MMLU](https://huggingface.co/datasets/cais/mmlu) Multiple-choice questions
++ [GSM8K](https://huggingface.co/datasets/openai/gsm8k) Math exact questions
 + [MATH](https://github.com/hendrycks/math)
++ [WikiText](https://huggingface.co/datasets/Salesforce/wikitext/viewer/wikitext-103-raw-v1/train)  Text generation task
 
 #### Fine tuning a LLM
 [Fine tuning a LLM](https://github.com/geronimi73/qlora-minimal/tree/main)
