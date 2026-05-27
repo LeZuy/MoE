@@ -1,11 +1,26 @@
-from models.olmoe.modeling_olmoe import OlmoeForCausalLM
-from transformers import AutoTokenizer
+import os
+import torch
 
-PRETRAINED_PATH = "/home/duy.le004/.cache/huggingface/hub/models--allenai--OLMoE-1B-7B-0924/snapshots/6d84c48581ece794365f2b8e9cfb043c68ade9c5"
+from dotenv import load_dotenv
+from transformers import AutoTokenizer
+from models.olmoe.modeling_olmoe import OlmoeForCausalLM
+
+EXMPL_PROMPT = "Bitcoin is"
+MAX_LENGTH = 64
 
 if __name__ == "__main__":
 
-    model = OlmoeForCausalLM.from_pretrained(PRETRAINED_PATH)
+    load_dotenv()
+    hf_token = os.environ["HF_TOKEN"]
+    pretrained_path = os.environ["PRETRAINED_MODEL_PATH"]
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    model = OlmoeForCausalLM.from_pretrained(
+        model = pretrained_path,
+        token = hf_token
+        ).to(device)
+    
     print(f"Model: {model}")
 
     routing_info = []
@@ -23,10 +38,10 @@ if __name__ == "__main__":
         hook = layer.mlp.gate.register_forward_hook(router_hook)
         hooks.append(hook)
 
-    tokenizer = AutoTokenizer.from_pretrained(PRETRAINED_PATH)
+    tokenizer = AutoTokenizer.from_pretrained(pretrained_path)
     print(f"Tokenizer: {tokenizer}")
 
-    out = model.generate(**tokenizer("Bitcoin is", return_tensors="pt"), max_length=64)
+    out = model.generate(**tokenizer(EXMPL_PROMPT, return_tensors="pt"), max_length=MAX_LENGTH)
     print(f"Output: {out}")
     print(f"Detokenized: {tokenizer.decode(out[0])}")
 
