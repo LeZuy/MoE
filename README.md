@@ -29,5 +29,5 @@
 + [WikiText](https://huggingface.co/datasets/Salesforce/wikitext/viewer/wikitext-103-raw-v1/train)  Text generation task
 
 #### Fine tuning a LLM
-[Fine tuning a LLM](https://github.com/geronimi73/qlora-minimal/tree/main)\
+[Fine tuning a LLM](https://github.com/geronimi73/qlora-minimal/tree/main)
 [Unsloth](https://unsloth.ai/docs/get-started/fine-tuning-llms-guide)
