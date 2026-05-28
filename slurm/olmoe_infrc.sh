@@ -28,9 +28,9 @@
 
 # source the local environment if --export=HOME 
 
+echo "Activating Conda ..."
 source /share/apps/linux-ubuntu20.04-zen2/anaconda3-2021.05/etc/profile.d/conda.sh
 conda activate perft-moe
-echo "Using conda env: $CONDA_DEFAULT_ENV"
 
 echo "Starting smi-nvidia log ..."
 nvidia-smi --query-gpu=timestamp,index,utilization.gpu,utilization.memory,memory.used \
@@ -38,6 +38,7 @@ nvidia-smi --query-gpu=timestamp,index,utilization.gpu,utilization.memory,memory
 SMI_PID=$!
 
 echo "Starting inference task ..."
-python -m eval.infer
+
+python ./inference.py
 
 echo "All jobs completed."
