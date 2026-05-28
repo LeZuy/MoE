@@ -2,19 +2,13 @@
 #### Open source MoE
 | Model | Params (Total / Active) | Experts (k/N) | MMLU (%) | Weight | Tuning (QLoRA)  | Model Source |
 |:----|:----:|:----:|:----:|:----:|:----:|:----:|
-|[Switch Transformer (2021) ](https://arxiv.org/abs/2101.03961)| 1.6T / ~7B | 1 / 2048 | N/A | N/A | |  |
-
-|[DeepSeekMoE (2024)](https://arxiv.org/abs/2401.06066)| 16B / 2.8B | 6+2 / 64 | 79.0 | [Model](https://huggingface.co/deepseek-ai/deepseek-moe-16b-base) |  |  |
-
+|[Switch Transformer (2021) ](https://arxiv.org/abs/2101.03961)| 1.6T / ~7B | 1 / 2048 |  | [Model](https://huggingface.co/google/switch-c-2048) |  |  |
+| [DeepSeekMoE (2024)](https://arxiv.org/abs/2401.06066)| 16B / 2.8B | 6+2 / 64 | 79.0 | [Model](https://huggingface.co/deepseek-ai/deepseek-moe-16b-base) |  |  |
 | [Mixtral 8x7B (2024)](https://arxiv.org/abs/2401.04088) | 47B / 13B | 2 / 8 | 70.6 | [Model](https://huggingface.co/mistralai/Mixtral-8x7B-v0.1) | 48 GB VRAM / 128 GB RAM | [MoE-PEFT](https://github.com/TUDB-Labs/MoE-PEFT) |
-
-| [OLMoE (2024)](https://arxiv.org/abs/2409.02060) | 7B / 1B | __8 / 64__ | 64.3 | [Model](https://huggingface.co/allenai/OLMoE-1B-7B-0924) | 12 GB VRAM / 32 GB RAM| [MoE-PEFT](https://github.com/TUDB-Labs/MoE-PEFT) |
-
-|[Qwen3-30B-A3B (2025)](https://arxiv.org/abs/2505.09388)| 30B / 3B | 8 / 128 | 79.6 | [Model](https://huggingface.co/Qwen/Qwen3-30B-A3B) | 48 GB VRAM / 128 GB RAM| [qwen3-8b from scratch](https://github.com/Chen-Oliver/qwen3-8b-base) |
-
-|[Qwen3.5-35B-A3B](https://arxiv.org/abs/2505.09388)| 35B / 3B | 8 / 256| |[Model](https://huggingface.co/HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive)| |[HFT Github](https://github.com/huggingface/transformers/tree/main/src/transformers/models/qwen3_5_moe) |
-
-|[Qwen3-Next-80B-A3B](https://arxiv.org/abs/2505.09388) |80B / 3B| __10 / 512__ | |[Model](https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct)|  | [HFT Github](https://github.com/huggingface/transformers/tree/main/src/transformers/models/qwen3_next) |
+| [OLMoE (2024)](https://arxiv.org/abs/2409.02060) | 7B / 1B | 8 / 64 | 64.3 | [Model](https://huggingface.co/allenai/OLMoE-1B-7B-0924) | 12 GB VRAM / 32 GB RAM| [MoE-PEFT](https://github.com/TUDB-Labs/MoE-PEFT) |
+| [Qwen3-30B-A3B (2025)](https://arxiv.org/abs/2505.09388)| 30B / 3B | 8 / 128 | 79.6 | [Model](https://huggingface.co/Qwen/Qwen3-30B-A3B) | 48 GB VRAM / 128 GB RAM| [qwen3-8b from scratch](https://github.com/Chen-Oliver/qwen3-8b-base) |
+| [Qwen3.5-35B-A3B](https://arxiv.org/abs/2505.09388)| 35B / 3B | 8 / 256| |[Model](https://huggingface.co/HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive)| |[HFT Github](https://github.com/huggingface/transformers/tree/main/src/transformers/models/qwen3_5_moe) |
+| [Qwen3-Next-80B-A3B](https://arxiv.org/abs/2505.09388) |80B / 3B| **10 / 512__** | |[Model](https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct)|  | [HFT Github](https://github.com/huggingface/transformers/tree/main/src/transformers/models/qwen3_next) |
 
 #### Papers to read
 | Paper | What's it about? | 
