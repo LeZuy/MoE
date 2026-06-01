@@ -39,6 +39,6 @@ SMI_PID=$!
 
 echo "Starting inference task ..."
 
-python ./inference.py
+python ./example.py
 
 echo "All jobs completed."
