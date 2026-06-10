@@ -6,6 +6,7 @@ from transformers import AutoTokenizer
 from models.olmoe.modeling_olmoe import OlmoeForCausalLM
 from models.olmoe.decentralized.attngate import AttnGate
 from models.olmoe.decentralized.local_expert import LocalExpert
+from models.olmoe.decentralized.dispatch import ExpertDispatcher
 
 EXMPL_PROMPT = "What is Bitcoin?"
 MAX_LENGTH = 64
@@ -30,7 +31,19 @@ if __name__ == "__main__":
 
     # each client holds 64/8 = 8 experts
     module1 = AttnGate(model).eval()
-    module2 = LocalExpert(model).eval()
+    expert_clients = [
+        LocalExpert(
+            model=model,
+            expert_id=expert_id,
+            device="cpu",
+        ).eval()
+        for expert_id in range(model.config.num_experts)
+    ]
+
+    dispatcher = ExpertDispatcher(
+        expert_clients=expert_clients,
+        device=device,
+    )
 
     # Inference
     inputs = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
@@ -52,9 +65,9 @@ if __name__ == "__main__":
                 past_key_values=past_key_values,
             )
 
-            expert_output = module2(
+            expert_output = dispatcher.dispatch(
                 layer_idx=req["layer_idx"],
-                hidden_states=req["hidden_states"],
+                hidden_states=req["hidden_states"].to(dispatcher.device,dtype = torch.float32),
                 top_k_index=req["top_k_index"],
                 top_k_weights=req["top_k_weights"],
             )
@@ -72,6 +85,7 @@ if __name__ == "__main__":
 
         if next_token_id.item() == tokenizer.eos_token_id:
             break
+
     outputs = tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
     print(f"Prompt: {EXMPL_PROMPT}")
@@ -79,5 +93,5 @@ if __name__ == "__main__":
 
     encoding = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
     with torch.no_grad():
-        out = model.generate(**encoding, max_length=MAX_LENGTH)
+        out = model.generate(**encoding, max_new_tokens=MAX_LENGTH)
     print(f"Original model ({MAX_LENGTH} tokens): {tokenizer.decode(out[0])}")

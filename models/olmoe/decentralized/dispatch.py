@@ -1,32 +1,37 @@
 import torch
 from typing import Dict, List
-from .local import LocalExperts
 
 class ExpertDispatcher:
-    def __init__(self, experts: List[LocalExperts]):
-        self.experts = experts
-        # Build: expert_id -> client
-        self.expert_to_client: Dict[int, LocalExperts] = {}
-        for e in experts:
-            for e_id in e.e_map:
-                self.expert_to_client[e_id] = e
+    def __init__(self, expert_clients, device):
+        self.expert_clients = expert_clients
+        self.device = device
 
-    def dispatch(
-        self,
-        hidden_states: torch.Tensor, 
-        top_k_index: torch.Tensor,
-        top_k_weights: torch.Tensor,
-        parallel: bool = True,
-    ) -> torch.Tensor:
+    @torch.no_grad()
+    def dispatch(self, layer_idx, hidden_states, top_k_index, top_k_weights):
+        print(hidden_states.dtype)
+        final_hidden_states = torch.zeros_like(hidden_states)
 
-        def _call(local_e: LocalExperts):
-            return local_e.forward(hidden_states, top_k_index, top_k_weights)
+        num_experts = len(self.expert_clients)
 
-        if parallel and len(self.experts) > 1:
-            from concurrent.futures import ThreadPoolExecutor
-            with ThreadPoolExecutor(max_workers=len(self.experts)) as exe:
-                results = list(exe.map(_call, self.experts))
-        else:
-            results = [_call(e) for e in self.experts]
+        for expert_id in range(num_experts):
+            token_idx, top_k_pos = torch.where(top_k_index == expert_id)
 
-        return sum(results)
+            if token_idx.numel() == 0:
+                continue
+
+            current_state = hidden_states[token_idx]
+            current_weights = top_k_weights[token_idx, top_k_pos].to(self.device, dtype=torch.float32)
+
+            response = self.expert_clients[expert_id].forward(
+                layer_idx=layer_idx,
+                token_idx=token_idx,
+                hidden_states=current_state,
+                weights=current_weights,
+            )
+
+            partial_output = response["partial_output"].to(self.device)
+            token_idx = response["token_idx"].to(self.device)
+
+            final_hidden_states.index_add_(0, token_idx, partial_output)
+
+        return final_hidden_states
