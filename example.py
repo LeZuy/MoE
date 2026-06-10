@@ -4,7 +4,8 @@ import torch
 from dotenv import load_dotenv
 from transformers import AutoTokenizer
 from models.olmoe.modeling_olmoe import OlmoeForCausalLM
-from models.olmoe.decentralized.simulator import DeOlmoeSimulator
+from models.olmoe.decentralized.attngate import AttnGate
+from models.olmoe.decentralized.local_expert import LocalExpert
 
 EXMPL_PROMPT = "What is Bitcoin?"
 MAX_LENGTH = 64
@@ -21,40 +22,62 @@ if __name__ == "__main__":
         pretrained_model_name_or_path = pretrained_path,
         token = hf_token,
         torch_dtype=torch.bfloat16,
-        device_map="auto",
-    )
+    ).to(device)
     model.eval()
     
     tokenizer = AutoTokenizer.from_pretrained(pretrained_path)
     print(f"Tokenizer: {tokenizer}")
 
     # each client holds 64/8 = 8 experts
-    simulator = DeOlmoeSimulator(model, num_clients=8, parallel=False)
+    module1 = AttnGate(model).eval()
+    module2 = LocalExpert(model).eval()
 
     # Inference
-    inputs = tokenizer(EXMPL_PROMPT, return_tensors="pt")
-    outputs = simulator.generate(tokenizer, EXMPL_PROMPT, max_tokens=MAX_LENGTH)
+    inputs = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
+    output_ids = inputs["input_ids"]
+
+    for _ in range(MAX_LENGTH):
+        hidden_states, causal_mask, position_ids, position_embeddings, past_key_values = module1.prepare_inputs(
+            input_ids=output_ids,
+            attention_mask= torch.ones_like(output_ids, device=output_ids.device),
+        )
+
+        for layer_idx in range(model.config.num_hidden_layers):
+            ffn_residual, req = module1.run_attention_and_gate(
+                layer_idx=layer_idx,
+                hidden_states=hidden_states,
+                causal_mask=causal_mask,
+                position_ids=position_ids,
+                position_embeddings=position_embeddings,
+                past_key_values=past_key_values,
+            )
+
+            expert_output = module2(
+                layer_idx=req["layer_idx"],
+                hidden_states=req["hidden_states"],
+                top_k_index=req["top_k_index"],
+                top_k_weights=req["top_k_weights"],
+            )
+
+            hidden_states = module1.merge_expert_output(
+                ffn_residual=ffn_residual,
+                expert_output=expert_output,
+                original_shape=req["original_shape"],
+            )
+
+        logits = module1.final_logits(hidden_states)
+        next_token_logits = logits[:, -1, :]
+        next_token_id = torch.argmax(next_token_logits, dim=-1, keepdim=True)
+        output_ids = torch.cat([output_ids, next_token_id], dim=-1)
+
+        if next_token_id.item() == tokenizer.eos_token_id:
+            break
+    outputs = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+
     print(f"Prompt: {EXMPL_PROMPT}")
-    print(f"Answers ({MAX_LENGTH} tokens): {outputs}")
+    print(f"Decentralized ({MAX_LENGTH} tokens): {outputs}")
 
     encoding = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
     with torch.no_grad():
         out = model.generate(**encoding, max_length=MAX_LENGTH)
-    print(f"Original: {tokenizer.decode(out[0])}")
-
-    # input_ids = inputs["input_ids"].to(device)
-    # attention_mask = inputs["attention_mask"].to(device)
-    # ref_logits = model(input_ids, attention_mask=attention_mask).logits
-    # sim_logits = simulator.forward(input_ids, attention_mask)
-    # diff = (ref_logits - sim_logits).abs()
-    # print(f"Max diff:  {diff.max().item():.6f}")
-    # print(f"Mean diff: {diff.mean().item():.6f}")
-
-    # ref_token = ref_logits[:, -1, :].argmax(dim=-1)
-    # sim_token = sim_logits[:, -1, :].argmax(dim=-1)
-    # print(f"Ref next token: {tokenizer.decode(ref_token)!r}")
-    # print(f"Sim next token: {tokenizer.decode(sim_token)!r}")
-    # verify_layer_by_layer(model, simulator, tokenizer, "Bitcoin is", device)
-    # verify_moe_output(model, simulator, tokenizer, "Bitcoin is", device, layer_idx=0)
-    # verify_moe_internals(model, simulator, tokenizer, "Bitcoin is", device, layer_idx=0)
-    # verify_attention_output(model, simulator, tokenizer, "Bitcoin is", device, layer_idx=0)
+    print(f"Original model ({MAX_LENGTH} tokens): {tokenizer.decode(out[0])}")
