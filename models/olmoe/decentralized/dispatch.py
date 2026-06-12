@@ -20,7 +20,7 @@ class ExpertDispatcher:
                 continue
 
             current_state = hidden_states[token_idx]
-            current_weights = top_k_weights[token_idx, top_k_pos].to(self.device, dtype=torch.float32)
+            current_weights = top_k_weights[token_idx, top_k_pos]
 
             response = self.expert_clients[expert_id].forward(
                 layer_idx=layer_idx,

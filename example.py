@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
             expert_output = dispatcher.dispatch(
                 layer_idx=req["layer_idx"],
-                hidden_states=req["hidden_states"].to(dispatcher.device,dtype = torch.float32),
+                hidden_states=req["hidden_states"].to(dispatcher.device),
                 top_k_index=req["top_k_index"],
                 top_k_weights=req["top_k_weights"],
             )
