@@ -1,15 +1,15 @@
-import argparse
-import time
-import zmq
-import torch
-import io
 import os
+import io
+import zmq
+import time
 import yaml
 import fcntl
+import torch
+import argparse
+from datetime import datetime
 from dotenv import load_dotenv
-
-from models.olmoe.decentralized.local_expert import LocalExpert
 from models.olmoe.modeling_olmoe import OlmoeForCausalLM
+from models.olmoe.decentralized.local_expert import LocalExpert
 from network.utils import load_placement, get_client_config, request_to_log_obj
 
 CONFIG_PATH = "/home/duy.le004/phd/MoE/network/configs/configs.yaml"
@@ -88,21 +88,21 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--host", default="0.0.0.0")
     parser.add_argument("--port", type=int, required=False)
-    parser.add_argument("--rank", type=int, default=0)
+    parser.add_argument("--id", type=int, default=0)
     args = parser.parse_args()
 
     load_dotenv()
     hf_token = os.environ["HF_TOKEN"]
     pretrained_path = os.environ["PRETRAINED_MODEL_PATH"]
 
-    client_cfg = get_client_config(load_placement(CONFIG_PATH), rank=args.rank)
+    client_cfg = get_client_config(load_placement(CONFIG_PATH), rank=args.id)
     expert_ids = client_cfg["expert_ids"]
     device = client_cfg["device"]
     port = client_cfg["port"]
     host = args.host
-    rank = args.rank
+    rank = args.id
 
-    print(f"[{host}:{port}] expert node {rank} is loading pretrained ...", flush=True)
+    print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert node {rank} is loading pretrained ...", flush=True)
     
     base_model = OlmoeForCausalLM.from_pretrained(
         pretrained_model_name_or_path=pretrained_path,
@@ -120,13 +120,13 @@ if __name__ == "__main__":
         ) for expert_id in expert_ids
     }
 
-    print(f"[{host}:{port}] agent {rank} holds {expert_ids}", flush=True)
+    print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] agent {rank} holds {expert_ids}", flush=True)
     try:
         context = zmq.Context()
         socket = context.socket(zmq.REP)
         socket.setsockopt(zmq.LINGER, 0)
         socket.bind(f"tcp://{host}:{port}")
-        print(f"[{host}:{port}] expert-agent {rank} listening on tcp://{host}:{port}", flush=True)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} listening on tcp://{host}:{port}", flush=True)
         register_address_locked(rank=rank, host=host, port=port)
         while True:
             request = None
@@ -136,7 +136,7 @@ if __name__ == "__main__":
                 request = decode_torch(payload)
 
                 print(
-                    f"[{host}:{port}] expert-agent {rank} received request_id={request.get('request_id')} "
+                    f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} received request_id={request.get('request_id')} "
                     f"keys={list(request.keys())}",
                     flush=True,
                 )
@@ -177,7 +177,7 @@ if __name__ == "__main__":
                     expert = experts[expert_id]
 
                     print(
-                        f"[{host}:{port}] expert {expert_id} processing "
+                        f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert {expert_id} processing "
                         f"{pair_pos.numel()} token-expert pairs",
                         flush=True,
                     )
@@ -203,7 +203,7 @@ if __name__ == "__main__":
                 response = {
                     "ok": True,
                     "request_id": request.get("request_id"),
-                    "rank": args.rank,
+                    "rank": rank,
                     "expert_ids": expert_ids,
                     "token_idx": original_token_idx.cpu(),
                     "partial_output": partial_output_by_pair.cpu(),
@@ -215,7 +215,7 @@ if __name__ == "__main__":
                     yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
 
                 print(
-                    f"[{host}:{port}] expert-agent {rank} sending response: "
+                    f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} sending response: "
                     f"response_id=RES_{response['request_id']} "
                     f"latency_ms={response['latency_ms']:.2f}",
                     flush=True,
@@ -231,14 +231,14 @@ if __name__ == "__main__":
                     "error": repr(exc),
                 }
 
-                print(f"[{host}:{port}] expert-agent {rank} ERROR: {repr(exc)}",
+                print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} ERROR: {repr(exc)}",
                     flush=True,
                 )
 
                 socket.send(encode_torch(err_response))
 
     except KeyboardInterrupt:
-        print("Shutting down server...")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] node {rank} shutting down agent...")
 
     finally:
         socket.setsockopt(zmq.LINGER, 0)

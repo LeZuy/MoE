@@ -89,11 +89,11 @@ done
 echo "Starting expert agents ..."
 srun -N1 -n8 -c1 --cpu-bind=cores \
   /bin/bash -lc '
-    RANK=$SLURM_PROCID
+    ID=$SLURM_PROCID
     HOST=$(hostname)
 
     exec /home/duy.le004/.conda/envs/perft-moe/bin/python -m network.expert_agent \
-      --rank $RANK \
+      --id $ID \
       --host $HOST
   '
   

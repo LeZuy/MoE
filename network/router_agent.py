@@ -2,7 +2,7 @@ import os
 import yaml
 import uuid
 import torch
-
+from datetime import datetime
 from network.expert_agent import ExpertClient
 from network.utils import load_placement, map_ec, request_to_log_obj
 
@@ -32,7 +32,7 @@ class Router:
             expert_id: ExpertClient(address)
             for expert_id, address in self.map_expert_addr.items()
         } 
-        print(f"[router] Got expert node addresses: {self.map_expert_addr}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}][router] Got expert node addresses: {self.map_expert_addr}")
 
     def _build_node_requests(self, layer_idx, hidden_cpu, index_cpu, weights_cpu):
         """Group token-expert pairs by remote expert node."""
@@ -88,8 +88,7 @@ class Router:
             with open(os.path.join("./logs/packets/router", f"REQ_{request['request_id']}.txt"), "w") as f:
                     yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
 
-            print(
-                f"[router] async-send {len(request['token_idx'])} token-expert pairs "
+            print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-send {len(request['token_idx'])} token-expert pairs "
                 f"to expert node {node_id} at {client.address}",
                 flush=True,
             )
@@ -119,8 +118,7 @@ class Router:
             with open(os.path.join("./logs/packets/router", f"RES_{response['request_id']}.txt"), "w") as f:
                     yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
 
-            print(
-                f"[router] async-recv response from expert node {node_id} "
+            print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-recv response from expert node {node_id} "
                 f"latency_ms={response.get('latency_ms')}",
                 flush=True,
             )

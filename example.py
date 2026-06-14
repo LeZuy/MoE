@@ -8,7 +8,7 @@ from models.olmoe.decentralized.attngate import AttnGate
 from network.router_agent import Router
 
 EXMPL_PROMPT = "What is Bitcoin?"
-MAX_LENGTH = 16
+MAX_LENGTH = 8
 CONFIG_PATH = "/home/duy.le004/phd/MoE/network/configs/configs.yaml"
 
 if __name__ == "__main__":
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     model.eval()
     
     tokenizer = AutoTokenizer.from_pretrained(pretrained_path)
-    print(f"Tokenizer: {tokenizer}")
+    # print(f"Tokenizer: {tokenizer}")
 
     attg_module = AttnGate(model).eval()
 
@@ -81,6 +81,8 @@ if __name__ == "__main__":
     print(f"Decentralized ({MAX_LENGTH} tokens): {outputs}")
     print(f"Took {time.time() - start: .2f} seconds")
     encoding = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
+    start = time.time()
     with torch.no_grad():
         out = model.generate(**encoding, max_new_tokens=MAX_LENGTH)
     print(f"Original model ({MAX_LENGTH} tokens): {tokenizer.decode(out[0])}")
+    print(f"Took {time.time() - start: .2f} seconds")
