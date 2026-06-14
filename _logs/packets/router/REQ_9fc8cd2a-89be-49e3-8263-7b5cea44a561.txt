@@ -1,0 +1,62 @@
+type: forward
+request_id: 9fc8cd2a-89be-49e3-8263-7b5cea44a561
+layer_idx: 14
+hidden_states:
+  type: torch.Tensor
+  shape:
+  - 3
+  - 2048
+  dtype: torch.bfloat16
+  device: cpu
+  values_preview:
+  - -0.7109375
+  - -0.408203125
+  - 0.07958984375
+  - 0.326171875
+  - 0.470703125
+  - 0.01434326171875
+  - 0.2099609375
+  - 0.0908203125
+  - 0.361328125
+  - -0.361328125
+  - -0.51953125
+  - -1.4375
+  - 0.953125
+  - 0.28125
+  - 1.0546875
+  - -0.30859375
+  - 0.0155029296875
+  - -0.4765625
+  - 0.73046875
+  - 0.25
+  numel: 6144
+expert_ids:
+  type: torch.Tensor
+  shape:
+  - 3
+  dtype: torch.int64
+  device: cpu
+  values:
+  - 54
+  - 48
+  - 48
+weights:
+  type: torch.Tensor
+  shape:
+  - 3
+  dtype: torch.bfloat16
+  device: cpu
+  values:
+  - 0.05517578125
+  - 0.03564453125
+  - 0.044921875
+token_idx:
+  type: torch.Tensor
+  shape:
+  - 3
+  dtype: torch.int64
+  device: cpu
+  values:
+  - 1
+  - 1
+  - 2

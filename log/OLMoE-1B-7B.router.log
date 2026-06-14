@@ -1,0 +1,2051 @@
+Activating Conda ...
+Starting smi-nvidia log ...
+Starting inference task ...
+Router is running at chimera13:
+[01:45:42][router] Got expert node addresses: {0: 'tcp://chimera14:5550', 1: 'tcp://chimera14:5551', 2: 'tcp://chimera14:5552', 3: 'tcp://chimera14:5553', 4: 'tcp://chimera14:5554', 5: 'tcp://chimera14:5555', 6: 'tcp://chimera14:5556', 7: 'tcp://chimera14:5557'}
+[01:45:43][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 2 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-recv response from expert node 7 latency_ms=58.21800231933594
+[01:45:43][router] async-recv response from expert node 1 latency_ms=43.44749450683594
+[01:45:43][router] async-recv response from expert node 0 latency_ms=37.19735145568848
+[01:45:43][router] async-recv response from expert node 5 latency_ms=10.317802429199219
+[01:45:43][router] async-recv response from expert node 4 latency_ms=22.099971771240234
+[01:45:43][router] async-recv response from expert node 3 latency_ms=19.94466781616211
+[01:45:43][router] async-recv response from expert node 6 latency_ms=19.848346710205078
+[01:45:43][router] async-recv response from expert node 2 latency_ms=6.863832473754883
+[01:45:43][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 2 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 2 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-recv response from expert node 2 latency_ms=21.439790725708008
+[01:45:43][router] async-recv response from expert node 1 latency_ms=5.553483963012695
+[01:45:43][router] async-recv response from expert node 5 latency_ms=8.23068618774414
+[01:45:43][router] async-recv response from expert node 4 latency_ms=5.571603775024414
+[01:45:43][router] async-recv response from expert node 0 latency_ms=17.574787139892578
+[01:45:43][router] async-recv response from expert node 6 latency_ms=5.685329437255859
+[01:45:43][router] async-recv response from expert node 3 latency_ms=8.325815200805664
+[01:45:43][router] async-recv response from expert node 7 latency_ms=15.117406845092773
+[01:45:43][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 5 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 2 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-recv response from expert node 3 latency_ms=10.68425178527832
+[01:45:43][router] async-recv response from expert node 4 latency_ms=13.487100601196289
+[01:45:43][router] async-recv response from expert node 7 latency_ms=15.644550323486328
+[01:45:43][router] async-recv response from expert node 5 latency_ms=5.419254302978516
+[01:45:43][router] async-recv response from expert node 2 latency_ms=11.162996292114258
+[01:45:43][router] async-recv response from expert node 0 latency_ms=8.827447891235352
+[01:45:43][router] async-recv response from expert node 1 latency_ms=11.603116989135742
+[01:45:43][router] async-recv response from expert node 6 latency_ms=5.40614128112793
+[01:45:43][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 1 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-recv response from expert node 4 latency_ms=8.40616226196289
+[01:45:43][router] async-recv response from expert node 7 latency_ms=15.218019485473633
+[01:45:43][router] async-recv response from expert node 1 latency_ms=12.957334518432617
+[01:45:43][router] async-recv response from expert node 5 latency_ms=8.260011672973633
+[01:45:43][router] async-recv response from expert node 6 latency_ms=13.102054595947266
+[01:45:43][router] async-recv response from expert node 3 latency_ms=8.907079696655273
+[01:45:43][router] async-recv response from expert node 2 latency_ms=10.393142700195312
+[01:45:43][router] async-recv response from expert node 0 latency_ms=2.9244422912597656
+[01:45:43][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 5 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 2 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 2 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-recv response from expert node 3 latency_ms=9.791374206542969
+[01:45:43][router] async-recv response from expert node 1 latency_ms=5.543231964111328
+[01:45:43][router] async-recv response from expert node 0 latency_ms=13.47208023071289
+[01:45:43][router] async-recv response from expert node 7 latency_ms=11.051177978515625
+[01:45:43][router] async-recv response from expert node 4 latency_ms=16.34979248046875
+[01:45:43][router] async-recv response from expert node 2 latency_ms=5.702972412109375
+[01:45:43][router] async-recv response from expert node 6 latency_ms=4.967927932739258
+[01:45:43][router] async-recv response from expert node 5 latency_ms=20.642518997192383
+[01:45:43][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 2 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 1 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-recv response from expert node 3 latency_ms=14.14799690246582
+[01:45:43][router] async-recv response from expert node 7 latency_ms=16.791105270385742
+[01:45:43][router] async-recv response from expert node 0 latency_ms=15.197992324829102
+[01:45:43][router] async-recv response from expert node 5 latency_ms=5.76329231262207
+[01:45:43][router] async-recv response from expert node 6 latency_ms=15.728473663330078
+[01:45:43][router] async-recv response from expert node 1 latency_ms=10.73145866394043
+[01:45:43][router] async-recv response from expert node 2 latency_ms=5.882024765014648
+[01:45:43][router] async-recv response from expert node 4 latency_ms=3.0972957611083984
+[01:45:43][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 1 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 4 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 2 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-recv response from expert node 6 latency_ms=12.218475341796875
+[01:45:43][router] async-recv response from expert node 2 latency_ms=16.32094383239746
+[01:45:43][router] async-recv response from expert node 0 latency_ms=3.0651092529296875
+[01:45:43][router] async-recv response from expert node 5 latency_ms=12.68315315246582
+[01:45:43][router] async-recv response from expert node 1 latency_ms=6.24537467956543
+[01:45:43][router] async-recv response from expert node 7 latency_ms=11.338233947753906
+[01:45:43][router] async-recv response from expert node 4 latency_ms=12.566804885864258
+[01:45:43][router] async-recv response from expert node 3 latency_ms=6.057500839233398
+[01:45:43][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 5 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 4 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 2 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-recv response from expert node 2 latency_ms=8.195877075195312
+[01:45:43][router] async-recv response from expert node 5 latency_ms=11.67750358581543
+[01:45:43][router] async-recv response from expert node 0 latency_ms=11.5966796875
+[01:45:43][router] async-recv response from expert node 1 latency_ms=8.805036544799805
+[01:45:43][router] async-recv response from expert node 4 latency_ms=16.1898136138916
+[01:45:43][router] async-recv response from expert node 7 latency_ms=10.790109634399414
+[01:45:43][router] async-recv response from expert node 6 latency_ms=8.031606674194336
+[01:45:43][router] async-recv response from expert node 3 latency_ms=5.853176116943359
+[01:45:43][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 7 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-recv response from expert node 2 latency_ms=8.124828338623047
+[01:45:43][router] async-recv response from expert node 0 latency_ms=14.115095138549805
+[01:45:43][router] async-recv response from expert node 3 latency_ms=13.724565505981445
+[01:45:43][router] async-recv response from expert node 4 latency_ms=11.544227600097656
+[01:45:43][router] async-recv response from expert node 7 latency_ms=16.417741775512695
+[01:45:43][router] async-recv response from expert node 6 latency_ms=11.270284652709961
+[01:45:43][router] async-recv response from expert node 1 latency_ms=5.977869033813477
+[01:45:43][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 4 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-recv response from expert node 1 latency_ms=15.44189453125
+[01:45:43][router] async-recv response from expert node 5 latency_ms=5.110263824462891
+[01:45:43][router] async-recv response from expert node 2 latency_ms=13.493776321411133
+[01:45:43][router] async-recv response from expert node 7 latency_ms=10.920286178588867
+[01:45:43][router] async-recv response from expert node 0 latency_ms=6.038427352905273
+[01:45:43][router] async-recv response from expert node 4 latency_ms=11.082887649536133
+[01:45:43][router] async-recv response from expert node 3 latency_ms=11.372804641723633
+[01:45:43][router] async-recv response from expert node 6 latency_ms=14.202356338500977
+[01:45:43][router] async-send 5 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:43][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:43][router] async-send 3 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:43][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:43][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:43][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:43][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:43][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:43][router] async-recv response from expert node 0 latency_ms=12.715578079223633
+[01:45:43][router] async-recv response from expert node 5 latency_ms=10.615348815917969
+[01:45:43][router] async-recv response from expert node 7 latency_ms=7.982492446899414
+[01:45:43][router] async-recv response from expert node 3 latency_ms=17.255783081054688
+[01:45:43][router] async-recv response from expert node 4 latency_ms=8.766651153564453
+[01:45:44][router] async-recv response from expert node 2 latency_ms=13.906478881835938
+[01:45:44][router] async-recv response from expert node 6 latency_ms=8.185863494873047
+[01:45:44][router] async-recv response from expert node 1 latency_ms=8.516550064086914
+[01:45:44][router] async-send 3 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 2 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-recv response from expert node 7 latency_ms=7.98487663269043
+[01:45:44][router] async-recv response from expert node 4 latency_ms=19.3631649017334
+[01:45:44][router] async-recv response from expert node 6 latency_ms=6.01506233215332
+[01:45:44][router] async-recv response from expert node 1 latency_ms=15.664100646972656
+[01:45:44][router] async-recv response from expert node 5 latency_ms=10.900497436523438
+[01:45:44][router] async-recv response from expert node 2 latency_ms=8.59212875366211
+[01:45:44][router] async-recv response from expert node 3 latency_ms=10.921239852905273
+[01:45:44][router] async-recv response from expert node 0 latency_ms=5.709648132324219
+[01:45:44][router] async-send 4 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-recv response from expert node 7 latency_ms=10.461807250976562
+[01:45:44][router] async-recv response from expert node 6 latency_ms=15.233039855957031
+[01:45:44][router] async-recv response from expert node 0 latency_ms=7.740259170532227
+[01:45:44][router] async-recv response from expert node 2 latency_ms=12.298107147216797
+[01:45:44][router] async-recv response from expert node 1 latency_ms=16.173839569091797
+[01:45:44][router] async-recv response from expert node 4 latency_ms=8.614540100097656
+[01:45:44][router] async-recv response from expert node 5 latency_ms=5.774974822998047
+[01:45:44][router] async-recv response from expert node 3 latency_ms=8.075714111328125
+[01:45:44][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 2 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-recv response from expert node 0 latency_ms=10.657072067260742
+[01:45:44][router] async-recv response from expert node 1 latency_ms=13.710737228393555
+[01:45:44][router] async-recv response from expert node 6 latency_ms=15.63882827758789
+[01:45:44][router] async-recv response from expert node 4 latency_ms=8.714675903320312
+[01:45:44][router] async-recv response from expert node 5 latency_ms=11.36922836303711
+[01:45:44][router] async-recv response from expert node 3 latency_ms=8.883237838745117
+[01:45:44][router] async-recv response from expert node 2 latency_ms=5.642175674438477
+[01:45:44][router] async-recv response from expert node 7 latency_ms=5.845069885253906
+[01:45:44][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-recv response from expert node 7 latency_ms=16.163349151611328
+[01:45:44][router] async-recv response from expert node 1 latency_ms=15.122413635253906
+[01:45:44][router] async-recv response from expert node 5 latency_ms=16.463756561279297
+[01:45:44][router] async-recv response from expert node 2 latency_ms=8.73565673828125
+[01:45:44][router] async-recv response from expert node 4 latency_ms=10.073184967041016
+[01:45:44][router] async-recv response from expert node 6 latency_ms=7.697582244873047
+[01:45:44][router] async-recv response from expert node 3 latency_ms=8.290767669677734
+[01:45:44][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 5 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-send 2 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-recv response from expert node 1 latency_ms=9.362936019897461
+[01:45:44][router] async-recv response from expert node 7 latency_ms=14.118432998657227
+[01:45:44][router] async-recv response from expert node 3 latency_ms=11.439085006713867
+[01:45:44][router] async-recv response from expert node 6 latency_ms=13.69333267211914
+[01:45:44][router] async-recv response from expert node 5 latency_ms=7.660150527954102
+[01:45:44][router] async-recv response from expert node 0 latency_ms=11.227846145629883
+[01:45:44][router] async-recv response from expert node 2 latency_ms=5.88536262512207
+[01:45:44][router] async-recv response from expert node 4 latency_ms=8.796453475952148
+[01:45:44][router] async-send 13 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 5 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 5 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-recv response from expert node 7 latency_ms=26.880741119384766
+[01:45:44][router] async-recv response from expert node 1 latency_ms=12.299060821533203
+[01:45:44][router] async-recv response from expert node 0 latency_ms=8.587360382080078
+[01:45:44][router] async-recv response from expert node 5 latency_ms=5.6972503662109375
+[01:45:44][router] async-recv response from expert node 4 latency_ms=8.598089218139648
+[01:45:44][router] async-recv response from expert node 3 latency_ms=14.558076858520508
+[01:45:44][router] async-recv response from expert node 6 latency_ms=8.270263671875
+[01:45:44][router] async-recv response from expert node 2 latency_ms=8.448600769042969
+[01:45:44][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 2 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-send 2 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-recv response from expert node 2 latency_ms=16.268491744995117
+[01:45:44][router] async-recv response from expert node 1 latency_ms=5.739688873291016
+[01:45:44][router] async-recv response from expert node 5 latency_ms=8.677482604980469
+[01:45:44][router] async-recv response from expert node 4 latency_ms=5.759716033935547
+[01:45:44][router] async-recv response from expert node 0 latency_ms=19.411802291870117
+[01:45:44][router] async-recv response from expert node 6 latency_ms=5.859136581420898
+[01:45:44][router] async-recv response from expert node 3 latency_ms=16.185283660888672
+[01:45:44][router] async-recv response from expert node 7 latency_ms=18.588781356811523
+[01:45:44][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-recv response from expert node 3 latency_ms=15.660285949707031
+[01:45:44][router] async-recv response from expert node 4 latency_ms=14.862060546875
+[01:45:44][router] async-recv response from expert node 7 latency_ms=21.21758460998535
+[01:45:44][router] async-recv response from expert node 5 latency_ms=5.917787551879883
+[01:45:44][router] async-recv response from expert node 2 latency_ms=12.629270553588867
+[01:45:44][router] async-recv response from expert node 0 latency_ms=8.653402328491211
+[01:45:44][router] async-recv response from expert node 1 latency_ms=13.979196548461914
+[01:45:44][router] async-recv response from expert node 6 latency_ms=8.005619049072266
+[01:45:44][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 1 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-recv response from expert node 4 latency_ms=8.646011352539062
+[01:45:44][router] async-recv response from expert node 7 latency_ms=18.7835693359375
+[01:45:44][router] async-recv response from expert node 1 latency_ms=17.00878143310547
+[01:45:44][router] async-recv response from expert node 5 latency_ms=8.977890014648438
+[01:45:44][router] async-recv response from expert node 6 latency_ms=16.577720642089844
+[01:45:44][router] async-recv response from expert node 3 latency_ms=9.390830993652344
+[01:45:44][router] async-recv response from expert node 2 latency_ms=13.437509536743164
+[01:45:44][router] async-recv response from expert node 0 latency_ms=3.2253265380859375
+[01:45:44][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 7 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 8 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:44][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-recv response from expert node 3 latency_ms=8.685827255249023
+[01:45:44][router] async-recv response from expert node 1 latency_ms=5.738973617553711
+[01:45:44][router] async-recv response from expert node 0 latency_ms=14.073848724365234
+[01:45:44][router] async-recv response from expert node 7 latency_ms=13.929367065429688
+[01:45:44][router] async-recv response from expert node 4 latency_ms=17.844676971435547
+[01:45:44][router] async-recv response from expert node 2 latency_ms=7.958412170410156
+[01:45:44][router] async-recv response from expert node 6 latency_ms=5.751848220825195
+[01:45:44][router] async-recv response from expert node 5 latency_ms=11.016607284545898
+[01:45:44][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:44][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:44][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:44][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:44][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:44][router] async-send 5 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:44][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:44][router] async-send 1 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-recv response from expert node 3 latency_ms=16.22796058654785
+[01:45:45][router] async-recv response from expert node 7 latency_ms=16.309022903442383
+[01:45:45][router] async-recv response from expert node 0 latency_ms=15.418529510498047
+[01:45:45][router] async-recv response from expert node 5 latency_ms=5.759954452514648
+[01:45:45][router] async-recv response from expert node 6 latency_ms=16.77703857421875
+[01:45:45][router] async-recv response from expert node 1 latency_ms=11.074304580688477
+[01:45:45][router] async-recv response from expert node 2 latency_ms=10.047435760498047
+[01:45:45][router] async-recv response from expert node 4 latency_ms=3.0422210693359375
+[01:45:45][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 9 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 2 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-recv response from expert node 6 latency_ms=12.858390808105469
+[01:45:45][router] async-recv response from expert node 2 latency_ms=16.359329223632812
+[01:45:45][router] async-recv response from expert node 0 latency_ms=5.229473114013672
+[01:45:45][router] async-recv response from expert node 5 latency_ms=12.868165969848633
+[01:45:45][router] async-recv response from expert node 1 latency_ms=6.064176559448242
+[01:45:45][router] async-recv response from expert node 7 latency_ms=13.522863388061523
+[01:45:45][router] async-recv response from expert node 4 latency_ms=13.549089431762695
+[01:45:45][router] async-recv response from expert node 3 latency_ms=5.997657775878906
+[01:45:45][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 5 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 5 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 2 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-recv response from expert node 2 latency_ms=21.862506866455078
+[01:45:45][router] async-recv response from expert node 5 latency_ms=11.692285537719727
+[01:45:45][router] async-recv response from expert node 0 latency_ms=12.136220932006836
+[01:45:45][router] async-recv response from expert node 1 latency_ms=9.071111679077148
+[01:45:45][router] async-recv response from expert node 4 latency_ms=19.712209701538086
+[01:45:45][router] async-recv response from expert node 7 latency_ms=13.174295425415039
+[01:45:45][router] async-recv response from expert node 6 latency_ms=10.385274887084961
+[01:45:45][router] async-recv response from expert node 3 latency_ms=6.170749664306641
+[01:45:45][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-recv response from expert node 2 latency_ms=8.610010147094727
+[01:45:45][router] async-recv response from expert node 0 latency_ms=14.94908332824707
+[01:45:45][router] async-recv response from expert node 3 latency_ms=17.321348190307617
+[01:45:45][router] async-recv response from expert node 4 latency_ms=13.990163803100586
+[01:45:45][router] async-recv response from expert node 7 latency_ms=16.39103889465332
+[01:45:45][router] async-recv response from expert node 6 latency_ms=10.99538803100586
+[01:45:45][router] async-recv response from expert node 1 latency_ms=7.896900177001953
+[01:45:45][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 4 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-recv response from expert node 1 latency_ms=18.065452575683594
+[01:45:45][router] async-recv response from expert node 5 latency_ms=5.471467971801758
+[01:45:45][router] async-recv response from expert node 2 latency_ms=17.4863338470459
+[01:45:45][router] async-recv response from expert node 7 latency_ms=10.821342468261719
+[01:45:45][router] async-recv response from expert node 0 latency_ms=5.887031555175781
+[01:45:45][router] async-recv response from expert node 4 latency_ms=10.78343391418457
+[01:45:45][router] async-recv response from expert node 3 latency_ms=10.914325714111328
+[01:45:45][router] async-recv response from expert node 6 latency_ms=16.471147537231445
+[01:45:45][router] async-send 7 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 5 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-recv response from expert node 0 latency_ms=13.565301895141602
+[01:45:45][router] async-recv response from expert node 5 latency_ms=12.30001449584961
+[01:45:45][router] async-recv response from expert node 7 latency_ms=10.595321655273438
+[01:45:45][router] async-recv response from expert node 3 latency_ms=17.673492431640625
+[01:45:45][router] async-recv response from expert node 4 latency_ms=10.904550552368164
+[01:45:45][router] async-recv response from expert node 2 latency_ms=13.890981674194336
+[01:45:45][router] async-recv response from expert node 6 latency_ms=8.525371551513672
+[01:45:45][router] async-recv response from expert node 1 latency_ms=8.465051651000977
+[01:45:45][router] async-send 4 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-recv response from expert node 7 latency_ms=8.533954620361328
+[01:45:45][router] async-recv response from expert node 4 latency_ms=18.83411407470703
+[01:45:45][router] async-recv response from expert node 6 latency_ms=9.496212005615234
+[01:45:45][router] async-recv response from expert node 1 latency_ms=14.012813568115234
+[01:45:45][router] async-recv response from expert node 5 latency_ms=10.62774658203125
+[01:45:45][router] async-recv response from expert node 2 latency_ms=10.759115219116211
+[01:45:45][router] async-recv response from expert node 3 latency_ms=14.001846313476562
+[01:45:45][router] async-recv response from expert node 0 latency_ms=7.897615432739258
+[01:45:45][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 8 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-recv response from expert node 7 latency_ms=13.211250305175781
+[01:45:45][router] async-recv response from expert node 6 latency_ms=16.14069938659668
+[01:45:45][router] async-recv response from expert node 0 latency_ms=8.326530456542969
+[01:45:45][router] async-recv response from expert node 2 latency_ms=11.210441589355469
+[01:45:45][router] async-recv response from expert node 1 latency_ms=20.09129524230957
+[01:45:45][router] async-recv response from expert node 4 latency_ms=10.284662246704102
+[01:45:45][router] async-recv response from expert node 5 latency_ms=5.642890930175781
+[01:45:45][router] async-recv response from expert node 3 latency_ms=10.999917984008789
+[01:45:45][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 3 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-recv response from expert node 0 latency_ms=13.889551162719727
+[01:45:45][router] async-recv response from expert node 1 latency_ms=15.910625457763672
+[01:45:45][router] async-recv response from expert node 6 latency_ms=29.221773147583008
+[01:45:45][router] async-recv response from expert node 4 latency_ms=8.82577896118164
+[01:45:45][router] async-recv response from expert node 5 latency_ms=13.543844223022461
+[01:45:45][router] async-recv response from expert node 3 latency_ms=9.102582931518555
+[01:45:45][router] async-recv response from expert node 2 latency_ms=5.825519561767578
+[01:45:45][router] async-recv response from expert node 7 latency_ms=8.201122283935547
+[01:45:45][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-recv response from expert node 7 latency_ms=16.243934631347656
+[01:45:45][router] async-recv response from expert node 1 latency_ms=16.328096389770508
+[01:45:45][router] async-recv response from expert node 5 latency_ms=18.970727920532227
+[01:45:45][router] async-recv response from expert node 2 latency_ms=8.795022964477539
+[01:45:45][router] async-recv response from expert node 4 latency_ms=8.911609649658203
+[01:45:45][router] async-recv response from expert node 6 latency_ms=7.8792572021484375
+[01:45:45][router] async-recv response from expert node 3 latency_ms=13.164997100830078
+[01:45:45][router] async-send 5 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 2 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-recv response from expert node 1 latency_ms=12.163400650024414
+[01:45:45][router] async-recv response from expert node 7 latency_ms=18.579721450805664
+[01:45:45][router] async-recv response from expert node 3 latency_ms=14.574527740478516
+[01:45:45][router] async-recv response from expert node 6 latency_ms=14.179468154907227
+[01:45:45][router] async-recv response from expert node 5 latency_ms=7.775783538818359
+[01:45:45][router] async-recv response from expert node 0 latency_ms=16.157865524291992
+[01:45:45][router] async-recv response from expert node 2 latency_ms=6.0520172119140625
+[01:45:45][router] async-recv response from expert node 4 latency_ms=8.460044860839844
+[01:45:45][router] async-send 14 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-recv response from expert node 7 latency_ms=28.230905532836914
+[01:45:45][router] async-recv response from expert node 1 latency_ms=16.128063201904297
+[01:45:45][router] async-recv response from expert node 0 latency_ms=10.636091232299805
+[01:45:45][router] async-recv response from expert node 5 latency_ms=5.819797515869141
+[01:45:45][router] async-recv response from expert node 4 latency_ms=8.504629135131836
+[01:45:45][router] async-recv response from expert node 3 latency_ms=15.101194381713867
+[01:45:45][router] async-recv response from expert node 6 latency_ms=11.614084243774414
+[01:45:45][router] async-recv response from expert node 2 latency_ms=8.402824401855469
+[01:45:45][router] async-send 9 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 2 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 10 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 2 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-recv response from expert node 2 latency_ms=16.93272590637207
+[01:45:45][router] async-recv response from expert node 1 latency_ms=7.784605026245117
+[01:45:45][router] async-recv response from expert node 5 latency_ms=11.601448059082031
+[01:45:45][router] async-recv response from expert node 4 latency_ms=5.954504013061523
+[01:45:45][router] async-recv response from expert node 0 latency_ms=20.0653076171875
+[01:45:45][router] async-recv response from expert node 6 latency_ms=5.784749984741211
+[01:45:45][router] async-recv response from expert node 3 latency_ms=18.739938735961914
+[01:45:45][router] async-recv response from expert node 7 latency_ms=19.282102584838867
+[01:45:45][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:45][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:45][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:45][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:45][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:45][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:45][router] async-recv response from expert node 3 latency_ms=16.103506088256836
+[01:45:45][router] async-recv response from expert node 4 latency_ms=14.31131362915039
+[01:45:45][router] async-recv response from expert node 7 latency_ms=21.685123443603516
+[01:45:45][router] async-recv response from expert node 5 latency_ms=5.888700485229492
+[01:45:45][router] async-recv response from expert node 2 latency_ms=12.053728103637695
+[01:45:45][router] async-recv response from expert node 0 latency_ms=8.608818054199219
+[01:45:45][router] async-recv response from expert node 1 latency_ms=15.408039093017578
+[01:45:45][router] async-recv response from expert node 6 latency_ms=8.584976196289062
+[01:45:45][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:45][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:45][router] async-send 12 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 1 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-recv response from expert node 4 latency_ms=10.380744934082031
+[01:45:46][router] async-recv response from expert node 7 latency_ms=17.474889755249023
+[01:45:46][router] async-recv response from expert node 1 latency_ms=19.674301147460938
+[01:45:46][router] async-recv response from expert node 5 latency_ms=8.602142333984375
+[01:45:46][router] async-recv response from expert node 6 latency_ms=17.86351203918457
+[01:45:46][router] async-recv response from expert node 3 latency_ms=8.599996566772461
+[01:45:46][router] async-recv response from expert node 2 latency_ms=14.18924331665039
+[01:45:46][router] async-recv response from expert node 0 latency_ms=2.9201507568359375
+[01:45:46][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-recv response from expert node 3 latency_ms=8.941650390625
+[01:45:46][router] async-recv response from expert node 1 latency_ms=5.594015121459961
+[01:45:46][router] async-recv response from expert node 0 latency_ms=14.195442199707031
+[01:45:46][router] async-recv response from expert node 7 latency_ms=14.828205108642578
+[01:45:46][router] async-recv response from expert node 4 latency_ms=18.056392669677734
+[01:45:46][router] async-recv response from expert node 2 latency_ms=7.849693298339844
+[01:45:46][router] async-recv response from expert node 6 latency_ms=8.407115936279297
+[01:45:46][router] async-recv response from expert node 5 latency_ms=11.551141738891602
+[01:45:46][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 1 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-recv response from expert node 3 latency_ms=17.403125762939453
+[01:45:46][router] async-recv response from expert node 7 latency_ms=16.688823699951172
+[01:45:46][router] async-recv response from expert node 0 latency_ms=15.764236450195312
+[01:45:46][router] async-recv response from expert node 5 latency_ms=5.733013153076172
+[01:45:46][router] async-recv response from expert node 6 latency_ms=17.760753631591797
+[01:45:46][router] async-recv response from expert node 1 latency_ms=11.650800704956055
+[01:45:46][router] async-recv response from expert node 2 latency_ms=13.336658477783203
+[01:45:46][router] async-recv response from expert node 4 latency_ms=3.0727386474609375
+[01:45:46][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 11 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 2 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-recv response from expert node 6 latency_ms=13.404130935668945
+[01:45:46][router] async-recv response from expert node 2 latency_ms=19.858121871948242
+[01:45:46][router] async-recv response from expert node 0 latency_ms=5.143165588378906
+[01:45:46][router] async-recv response from expert node 5 latency_ms=13.28277587890625
+[01:45:46][router] async-recv response from expert node 1 latency_ms=5.747318267822266
+[01:45:46][router] async-recv response from expert node 7 latency_ms=14.41502571105957
+[01:45:46][router] async-recv response from expert node 4 latency_ms=14.469146728515625
+[01:45:46][router] async-recv response from expert node 3 latency_ms=6.103277206420898
+[01:45:46][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 7 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 12 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 5 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 2 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-recv response from expert node 2 latency_ms=10.335206985473633
+[01:45:46][router] async-recv response from expert node 5 latency_ms=11.384725570678711
+[01:45:46][router] async-recv response from expert node 0 latency_ms=12.20703125
+[01:45:46][router] async-recv response from expert node 1 latency_ms=9.253263473510742
+[01:45:46][router] async-recv response from expert node 4 latency_ms=22.309064865112305
+[01:45:46][router] async-recv response from expert node 7 latency_ms=12.774944305419922
+[01:45:46][router] async-recv response from expert node 6 latency_ms=10.407447814941406
+[01:45:46][router] async-recv response from expert node 3 latency_ms=5.72514533996582
+[01:45:46][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 10 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-recv response from expert node 2 latency_ms=8.909463882446289
+[01:45:46][router] async-recv response from expert node 0 latency_ms=15.595674514770508
+[01:45:46][router] async-recv response from expert node 3 latency_ms=17.444372177124023
+[01:45:46][router] async-recv response from expert node 4 latency_ms=15.300512313842773
+[01:45:46][router] async-recv response from expert node 7 latency_ms=18.740415573120117
+[01:45:46][router] async-recv response from expert node 6 latency_ms=10.710954666137695
+[01:45:46][router] async-recv response from expert node 1 latency_ms=7.540464401245117
+[01:45:46][router] async-send 12 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 10 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 4 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-recv response from expert node 1 latency_ms=19.88697052001953
+[01:45:46][router] async-recv response from expert node 5 latency_ms=6.121635437011719
+[01:45:46][router] async-recv response from expert node 2 latency_ms=19.67334747314453
+[01:45:46][router] async-recv response from expert node 7 latency_ms=11.321067810058594
+[01:45:46][router] async-recv response from expert node 0 latency_ms=6.213665008544922
+[01:45:46][router] async-recv response from expert node 4 latency_ms=11.191606521606445
+[01:45:46][router] async-recv response from expert node 3 latency_ms=11.055707931518555
+[01:45:46][router] async-recv response from expert node 6 latency_ms=16.909360885620117
+[01:45:46][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-recv response from expert node 0 latency_ms=14.480113983154297
+[01:45:46][router] async-recv response from expert node 5 latency_ms=13.308286666870117
+[01:45:46][router] async-recv response from expert node 7 latency_ms=11.677265167236328
+[01:45:46][router] async-recv response from expert node 3 latency_ms=17.954349517822266
+[01:45:46][router] async-recv response from expert node 4 latency_ms=11.445045471191406
+[01:45:46][router] async-recv response from expert node 2 latency_ms=13.382911682128906
+[01:45:46][router] async-recv response from expert node 6 latency_ms=8.877992630004883
+[01:45:46][router] async-recv response from expert node 1 latency_ms=8.211612701416016
+[01:45:46][router] async-send 5 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 8 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-recv response from expert node 7 latency_ms=8.909940719604492
+[01:45:46][router] async-recv response from expert node 4 latency_ms=20.59459686279297
+[01:45:46][router] async-recv response from expert node 6 latency_ms=11.184453964233398
+[01:45:46][router] async-recv response from expert node 1 latency_ms=16.87002182006836
+[01:45:46][router] async-recv response from expert node 5 latency_ms=11.295557022094727
+[01:45:46][router] async-recv response from expert node 2 latency_ms=11.796236038208008
+[01:45:46][router] async-recv response from expert node 3 latency_ms=17.316341400146484
+[01:45:46][router] async-recv response from expert node 0 latency_ms=7.791757583618164
+[01:45:46][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 5 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 10 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-recv response from expert node 7 latency_ms=14.752388000488281
+[01:45:46][router] async-recv response from expert node 6 latency_ms=17.025470733642578
+[01:45:46][router] async-recv response from expert node 0 latency_ms=8.763313293457031
+[01:45:46][router] async-recv response from expert node 2 latency_ms=14.670133590698242
+[01:45:46][router] async-recv response from expert node 1 latency_ms=21.375179290771484
+[01:45:46][router] async-recv response from expert node 4 latency_ms=11.18612289428711
+[01:45:46][router] async-recv response from expert node 5 latency_ms=5.732059478759766
+[01:45:46][router] async-recv response from expert node 3 latency_ms=10.720252990722656
+[01:45:46][router] async-send 7 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 4 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-recv response from expert node 0 latency_ms=17.126798629760742
+[01:45:46][router] async-recv response from expert node 1 latency_ms=16.88551902770996
+[01:45:46][router] async-recv response from expert node 6 latency_ms=19.348621368408203
+[01:45:46][router] async-recv response from expert node 4 latency_ms=8.650779724121094
+[01:45:46][router] async-recv response from expert node 5 latency_ms=16.150236129760742
+[01:45:46][router] async-recv response from expert node 3 latency_ms=9.167671203613281
+[01:45:46][router] async-recv response from expert node 2 latency_ms=5.697488784790039
+[01:45:46][router] async-recv response from expert node 7 latency_ms=8.879899978637695
+[01:45:46][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 11 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-recv response from expert node 7 latency_ms=17.14801788330078
+[01:45:46][router] async-recv response from expert node 1 latency_ms=17.01831817626953
+[01:45:46][router] async-recv response from expert node 5 latency_ms=22.515296936035156
+[01:45:46][router] async-recv response from expert node 2 latency_ms=8.324861526489258
+[01:45:46][router] async-recv response from expert node 4 latency_ms=8.764505386352539
+[01:45:46][router] async-recv response from expert node 6 latency_ms=8.044242858886719
+[01:45:46][router] async-recv response from expert node 3 latency_ms=15.942096710205078
+[01:45:46][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 2 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:46][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-recv response from expert node 1 latency_ms=14.403820037841797
+[01:45:46][router] async-recv response from expert node 7 latency_ms=19.739866256713867
+[01:45:46][router] async-recv response from expert node 3 latency_ms=17.11750030517578
+[01:45:46][router] async-recv response from expert node 6 latency_ms=15.744924545288086
+[01:45:46][router] async-recv response from expert node 5 latency_ms=8.321046829223633
+[01:45:46][router] async-recv response from expert node 0 latency_ms=19.55866813659668
+[01:45:46][router] async-recv response from expert node 2 latency_ms=6.2274932861328125
+[01:45:46][router] async-recv response from expert node 4 latency_ms=8.906126022338867
+[01:45:46][router] async-send 14 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:46][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:46][router] async-send 7 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:46][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:46][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:46][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:46][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:46][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-recv response from expert node 7 latency_ms=27.486085891723633
+[01:45:47][router] async-recv response from expert node 1 latency_ms=17.681360244750977
+[01:45:47][router] async-recv response from expert node 0 latency_ms=10.685443878173828
+[01:45:47][router] async-recv response from expert node 5 latency_ms=8.232355117797852
+[01:45:47][router] async-recv response from expert node 4 latency_ms=7.959842681884766
+[01:45:47][router] async-recv response from expert node 3 latency_ms=13.129711151123047
+[01:45:47][router] async-recv response from expert node 6 latency_ms=14.39213752746582
+[01:45:47][router] async-recv response from expert node 2 latency_ms=14.551639556884766
+[01:45:47][router] async-send 11 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 10 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-recv response from expert node 2 latency_ms=19.89912986755371
+[01:45:47][router] async-recv response from expert node 1 latency_ms=8.225679397583008
+[01:45:47][router] async-recv response from expert node 5 latency_ms=16.01719856262207
+[01:45:47][router] async-recv response from expert node 4 latency_ms=10.927438735961914
+[01:45:47][router] async-recv response from expert node 0 latency_ms=20.1418399810791
+[01:45:47][router] async-recv response from expert node 6 latency_ms=9.039640426635742
+[01:45:47][router] async-recv response from expert node 3 latency_ms=18.780946731567383
+[01:45:47][router] async-recv response from expert node 7 latency_ms=18.7070369720459
+[01:45:47][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 13 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-recv response from expert node 3 latency_ms=17.016887664794922
+[01:45:47][router] async-recv response from expert node 4 latency_ms=16.58034324645996
+[01:45:47][router] async-recv response from expert node 7 latency_ms=27.3287296295166
+[01:45:47][router] async-recv response from expert node 5 latency_ms=5.908012390136719
+[01:45:47][router] async-recv response from expert node 2 latency_ms=14.42575454711914
+[01:45:47][router] async-recv response from expert node 0 latency_ms=8.526086807250977
+[01:45:47][router] async-recv response from expert node 1 latency_ms=17.550945281982422
+[01:45:47][router] async-recv response from expert node 6 latency_ms=10.482549667358398
+[01:45:47][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 12 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 14 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 1 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-recv response from expert node 4 latency_ms=10.611295700073242
+[01:45:47][router] async-recv response from expert node 7 latency_ms=22.660255432128906
+[01:45:47][router] async-recv response from expert node 1 latency_ms=23.6666202545166
+[01:45:47][router] async-recv response from expert node 5 latency_ms=14.109373092651367
+[01:45:47][router] async-recv response from expert node 6 latency_ms=19.706249237060547
+[01:45:47][router] async-recv response from expert node 3 latency_ms=11.742830276489258
+[01:45:47][router] async-recv response from expert node 2 latency_ms=15.491962432861328
+[01:45:47][router] async-recv response from expert node 0 latency_ms=3.2181739807128906
+[01:45:47][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 3 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 10 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-recv response from expert node 3 latency_ms=9.427547454833984
+[01:45:47][router] async-recv response from expert node 1 latency_ms=7.665872573852539
+[01:45:47][router] async-recv response from expert node 0 latency_ms=15.107393264770508
+[01:45:47][router] async-recv response from expert node 7 latency_ms=15.002250671386719
+[01:45:47][router] async-recv response from expert node 4 latency_ms=20.70021629333496
+[01:45:47][router] async-recv response from expert node 2 latency_ms=8.12673568725586
+[01:45:47][router] async-recv response from expert node 6 latency_ms=11.487960815429688
+[01:45:47][router] async-recv response from expert node 5 latency_ms=13.394832611083984
+[01:45:47][router] async-send 11 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 6 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 11 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-recv response from expert node 3 latency_ms=21.52848243713379
+[01:45:47][router] async-recv response from expert node 7 latency_ms=19.44422721862793
+[01:45:47][router] async-recv response from expert node 0 latency_ms=15.85531234741211
+[01:45:47][router] async-recv response from expert node 5 latency_ms=5.844831466674805
+[01:45:47][router] async-recv response from expert node 6 latency_ms=18.75782012939453
+[01:45:47][router] async-recv response from expert node 1 latency_ms=12.485265731811523
+[01:45:47][router] async-recv response from expert node 2 latency_ms=13.976335525512695
+[01:45:47][router] async-recv response from expert node 4 latency_ms=8.759021759033203
+[01:45:47][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 15 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 2 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-recv response from expert node 6 latency_ms=12.648820877075195
+[01:45:47][router] async-recv response from expert node 2 latency_ms=22.977590560913086
+[01:45:47][router] async-recv response from expert node 0 latency_ms=5.669355392456055
+[01:45:47][router] async-recv response from expert node 5 latency_ms=14.302730560302734
+[01:45:47][router] async-recv response from expert node 1 latency_ms=5.657434463500977
+[01:45:47][router] async-recv response from expert node 7 latency_ms=16.12687110900879
+[01:45:47][router] async-recv response from expert node 4 latency_ms=18.53656768798828
+[01:45:47][router] async-recv response from expert node 3 latency_ms=6.316423416137695
+[01:45:47][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 12 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 4 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-recv response from expert node 2 latency_ms=10.459661483764648
+[01:45:47][router] async-recv response from expert node 5 latency_ms=14.119386672973633
+[01:45:47][router] async-recv response from expert node 0 latency_ms=15.660524368286133
+[01:45:47][router] async-recv response from expert node 1 latency_ms=9.769678115844727
+[01:45:47][router] async-recv response from expert node 4 latency_ms=22.481203079223633
+[01:45:47][router] async-recv response from expert node 7 latency_ms=15.802860260009766
+[01:45:47][router] async-recv response from expert node 6 latency_ms=13.266324996948242
+[01:45:47][router] async-recv response from expert node 3 latency_ms=9.983301162719727
+[01:45:47][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 11 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 10 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 4 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 1 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-recv response from expert node 2 latency_ms=11.217832565307617
+[01:45:47][router] async-recv response from expert node 0 latency_ms=17.873048782348633
+[01:45:47][router] async-recv response from expert node 3 latency_ms=25.290727615356445
+[01:45:47][router] async-recv response from expert node 4 latency_ms=15.892982482910156
+[01:45:47][router] async-recv response from expert node 7 latency_ms=19.457578659057617
+[01:45:47][router] async-recv response from expert node 6 latency_ms=11.08098030090332
+[01:45:47][router] async-recv response from expert node 1 latency_ms=7.985115051269531
+[01:45:47][router] async-recv response from expert node 5 latency_ms=3.3233165740966797
+[01:45:47][router] async-send 13 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 11 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 5 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-recv response from expert node 1 latency_ms=22.465944290161133
+[01:45:47][router] async-recv response from expert node 5 latency_ms=8.869171142578125
+[01:45:47][router] async-recv response from expert node 2 latency_ms=22.059917449951172
+[01:45:47][router] async-recv response from expert node 7 latency_ms=14.397144317626953
+[01:45:47][router] async-recv response from expert node 0 latency_ms=8.487224578857422
+[01:45:47][router] async-recv response from expert node 4 latency_ms=14.091968536376953
+[01:45:47][router] async-recv response from expert node 3 latency_ms=11.72947883605957
+[01:45:47][router] async-recv response from expert node 6 latency_ms=19.18506622314453
+[01:45:47][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 3 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-recv response from expert node 0 latency_ms=19.443035125732422
+[01:45:47][router] async-recv response from expert node 5 latency_ms=12.789249420166016
+[01:45:47][router] async-recv response from expert node 7 latency_ms=11.39068603515625
+[01:45:47][router] async-recv response from expert node 3 latency_ms=19.32239532470703
+[01:45:47][router] async-recv response from expert node 4 latency_ms=13.147115707397461
+[01:45:47][router] async-recv response from expert node 2 latency_ms=16.36958122253418
+[01:45:47][router] async-recv response from expert node 6 latency_ms=11.999130249023438
+[01:45:47][router] async-recv response from expert node 1 latency_ms=8.222103118896484
+[01:45:47][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 10 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-recv response from expert node 7 latency_ms=11.496543884277344
+[01:45:47][router] async-recv response from expert node 4 latency_ms=19.771337509155273
+[01:45:47][router] async-recv response from expert node 6 latency_ms=10.800361633300781
+[01:45:47][router] async-recv response from expert node 1 latency_ms=20.241737365722656
+[01:45:47][router] async-recv response from expert node 5 latency_ms=15.805482864379883
+[01:45:47][router] async-recv response from expert node 2 latency_ms=16.501426696777344
+[01:45:47][router] async-recv response from expert node 3 latency_ms=16.82448387145996
+[01:45:47][router] async-recv response from expert node 0 latency_ms=10.276079177856445
+[01:45:47][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:47][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 5 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-recv response from expert node 7 latency_ms=20.285367965698242
+[01:45:47][router] async-recv response from expert node 6 latency_ms=19.114017486572266
+[01:45:47][router] async-recv response from expert node 0 latency_ms=8.939027786254883
+[01:45:47][router] async-recv response from expert node 2 latency_ms=14.365196228027344
+[01:45:47][router] async-recv response from expert node 1 latency_ms=23.3304500579834
+[01:45:47][router] async-recv response from expert node 4 latency_ms=11.107444763183594
+[01:45:47][router] async-recv response from expert node 5 latency_ms=8.404731750488281
+[01:45:47][router] async-recv response from expert node 3 latency_ms=16.361236572265625
+[01:45:47][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:47][router] async-send 12 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:47][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:47][router] async-send 3 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:47][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:47][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:47][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:47][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-recv response from expert node 0 latency_ms=19.704341888427734
+[01:45:48][router] async-recv response from expert node 1 latency_ms=18.51058006286621
+[01:45:48][router] async-recv response from expert node 6 latency_ms=19.17266845703125
+[01:45:48][router] async-recv response from expert node 4 latency_ms=8.759737014770508
+[01:45:48][router] async-recv response from expert node 5 latency_ms=16.582727432250977
+[01:45:48][router] async-recv response from expert node 3 latency_ms=14.200448989868164
+[01:45:48][router] async-recv response from expert node 2 latency_ms=11.386871337890625
+[01:45:48][router] async-recv response from expert node 7 latency_ms=13.592958450317383
+[01:45:48][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 13 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 1 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-recv response from expert node 7 latency_ms=22.075891494750977
+[01:45:48][router] async-recv response from expert node 1 latency_ms=16.908884048461914
+[01:45:48][router] async-recv response from expert node 5 latency_ms=28.110027313232422
+[01:45:48][router] async-recv response from expert node 2 latency_ms=11.982202529907227
+[01:45:48][router] async-recv response from expert node 4 latency_ms=11.885881423950195
+[01:45:48][router] async-recv response from expert node 6 latency_ms=8.163213729858398
+[01:45:48][router] async-recv response from expert node 3 latency_ms=15.195131301879883
+[01:45:48][router] async-recv response from expert node 0 latency_ms=3.19671630859375
+[01:45:48][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-recv response from expert node 1 latency_ms=14.293193817138672
+[01:45:48][router] async-recv response from expert node 7 latency_ms=19.53911781311035
+[01:45:48][router] async-recv response from expert node 3 latency_ms=19.777774810791016
+[01:45:48][router] async-recv response from expert node 6 latency_ms=15.383720397949219
+[01:45:48][router] async-recv response from expert node 5 latency_ms=13.379573822021484
+[01:45:48][router] async-recv response from expert node 0 latency_ms=21.921873092651367
+[01:45:48][router] async-recv response from expert node 2 latency_ms=10.694265365600586
+[01:45:48][router] async-recv response from expert node 4 latency_ms=11.328935623168945
+[01:45:48][router] async-send 16 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-recv response from expert node 7 latency_ms=30.76004981994629
+[01:45:48][router] async-recv response from expert node 1 latency_ms=18.970489501953125
+[01:45:48][router] async-recv response from expert node 0 latency_ms=12.969732284545898
+[01:45:48][router] async-recv response from expert node 5 latency_ms=11.925220489501953
+[01:45:48][router] async-recv response from expert node 4 latency_ms=8.786201477050781
+[01:45:48][router] async-recv response from expert node 3 latency_ms=17.447710037231445
+[01:45:48][router] async-recv response from expert node 6 latency_ms=17.88043975830078
+[01:45:48][router] async-recv response from expert node 2 latency_ms=16.661643981933594
+[01:45:48][router] async-send 12 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 11 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 12 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-recv response from expert node 2 latency_ms=20.384788513183594
+[01:45:48][router] async-recv response from expert node 1 latency_ms=8.29768180847168
+[01:45:48][router] async-recv response from expert node 5 latency_ms=14.963865280151367
+[01:45:48][router] async-recv response from expert node 4 latency_ms=13.091802597045898
+[01:45:48][router] async-recv response from expert node 0 latency_ms=20.156383514404297
+[01:45:48][router] async-recv response from expert node 6 latency_ms=7.9345703125
+[01:45:48][router] async-recv response from expert node 3 latency_ms=24.174928665161133
+[01:45:48][router] async-recv response from expert node 7 latency_ms=16.95561408996582
+[01:45:48][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 14 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 13 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-recv response from expert node 3 latency_ms=15.246868133544922
+[01:45:48][router] async-recv response from expert node 4 latency_ms=19.670963287353516
+[01:45:48][router] async-recv response from expert node 7 latency_ms=23.964643478393555
+[01:45:48][router] async-recv response from expert node 5 latency_ms=7.782459259033203
+[01:45:48][router] async-recv response from expert node 2 latency_ms=12.497901916503906
+[01:45:48][router] async-recv response from expert node 0 latency_ms=7.175683975219727
+[01:45:48][router] async-recv response from expert node 1 latency_ms=18.820762634277344
+[01:45:48][router] async-recv response from expert node 6 latency_ms=9.161949157714844
+[01:45:48][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 13 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 15 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 12 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-recv response from expert node 4 latency_ms=10.536670684814453
+[01:45:48][router] async-recv response from expert node 7 latency_ms=18.502473831176758
+[01:45:48][router] async-recv response from expert node 1 latency_ms=19.820213317871094
+[01:45:48][router] async-recv response from expert node 5 latency_ms=11.18159294128418
+[01:45:48][router] async-recv response from expert node 6 latency_ms=17.72284507751465
+[01:45:48][router] async-recv response from expert node 3 latency_ms=9.002685546875
+[01:45:48][router] async-recv response from expert node 2 latency_ms=12.027978897094727
+[01:45:48][router] async-recv response from expert node 0 latency_ms=4.215002059936523
+[01:45:48][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 10 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 12 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 4 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 12 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-recv response from expert node 3 latency_ms=9.897232055664062
+[01:45:48][router] async-recv response from expert node 1 latency_ms=6.758451461791992
+[01:45:48][router] async-recv response from expert node 0 latency_ms=14.168262481689453
+[01:45:48][router] async-recv response from expert node 7 latency_ms=13.663768768310547
+[01:45:48][router] async-recv response from expert node 4 latency_ms=16.649484634399414
+[01:45:48][router] async-recv response from expert node 2 latency_ms=8.074522018432617
+[01:45:48][router] async-recv response from expert node 6 latency_ms=8.821725845336914
+[01:45:48][router] async-recv response from expert node 5 latency_ms=14.430046081542969
+[01:45:48][router] async-send 13 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 7 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 12 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 8 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-recv response from expert node 3 latency_ms=17.8678035736084
+[01:45:48][router] async-recv response from expert node 7 latency_ms=15.801668167114258
+[01:45:48][router] async-recv response from expert node 0 latency_ms=12.788534164428711
+[01:45:48][router] async-recv response from expert node 5 latency_ms=6.256818771362305
+[01:45:48][router] async-recv response from expert node 6 latency_ms=17.39025115966797
+[01:45:48][router] async-recv response from expert node 1 latency_ms=11.632919311523438
+[01:45:48][router] async-recv response from expert node 2 latency_ms=10.620355606079102
+[01:45:48][router] async-recv response from expert node 4 latency_ms=8.59212875366211
+[01:45:48][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 17 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 10 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 13 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-recv response from expert node 6 latency_ms=12.714624404907227
+[01:45:48][router] async-recv response from expert node 2 latency_ms=19.79684829711914
+[01:45:48][router] async-recv response from expert node 0 latency_ms=4.176139831542969
+[01:45:48][router] async-recv response from expert node 5 latency_ms=13.762712478637695
+[01:45:48][router] async-recv response from expert node 1 latency_ms=4.426717758178711
+[01:45:48][router] async-recv response from expert node 7 latency_ms=13.040304183959961
+[01:45:48][router] async-recv response from expert node 4 latency_ms=18.45526695251465
+[01:45:48][router] async-recv response from expert node 3 latency_ms=6.276845932006836
+[01:45:48][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 9 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 11 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 8 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 12 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-recv response from expert node 2 latency_ms=8.367300033569336
+[01:45:48][router] async-recv response from expert node 5 latency_ms=15.447378158569336
+[01:45:48][router] async-recv response from expert node 0 latency_ms=15.840530395507812
+[01:45:48][router] async-recv response from expert node 1 latency_ms=9.039163589477539
+[01:45:48][router] async-recv response from expert node 4 latency_ms=18.645286560058594
+[01:45:48][router] async-recv response from expert node 7 latency_ms=14.69111442565918
+[01:45:48][router] async-recv response from expert node 6 latency_ms=11.276006698608398
+[01:45:48][router] async-recv response from expert node 3 latency_ms=9.400129318237305
+[01:45:48][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 13 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 12 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 10 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 1 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-recv response from expert node 2 latency_ms=8.810997009277344
+[01:45:48][router] async-recv response from expert node 0 latency_ms=15.251398086547852
+[01:45:48][router] async-recv response from expert node 3 latency_ms=20.249366760253906
+[01:45:48][router] async-recv response from expert node 4 latency_ms=12.759685516357422
+[01:45:48][router] async-recv response from expert node 7 latency_ms=18.02992820739746
+[01:45:48][router] async-recv response from expert node 6 latency_ms=16.777515411376953
+[01:45:48][router] async-recv response from expert node 1 latency_ms=8.197307586669922
+[01:45:48][router] async-recv response from expert node 5 latency_ms=2.5911331176757812
+[01:45:48][router] async-send 14 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 11 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-recv response from expert node 1 latency_ms=17.80080795288086
+[01:45:48][router] async-recv response from expert node 5 latency_ms=6.664514541625977
+[01:45:48][router] async-recv response from expert node 2 latency_ms=17.3037052154541
+[01:45:48][router] async-recv response from expert node 7 latency_ms=10.901451110839844
+[01:45:48][router] async-recv response from expert node 0 latency_ms=6.53386116027832
+[01:45:48][router] async-recv response from expert node 4 latency_ms=14.003276824951172
+[01:45:48][router] async-recv response from expert node 3 latency_ms=13.116836547851562
+[01:45:48][router] async-recv response from expert node 6 latency_ms=15.413045883178711
+[01:45:48][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:48][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:48][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:48][router] async-send 13 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:48][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:48][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:48][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:48][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:48][router] async-recv response from expert node 0 latency_ms=14.689445495605469
+[01:45:48][router] async-recv response from expert node 5 latency_ms=10.663270950317383
+[01:45:48][router] async-recv response from expert node 7 latency_ms=9.50002670288086
+[01:45:48][router] async-recv response from expert node 3 latency_ms=20.66516876220703
+[01:45:48][router] async-recv response from expert node 4 latency_ms=10.874509811401367
+[01:45:48][router] async-recv response from expert node 2 latency_ms=17.01498031616211
+[01:45:49][router] async-recv response from expert node 6 latency_ms=11.89279556274414
+[01:45:49][router] async-recv response from expert node 1 latency_ms=8.585691452026367
+[01:45:49][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 13 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-recv response from expert node 7 latency_ms=12.755155563354492
+[01:45:49][router] async-recv response from expert node 4 latency_ms=16.40009880065918
+[01:45:49][router] async-recv response from expert node 6 latency_ms=8.984565734863281
+[01:45:49][router] async-recv response from expert node 1 latency_ms=19.15121078491211
+[01:45:49][router] async-recv response from expert node 5 latency_ms=13.209819793701172
+[01:45:49][router] async-recv response from expert node 2 latency_ms=11.426687240600586
+[01:45:49][router] async-recv response from expert node 3 latency_ms=15.69366455078125
+[01:45:49][router] async-recv response from expert node 0 latency_ms=8.291006088256836
+[01:45:49][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-recv response from expert node 7 latency_ms=16.31641387939453
+[01:45:49][router] async-recv response from expert node 6 latency_ms=17.651081085205078
+[01:45:49][router] async-recv response from expert node 0 latency_ms=13.811826705932617
+[01:45:49][router] async-recv response from expert node 2 latency_ms=11.365652084350586
+[01:45:49][router] async-recv response from expert node 1 latency_ms=19.17243003845215
+[01:45:49][router] async-recv response from expert node 4 latency_ms=11.289358139038086
+[01:45:49][router] async-recv response from expert node 5 latency_ms=8.809089660644531
+[01:45:49][router] async-recv response from expert node 3 latency_ms=13.792037963867188
+[01:45:49][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 13 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-recv response from expert node 0 latency_ms=16.91150665283203
+[01:45:49][router] async-recv response from expert node 1 latency_ms=15.784978866577148
+[01:45:49][router] async-recv response from expert node 6 latency_ms=15.734434127807617
+[01:45:49][router] async-recv response from expert node 4 latency_ms=8.762836456298828
+[01:45:49][router] async-recv response from expert node 5 latency_ms=12.452125549316406
+[01:45:49][router] async-recv response from expert node 3 latency_ms=12.90130615234375
+[01:45:49][router] async-recv response from expert node 2 latency_ms=9.650230407714844
+[01:45:49][router] async-recv response from expert node 7 latency_ms=12.788534164428711
+[01:45:49][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 13 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 15 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 1 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-recv response from expert node 7 latency_ms=20.26677131652832
+[01:45:49][router] async-recv response from expert node 1 latency_ms=19.66714859008789
+[01:45:49][router] async-recv response from expert node 5 latency_ms=25.909900665283203
+[01:45:49][router] async-recv response from expert node 2 latency_ms=10.196685791015625
+[01:45:49][router] async-recv response from expert node 4 latency_ms=9.675264358520508
+[01:45:49][router] async-recv response from expert node 6 latency_ms=9.774446487426758
+[01:45:49][router] async-recv response from expert node 3 latency_ms=13.958215713500977
+[01:45:49][router] async-recv response from expert node 0 latency_ms=2.5010108947753906
+[01:45:49][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 12 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 13 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-recv response from expert node 1 latency_ms=11.355400085449219
+[01:45:49][router] async-recv response from expert node 7 latency_ms=15.238761901855469
+[01:45:49][router] async-recv response from expert node 3 latency_ms=20.360469818115234
+[01:45:49][router] async-recv response from expert node 6 latency_ms=16.078472137451172
+[01:45:49][router] async-recv response from expert node 5 latency_ms=11.138916015625
+[01:45:49][router] async-recv response from expert node 0 latency_ms=17.308473587036133
+[01:45:49][router] async-recv response from expert node 2 latency_ms=10.556221008300781
+[01:45:49][router] async-recv response from expert node 4 latency_ms=8.676290512084961
+[01:45:49][router] async-send 18 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 9 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-recv response from expert node 7 latency_ms=24.531126022338867
+[01:45:49][router] async-recv response from expert node 1 latency_ms=15.172481536865234
+[01:45:49][router] async-recv response from expert node 0 latency_ms=10.69188117980957
+[01:45:49][router] async-recv response from expert node 5 latency_ms=10.859966278076172
+[01:45:49][router] async-recv response from expert node 4 latency_ms=6.661891937255859
+[01:45:49][router] async-recv response from expert node 3 latency_ms=13.433218002319336
+[01:45:49][router] async-recv response from expert node 6 latency_ms=14.73236083984375
+[01:45:49][router] async-recv response from expert node 2 latency_ms=15.287637710571289
+[01:45:49][router] async-send 13 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 3 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-recv response from expert node 2 latency_ms=18.581390380859375
+[01:45:49][router] async-recv response from expert node 1 latency_ms=8.529901504516602
+[01:45:49][router] async-recv response from expert node 5 latency_ms=16.93129539489746
+[01:45:49][router] async-recv response from expert node 4 latency_ms=11.238813400268555
+[01:45:49][router] async-recv response from expert node 0 latency_ms=19.861221313476562
+[01:45:49][router] async-recv response from expert node 6 latency_ms=6.814002990722656
+[01:45:49][router] async-recv response from expert node 3 latency_ms=22.611141204833984
+[01:45:49][router] async-recv response from expert node 7 latency_ms=15.144586563110352
+[01:45:49][router] async-send 10 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 15 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 14 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-recv response from expert node 3 latency_ms=13.19432258605957
+[01:45:49][router] async-recv response from expert node 4 latency_ms=20.86639404296875
+[01:45:49][router] async-recv response from expert node 7 latency_ms=22.756338119506836
+[01:45:49][router] async-recv response from expert node 5 latency_ms=6.764411926269531
+[01:45:49][router] async-recv response from expert node 2 latency_ms=12.931585311889648
+[01:45:49][router] async-recv response from expert node 0 latency_ms=6.907224655151367
+[01:45:49][router] async-recv response from expert node 1 latency_ms=18.750667572021484
+[01:45:49][router] async-recv response from expert node 6 latency_ms=9.341716766357422
+[01:45:49][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 15 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 17 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 13 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-recv response from expert node 4 latency_ms=11.525154113769531
+[01:45:49][router] async-recv response from expert node 7 latency_ms=20.537853240966797
+[01:45:49][router] async-recv response from expert node 1 latency_ms=19.999265670776367
+[01:45:49][router] async-recv response from expert node 5 latency_ms=11.22903823852539
+[01:45:49][router] async-recv response from expert node 6 latency_ms=18.30577850341797
+[01:45:49][router] async-recv response from expert node 3 latency_ms=10.986804962158203
+[01:45:49][router] async-recv response from expert node 2 latency_ms=12.26663589477539
+[01:45:49][router] async-recv response from expert node 0 latency_ms=6.421327590942383
+[01:45:49][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 4 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 10 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 14 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 14 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-recv response from expert node 3 latency_ms=12.892007827758789
+[01:45:49][router] async-recv response from expert node 1 latency_ms=6.759405136108398
+[01:45:49][router] async-recv response from expert node 0 latency_ms=14.821529388427734
+[01:45:49][router] async-recv response from expert node 7 latency_ms=14.834880828857422
+[01:45:49][router] async-recv response from expert node 4 latency_ms=18.314599990844727
+[01:45:49][router] async-recv response from expert node 2 latency_ms=8.760690689086914
+[01:45:49][router] async-recv response from expert node 6 latency_ms=9.228706359863281
+[01:45:49][router] async-recv response from expert node 5 latency_ms=15.460014343261719
+[01:45:49][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-send 13 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 13 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-recv response from expert node 3 latency_ms=18.314599990844727
+[01:45:49][router] async-recv response from expert node 7 latency_ms=16.672849655151367
+[01:45:49][router] async-recv response from expert node 0 latency_ms=13.427734375
+[01:45:49][router] async-recv response from expert node 5 latency_ms=6.382942199707031
+[01:45:49][router] async-recv response from expert node 6 latency_ms=19.046783447265625
+[01:45:49][router] async-recv response from expert node 1 latency_ms=12.152671813964844
+[01:45:49][router] async-recv response from expert node 2 latency_ms=12.768745422363281
+[01:45:49][router] async-recv response from expert node 4 latency_ms=8.495569229125977
+[01:45:49][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 19 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 12 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 15 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 3 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-recv response from expert node 6 latency_ms=13.51308822631836
+[01:45:49][router] async-recv response from expert node 2 latency_ms=22.290945053100586
+[01:45:49][router] async-recv response from expert node 0 latency_ms=4.206180572509766
+[01:45:49][router] async-recv response from expert node 5 latency_ms=16.62278175354004
+[01:45:49][router] async-recv response from expert node 1 latency_ms=4.324197769165039
+[01:45:49][router] async-recv response from expert node 7 latency_ms=13.792037963867188
+[01:45:49][router] async-recv response from expert node 4 latency_ms=19.02008056640625
+[01:45:49][router] async-recv response from expert node 3 latency_ms=6.426334381103516
+[01:45:49][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:49][router] async-send 10 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:49][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:49][router] async-send 10 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:49][router] async-send 13 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:49][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:49][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:49][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:49][router] async-recv response from expert node 2 latency_ms=9.270668029785156
+[01:45:49][router] async-recv response from expert node 5 latency_ms=17.08698272705078
+[01:45:49][router] async-recv response from expert node 0 latency_ms=16.62421226501465
+[01:45:49][router] async-recv response from expert node 1 latency_ms=11.682510375976562
+[01:45:49][router] async-recv response from expert node 4 latency_ms=22.589921951293945
+[01:45:49][router] async-recv response from expert node 7 latency_ms=14.938831329345703
+[01:45:49][router] async-recv response from expert node 6 latency_ms=12.360811233520508
+[01:45:49][router] async-recv response from expert node 3 latency_ms=11.527299880981445
+[01:45:50][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 14 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 13 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 8 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 2 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-recv response from expert node 2 latency_ms=10.396957397460938
+[01:45:50][router] async-recv response from expert node 0 latency_ms=15.813350677490234
+[01:45:50][router] async-recv response from expert node 3 latency_ms=22.45187759399414
+[01:45:50][router] async-recv response from expert node 4 latency_ms=13.115882873535156
+[01:45:50][router] async-recv response from expert node 7 latency_ms=18.100976943969727
+[01:45:50][router] async-recv response from expert node 6 latency_ms=17.06695556640625
+[01:45:50][router] async-recv response from expert node 1 latency_ms=11.296272277832031
+[01:45:50][router] async-recv response from expert node 5 latency_ms=4.9190521240234375
+[01:45:50][router] async-send 16 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 14 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 6 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 8 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 11 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-recv response from expert node 1 latency_ms=19.47021484375
+[01:45:50][router] async-recv response from expert node 5 latency_ms=7.796525955200195
+[01:45:50][router] async-recv response from expert node 2 latency_ms=20.678997039794922
+[01:45:50][router] async-recv response from expert node 7 latency_ms=11.036396026611328
+[01:45:50][router] async-recv response from expert node 0 latency_ms=6.45899772644043
+[01:45:50][router] async-recv response from expert node 4 latency_ms=14.798164367675781
+[01:45:50][router] async-recv response from expert node 3 latency_ms=13.25225830078125
+[01:45:50][router] async-recv response from expert node 6 latency_ms=16.117095947265625
+[01:45:50][router] async-send 13 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 10 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-recv response from expert node 0 latency_ms=16.819000244140625
+[01:45:50][router] async-recv response from expert node 5 latency_ms=10.489940643310547
+[01:45:50][router] async-recv response from expert node 7 latency_ms=11.862754821777344
+[01:45:50][router] async-recv response from expert node 3 latency_ms=24.220943450927734
+[01:45:50][router] async-recv response from expert node 4 latency_ms=11.136531829833984
+[01:45:50][router] async-recv response from expert node 2 latency_ms=18.802881240844727
+[01:45:50][router] async-recv response from expert node 6 latency_ms=11.900901794433594
+[01:45:50][router] async-recv response from expert node 1 latency_ms=10.810375213623047
+[01:45:50][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 13 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 14 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 9 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-recv response from expert node 7 latency_ms=13.422966003417969
+[01:45:50][router] async-recv response from expert node 4 latency_ms=20.193815231323242
+[01:45:50][router] async-recv response from expert node 6 latency_ms=10.772228240966797
+[01:45:50][router] async-recv response from expert node 1 latency_ms=19.435882568359375
+[01:45:50][router] async-recv response from expert node 5 latency_ms=15.345096588134766
+[01:45:50][router] async-recv response from expert node 2 latency_ms=15.708446502685547
+[01:45:50][router] async-recv response from expert node 3 latency_ms=17.522573471069336
+[01:45:50][router] async-recv response from expert node 0 latency_ms=8.501052856445312
+[01:45:50][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 11 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 12 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 8 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-recv response from expert node 7 latency_ms=18.03302764892578
+[01:45:50][router] async-recv response from expert node 6 latency_ms=17.15707778930664
+[01:45:50][router] async-recv response from expert node 0 latency_ms=13.507604598999023
+[01:45:50][router] async-recv response from expert node 2 latency_ms=15.723705291748047
+[01:45:50][router] async-recv response from expert node 1 latency_ms=19.109725952148438
+[01:45:50][router] async-recv response from expert node 4 latency_ms=14.88947868347168
+[01:45:50][router] async-recv response from expert node 5 latency_ms=10.346412658691406
+[01:45:50][router] async-recv response from expert node 3 latency_ms=13.451337814331055
+[01:45:50][router] async-send 10 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 14 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 12 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 4 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-recv response from expert node 0 latency_ms=19.611835479736328
+[01:45:50][router] async-recv response from expert node 1 latency_ms=16.179561614990234
+[01:45:50][router] async-recv response from expert node 6 latency_ms=18.396615982055664
+[01:45:50][router] async-recv response from expert node 4 latency_ms=9.157419204711914
+[01:45:50][router] async-recv response from expert node 5 latency_ms=15.78521728515625
+[01:45:50][router] async-recv response from expert node 3 latency_ms=17.737150192260742
+[01:45:50][router] async-recv response from expert node 2 latency_ms=11.989593505859375
+[01:45:50][router] async-recv response from expert node 7 latency_ms=13.561010360717773
+[01:45:50][router] async-send 12 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 13 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 16 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 11 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 2 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-recv response from expert node 7 latency_ms=20.056962966918945
+[01:45:50][router] async-recv response from expert node 1 latency_ms=18.314838409423828
+[01:45:50][router] async-recv response from expert node 5 latency_ms=25.09617805480957
+[01:45:50][router] async-recv response from expert node 2 latency_ms=9.406328201293945
+[01:45:50][router] async-recv response from expert node 4 latency_ms=13.369321823120117
+[01:45:50][router] async-recv response from expert node 6 latency_ms=9.854316711425781
+[01:45:50][router] async-recv response from expert node 3 latency_ms=15.975713729858398
+[01:45:50][router] async-recv response from expert node 0 latency_ms=4.643678665161133
+[01:45:50][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 13 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 14 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-recv response from expert node 1 latency_ms=17.132282257080078
+[01:45:50][router] async-recv response from expert node 7 latency_ms=17.281293869018555
+[01:45:50][router] async-recv response from expert node 3 latency_ms=21.719694137573242
+[01:45:50][router] async-recv response from expert node 6 latency_ms=17.47274398803711
+[01:45:50][router] async-recv response from expert node 5 latency_ms=14.205217361450195
+[01:45:50][router] async-recv response from expert node 0 latency_ms=18.569469451904297
+[01:45:50][router] async-recv response from expert node 2 latency_ms=11.105537414550781
+[01:45:50][router] async-recv response from expert node 4 latency_ms=11.459112167358398
+[01:45:50][router] async-send 20 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 10 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 5 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 11 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 11 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-recv response from expert node 7 latency_ms=25.671720504760742
+[01:45:50][router] async-recv response from expert node 1 latency_ms=14.722824096679688
+[01:45:50][router] async-recv response from expert node 0 latency_ms=12.628555297851562
+[01:45:50][router] async-recv response from expert node 5 latency_ms=10.522127151489258
+[01:45:50][router] async-recv response from expert node 4 latency_ms=8.42905044555664
+[01:45:50][router] async-recv response from expert node 3 latency_ms=13.42010498046875
+[01:45:50][router] async-recv response from expert node 6 latency_ms=15.985727310180664
+[01:45:50][router] async-recv response from expert node 2 latency_ms=17.83585548400879
+[01:45:50][router] async-send 15 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 8 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 9 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-recv response from expert node 2 latency_ms=21.61550521850586
+[01:45:50][router] async-recv response from expert node 1 latency_ms=11.940240859985352
+[01:45:50][router] async-recv response from expert node 5 latency_ms=19.01531219482422
+[01:45:50][router] async-recv response from expert node 4 latency_ms=13.424873352050781
+[01:45:50][router] async-recv response from expert node 0 latency_ms=20.059585571289062
+[01:45:50][router] async-recv response from expert node 6 latency_ms=10.520219802856445
+[01:45:50][router] async-recv response from expert node 3 latency_ms=22.937297821044922
+[01:45:50][router] async-recv response from expert node 7 latency_ms=15.590667724609375
+[01:45:50][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 12 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 15 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 14 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 10 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-recv response from expert node 3 latency_ms=19.130229949951172
+[01:45:50][router] async-recv response from expert node 4 latency_ms=22.96137809753418
+[01:45:50][router] async-recv response from expert node 7 latency_ms=23.157119750976562
+[01:45:50][router] async-recv response from expert node 5 latency_ms=8.69607925415039
+[01:45:50][router] async-recv response from expert node 2 latency_ms=13.100147247314453
+[01:45:50][router] async-recv response from expert node 0 latency_ms=6.894111633300781
+[01:45:50][router] async-recv response from expert node 1 latency_ms=17.439842224121094
+[01:45:50][router] async-recv response from expert node 6 latency_ms=12.978792190551758
+[01:45:50][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 17 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 19 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-send 13 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-recv response from expert node 4 latency_ms=11.769771575927734
+[01:45:50][router] async-recv response from expert node 7 latency_ms=21.738290786743164
+[01:45:50][router] async-recv response from expert node 1 latency_ms=23.374557495117188
+[01:45:50][router] async-recv response from expert node 5 latency_ms=13.225793838500977
+[01:45:50][router] async-recv response from expert node 6 latency_ms=18.360614776611328
+[01:45:50][router] async-recv response from expert node 3 latency_ms=11.060237884521484
+[01:45:50][router] async-recv response from expert node 2 latency_ms=14.486551284790039
+[01:45:50][router] async-recv response from expert node 0 latency_ms=8.590936660766602
+[01:45:50][router] async-send 11 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:50][router] async-send 5 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:50][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:50][router] async-send 13 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:50][router] async-send 14 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:50][router] async-send 5 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:50][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:50][router] async-send 15 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:50][router] async-recv response from expert node 3 latency_ms=15.48457145690918
+[01:45:50][router] async-recv response from expert node 1 latency_ms=9.428024291992188
+[01:45:50][router] async-recv response from expert node 0 latency_ms=18.527746200561523
+[01:45:50][router] async-recv response from expert node 7 latency_ms=17.583131790161133
+[01:45:50][router] async-recv response from expert node 4 latency_ms=17.094135284423828
+[01:45:50][router] async-recv response from expert node 2 latency_ms=8.573770523071289
+[01:45:50][router] async-recv response from expert node 6 latency_ms=9.000778198242188
+[01:45:50][router] async-recv response from expert node 5 latency_ms=15.884876251220703
+[01:45:51][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 14 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 15 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 10 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 9 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-recv response from expert node 3 latency_ms=18.50152015686035
+[01:45:51][router] async-recv response from expert node 7 latency_ms=18.85676383972168
+[01:45:51][router] async-recv response from expert node 0 latency_ms=13.445377349853516
+[01:45:51][router] async-recv response from expert node 5 latency_ms=8.55255126953125
+[01:45:51][router] async-recv response from expert node 6 latency_ms=23.143291473388672
+[01:45:51][router] async-recv response from expert node 1 latency_ms=14.307737350463867
+[01:45:51][router] async-recv response from expert node 2 latency_ms=15.201568603515625
+[01:45:51][router] async-recv response from expert node 4 latency_ms=10.882377624511719
+[01:45:51][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 20 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 14 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 16 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 5 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-recv response from expert node 6 latency_ms=13.50259780883789
+[01:45:51][router] async-recv response from expert node 2 latency_ms=22.18794822692871
+[01:45:51][router] async-recv response from expert node 0 latency_ms=6.427288055419922
+[01:45:51][router] async-recv response from expert node 5 latency_ms=18.392324447631836
+[01:45:51][router] async-recv response from expert node 1 latency_ms=4.3811798095703125
+[01:45:51][router] async-recv response from expert node 7 latency_ms=13.889312744140625
+[01:45:51][router] async-recv response from expert node 4 latency_ms=19.254207611083984
+[01:45:51][router] async-recv response from expert node 3 latency_ms=8.611679077148438
+[01:45:51][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 10 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 13 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 15 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 10 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-recv response from expert node 2 latency_ms=8.975982666015625
+[01:45:51][router] async-recv response from expert node 5 latency_ms=17.106056213378906
+[01:45:51][router] async-recv response from expert node 0 latency_ms=16.96491241455078
+[01:45:51][router] async-recv response from expert node 1 latency_ms=13.380050659179688
+[01:45:51][router] async-recv response from expert node 4 latency_ms=24.67823028564453
+[01:45:51][router] async-recv response from expert node 7 latency_ms=16.946792602539062
+[01:45:51][router] async-recv response from expert node 6 latency_ms=11.610984802246094
+[01:45:51][router] async-recv response from expert node 3 latency_ms=14.360189437866211
+[01:45:51][router] async-send 12 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 15 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 12 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-recv response from expert node 2 latency_ms=13.871908187866211
+[01:45:51][router] async-recv response from expert node 0 latency_ms=16.515016555786133
+[01:45:51][router] async-recv response from expert node 3 latency_ms=22.775888442993164
+[01:45:51][router] async-recv response from expert node 4 latency_ms=13.690948486328125
+[01:45:51][router] async-recv response from expert node 7 latency_ms=15.631437301635742
+[01:45:51][router] async-recv response from expert node 6 latency_ms=19.067049026489258
+[01:45:51][router] async-recv response from expert node 1 latency_ms=10.91623306274414
+[01:45:51][router] async-recv response from expert node 5 latency_ms=6.229400634765625
+[01:45:51][router] async-send 16 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 16 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 7 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 8 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 12 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-recv response from expert node 1 latency_ms=19.306659698486328
+[01:45:51][router] async-recv response from expert node 5 latency_ms=7.7266693115234375
+[01:45:51][router] async-recv response from expert node 2 latency_ms=22.547483444213867
+[01:45:51][router] async-recv response from expert node 7 latency_ms=13.012886047363281
+[01:45:51][router] async-recv response from expert node 0 latency_ms=8.770465850830078
+[01:45:51][router] async-recv response from expert node 4 latency_ms=19.38629150390625
+[01:45:51][router] async-recv response from expert node 3 latency_ms=13.345956802368164
+[01:45:51][router] async-recv response from expert node 6 latency_ms=16.69454574584961
+[01:45:51][router] async-send 14 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 15 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 8 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 10 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 12 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-recv response from expert node 0 latency_ms=19.182443618774414
+[01:45:51][router] async-recv response from expert node 5 latency_ms=12.9852294921875
+[01:45:51][router] async-recv response from expert node 7 latency_ms=11.792182922363281
+[01:45:51][router] async-recv response from expert node 3 latency_ms=24.532079696655273
+[01:45:51][router] async-recv response from expert node 4 latency_ms=15.317916870117188
+[01:45:51][router] async-recv response from expert node 2 latency_ms=18.016576766967773
+[01:45:51][router] async-recv response from expert node 6 latency_ms=15.379667282104492
+[01:45:51][router] async-recv response from expert node 1 latency_ms=11.20305061340332
+[01:45:51][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 13 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 16 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 9 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 11 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 5 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-recv response from expert node 7 latency_ms=15.652894973754883
+[01:45:51][router] async-recv response from expert node 4 latency_ms=19.51456069946289
+[01:45:51][router] async-recv response from expert node 6 latency_ms=14.870166778564453
+[01:45:51][router] async-recv response from expert node 1 latency_ms=21.6825008392334
+[01:45:51][router] async-recv response from expert node 5 latency_ms=15.03610610961914
+[01:45:51][router] async-recv response from expert node 2 latency_ms=15.41590690612793
+[01:45:51][router] async-recv response from expert node 3 latency_ms=20.851850509643555
+[01:45:51][router] async-recv response from expert node 0 latency_ms=9.755134582519531
+[01:45:51][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 11 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 11 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 10 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 12 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-recv response from expert node 7 latency_ms=17.54283905029297
+[01:45:51][router] async-recv response from expert node 6 latency_ms=17.515182495117188
+[01:45:51][router] async-recv response from expert node 0 latency_ms=19.802331924438477
+[01:45:51][router] async-recv response from expert node 2 latency_ms=19.418954849243164
+[01:45:51][router] async-recv response from expert node 1 latency_ms=19.546031951904297
+[01:45:51][router] async-recv response from expert node 4 latency_ms=14.73093032836914
+[01:45:51][router] async-recv response from expert node 5 latency_ms=14.293670654296875
+[01:45:51][router] async-recv response from expert node 3 latency_ms=14.087677001953125
+[01:45:51][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 15 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 14 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 5 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 9 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-recv response from expert node 0 latency_ms=22.62592315673828
+[01:45:51][router] async-recv response from expert node 1 latency_ms=16.360044479370117
+[01:45:51][router] async-recv response from expert node 6 latency_ms=20.061016082763672
+[01:45:51][router] async-recv response from expert node 4 latency_ms=11.098861694335938
+[01:45:51][router] async-recv response from expert node 5 latency_ms=16.812801361083984
+[01:45:51][router] async-recv response from expert node 3 latency_ms=17.468690872192383
+[01:45:51][router] async-recv response from expert node 2 latency_ms=12.240171432495117
+[01:45:51][router] async-recv response from expert node 7 latency_ms=13.236284255981445
+[01:45:51][router] async-send 13 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 13 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 18 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 8 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 12 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-recv response from expert node 7 latency_ms=20.19047737121582
+[01:45:51][router] async-recv response from expert node 1 latency_ms=18.33796501159668
+[01:45:51][router] async-recv response from expert node 5 latency_ms=35.23397445678711
+[01:45:51][router] async-recv response from expert node 2 latency_ms=11.782407760620117
+[01:45:51][router] async-recv response from expert node 4 latency_ms=17.259836196899414
+[01:45:51][router] async-recv response from expert node 6 latency_ms=9.740352630615234
+[01:45:51][router] async-recv response from expert node 3 latency_ms=16.574621200561523
+[01:45:51][router] async-recv response from expert node 0 latency_ms=6.441354751586914
+[01:45:51][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 15 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 16 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 9 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 6 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-recv response from expert node 1 latency_ms=18.640518188476562
+[01:45:51][router] async-recv response from expert node 7 latency_ms=16.91293716430664
+[01:45:51][router] async-recv response from expert node 3 latency_ms=23.009777069091797
+[01:45:51][router] async-recv response from expert node 6 latency_ms=18.959760665893555
+[01:45:51][router] async-recv response from expert node 0 latency_ms=16.707420349121094
+[01:45:51][router] async-recv response from expert node 5 latency_ms=13.25225830078125
+[01:45:51][router] async-recv response from expert node 4 latency_ms=12.860774993896484
+[01:45:51][router] async-recv response from expert node 2 latency_ms=12.530326843261719
+[01:45:51][router] async-send 21 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-send 10 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 10 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 12 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 11 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-recv response from expert node 7 latency_ms=26.784181594848633
+[01:45:51][router] async-recv response from expert node 1 latency_ms=17.426252365112305
+[01:45:51][router] async-recv response from expert node 0 latency_ms=13.727426528930664
+[01:45:51][router] async-recv response from expert node 5 latency_ms=12.593984603881836
+[01:45:51][router] async-recv response from expert node 4 latency_ms=11.007547378540039
+[01:45:51][router] async-recv response from expert node 3 latency_ms=14.610528945922852
+[01:45:51][router] async-recv response from expert node 6 latency_ms=16.713857650756836
+[01:45:51][router] async-recv response from expert node 2 latency_ms=17.14801788330078
+[01:45:51][router] async-send 16 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:51][router] async-send 9 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:51][router] async-send 9 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:51][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:51][router] async-send 14 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:51][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:51][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:51][router] async-send 12 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:51][router] async-recv response from expert node 2 latency_ms=23.279428482055664
+[01:45:51][router] async-recv response from expert node 1 latency_ms=12.1002197265625
+[01:45:51][router] async-recv response from expert node 5 latency_ms=18.387317657470703
+[01:45:51][router] async-recv response from expert node 4 latency_ms=15.997648239135742
+[01:45:51][router] async-recv response from expert node 0 latency_ms=20.33710479736328
+[01:45:51][router] async-recv response from expert node 6 latency_ms=10.53476333618164
+[01:45:52][router] async-recv response from expert node 3 latency_ms=22.75395393371582
+[01:45:52][router] async-recv response from expert node 7 latency_ms=17.695188522338867
+[01:45:52][router] async-send 14 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 13 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 15 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 5 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 16 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 13 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-recv response from expert node 3 latency_ms=18.715620040893555
+[01:45:52][router] async-recv response from expert node 4 latency_ms=22.45640754699707
+[01:45:52][router] async-recv response from expert node 7 latency_ms=22.282838821411133
+[01:45:52][router] async-recv response from expert node 5 latency_ms=8.497476577758789
+[01:45:52][router] async-recv response from expert node 2 latency_ms=14.736175537109375
+[01:45:52][router] async-recv response from expert node 0 latency_ms=6.952047348022461
+[01:45:52][router] async-recv response from expert node 1 latency_ms=19.072532653808594
+[01:45:52][router] async-recv response from expert node 6 latency_ms=16.85309410095215
+[01:45:52][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 18 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 22 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 7 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 15 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 7 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-recv response from expert node 4 latency_ms=12.131929397583008
+[01:45:52][router] async-recv response from expert node 7 latency_ms=22.87578582763672
+[01:45:52][router] async-recv response from expert node 1 latency_ms=26.15642547607422
+[01:45:52][router] async-recv response from expert node 5 latency_ms=13.269424438476562
+[01:45:52][router] async-recv response from expert node 6 latency_ms=19.375324249267578
+[01:45:52][router] async-recv response from expert node 3 latency_ms=11.557579040527344
+[01:45:52][router] async-recv response from expert node 2 latency_ms=16.769886016845703
+[01:45:52][router] async-recv response from expert node 0 latency_ms=8.832931518554688
+[01:45:52][router] async-send 11 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 6 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 12 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 14 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 16 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 5 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 17 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-recv response from expert node 3 latency_ms=14.77193832397461
+[01:45:52][router] async-recv response from expert node 1 latency_ms=10.497331619262695
+[01:45:52][router] async-recv response from expert node 0 latency_ms=18.48125457763672
+[01:45:52][router] async-recv response from expert node 7 latency_ms=17.409563064575195
+[01:45:52][router] async-recv response from expert node 4 latency_ms=18.682241439819336
+[01:45:52][router] async-recv response from expert node 2 latency_ms=11.095523834228516
+[01:45:52][router] async-recv response from expert node 6 latency_ms=9.113311767578125
+[01:45:52][router] async-recv response from expert node 5 latency_ms=18.230438232421875
+[01:45:52][router] async-send 17 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 15 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 8 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 4 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 16 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 12 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 9 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 7 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-recv response from expert node 3 latency_ms=21.45695686340332
+[01:45:52][router] async-recv response from expert node 7 latency_ms=19.47498321533203
+[01:45:52][router] async-recv response from expert node 0 latency_ms=13.086318969726562
+[01:45:52][router] async-recv response from expert node 5 latency_ms=8.437395095825195
+[01:45:52][router] async-recv response from expert node 6 latency_ms=24.954795837402344
+[01:45:52][router] async-recv response from expert node 1 latency_ms=14.689445495605469
+[01:45:52][router] async-recv response from expert node 2 latency_ms=15.264034271240234
+[01:45:52][router] async-recv response from expert node 4 latency_ms=11.377334594726562
+[01:45:52][router] async-send 11 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 21 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 3 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 16 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 2 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 18 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 6 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-recv response from expert node 6 latency_ms=15.871286392211914
+[01:45:52][router] async-recv response from expert node 2 latency_ms=22.716283798217773
+[01:45:52][router] async-recv response from expert node 0 latency_ms=6.487131118774414
+[01:45:52][router] async-recv response from expert node 5 latency_ms=21.2860107421875
+[01:45:52][router] async-recv response from expert node 1 latency_ms=4.399776458740234
+[01:45:52][router] async-recv response from expert node 7 latency_ms=13.521671295166016
+[01:45:52][router] async-recv response from expert node 4 latency_ms=20.279884338378906
+[01:45:52][router] async-recv response from expert node 3 latency_ms=8.774757385253906
+[01:45:52][router] async-send 7 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 11 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 14 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 12 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 17 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 7 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 11 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-recv response from expert node 2 latency_ms=10.901212692260742
+[01:45:52][router] async-recv response from expert node 5 latency_ms=17.507314682006836
+[01:45:52][router] async-recv response from expert node 0 latency_ms=18.174409866333008
+[01:45:52][router] async-recv response from expert node 1 latency_ms=15.372276306152344
+[01:45:52][router] async-recv response from expert node 4 latency_ms=28.450727462768555
+[01:45:52][router] async-recv response from expert node 7 latency_ms=17.240047454833984
+[01:45:52][router] async-recv response from expert node 6 latency_ms=11.313438415527344
+[01:45:52][router] async-recv response from expert node 3 latency_ms=14.822721481323242
+[01:45:52][router] async-send 13 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 17 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 15 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 11 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 11 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 11 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 3 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-recv response from expert node 2 latency_ms=16.16811752319336
+[01:45:52][router] async-recv response from expert node 0 latency_ms=17.521381378173828
+[01:45:52][router] async-recv response from expert node 3 latency_ms=25.101661682128906
+[01:45:52][router] async-recv response from expert node 4 latency_ms=13.24319839477539
+[01:45:52][router] async-recv response from expert node 7 latency_ms=18.479108810424805
+[01:45:52][router] async-recv response from expert node 6 latency_ms=21.425485610961914
+[01:45:52][router] async-recv response from expert node 1 latency_ms=13.057231903076172
+[01:45:52][router] async-recv response from expert node 5 latency_ms=6.663799285888672
+[01:45:52][router] async-send 17 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 6 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 16 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 8 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 5 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 13 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 10 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 13 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-recv response from expert node 1 latency_ms=21.770477294921875
+[01:45:52][router] async-recv response from expert node 5 latency_ms=7.875919342041016
+[01:45:52][router] async-recv response from expert node 2 latency_ms=23.22244644165039
+[01:45:52][router] async-recv response from expert node 7 latency_ms=13.214588165283203
+[01:45:52][router] async-recv response from expert node 0 latency_ms=10.29062271118164
+[01:45:52][router] async-recv response from expert node 4 latency_ms=22.64714241027832
+[01:45:52][router] async-recv response from expert node 3 latency_ms=13.623714447021484
+[01:45:52][router] async-recv response from expert node 6 latency_ms=17.14015007019043
+[01:45:52][router] async-send 14 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 17 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 8 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 11 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 14 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 7 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-recv response from expert node 0 latency_ms=18.860816955566406
+[01:45:52][router] async-recv response from expert node 5 latency_ms=14.533519744873047
+[01:45:52][router] async-recv response from expert node 7 latency_ms=13.67950439453125
+[01:45:52][router] async-recv response from expert node 3 latency_ms=25.844097137451172
+[01:45:52][router] async-recv response from expert node 4 latency_ms=14.425277709960938
+[01:45:52][router] async-recv response from expert node 2 latency_ms=18.349170684814453
+[01:45:52][router] async-recv response from expert node 6 latency_ms=17.129182815551758
+[01:45:52][router] async-recv response from expert node 1 latency_ms=12.707710266113281
+[01:45:52][router] async-send 12 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 13 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 9 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 18 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 9 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 12 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 7 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-recv response from expert node 7 latency_ms=18.82171630859375
+[01:45:52][router] async-recv response from expert node 4 latency_ms=19.49620246887207
+[01:45:52][router] async-recv response from expert node 6 latency_ms=14.615297317504883
+[01:45:52][router] async-recv response from expert node 1 latency_ms=23.790597915649414
+[01:45:52][router] async-recv response from expert node 5 latency_ms=14.829635620117188
+[01:45:52][router] async-recv response from expert node 2 latency_ms=15.195131301879883
+[01:45:52][router] async-recv response from expert node 3 latency_ms=21.31366729736328
+[01:45:52][router] async-recv response from expert node 0 latency_ms=14.193296432495117
+[01:45:52][router] async-send 12 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 12 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 13 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 13 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 12 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 9 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 9 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-recv response from expert node 7 latency_ms=18.210649490356445
+[01:45:52][router] async-recv response from expert node 6 latency_ms=19.519567489624023
+[01:45:52][router] async-recv response from expert node 0 latency_ms=23.35977554321289
+[01:45:52][router] async-recv response from expert node 2 latency_ms=21.765708923339844
+[01:45:52][router] async-recv response from expert node 1 latency_ms=19.53601837158203
+[01:45:52][router] async-recv response from expert node 4 latency_ms=14.660835266113281
+[01:45:52][router] async-recv response from expert node 5 latency_ms=15.942811965942383
+[01:45:52][router] async-recv response from expert node 3 latency_ms=14.16015625
+[01:45:52][router] async-send 13 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:52][router] async-send 16 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 15 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:52][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 10 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 11 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:52][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 9 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-recv response from expert node 0 latency_ms=23.96249771118164
+[01:45:52][router] async-recv response from expert node 1 latency_ms=17.844200134277344
+[01:45:52][router] async-recv response from expert node 6 latency_ms=32.66334533691406
+[01:45:52][router] async-recv response from expert node 4 latency_ms=13.411521911621094
+[01:45:52][router] async-recv response from expert node 5 latency_ms=19.086360931396484
+[01:45:52][router] async-recv response from expert node 3 latency_ms=20.50304412841797
+[01:45:52][router] async-recv response from expert node 2 latency_ms=12.566089630126953
+[01:45:52][router] async-recv response from expert node 7 latency_ms=14.065265655517578
+[01:45:52][router] async-send 13 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:52][router] async-send 13 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:52][router] async-send 21 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:52][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:52][router] async-send 10 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:52][router] async-send 6 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:53][router] async-send 13 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:53][router] async-send 4 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:53][router] async-recv response from expert node 7 latency_ms=20.269155502319336
+[01:45:53][router] async-recv response from expert node 1 latency_ms=18.37325096130371
+[01:45:53][router] async-recv response from expert node 5 latency_ms=28.128862380981445
+[01:45:53][router] async-recv response from expert node 2 latency_ms=13.415813446044922
+[01:45:53][router] async-recv response from expert node 4 latency_ms=21.116971969604492
+[01:45:53][router] async-recv response from expert node 6 latency_ms=9.368896484375
+[01:45:53][router] async-recv response from expert node 3 latency_ms=16.89600944519043
+[01:45:53][router] async-recv response from expert node 0 latency_ms=6.710529327392578
+[01:45:53][router] async-send 11 token-expert pairs to expert node 1 at tcp://chimera14:5551
+[01:45:53][router] async-send 10 token-expert pairs to expert node 7 at tcp://chimera14:5557
+[01:45:53][router] async-send 16 token-expert pairs to expert node 3 at tcp://chimera14:5553
+[01:45:53][router] async-send 18 token-expert pairs to expert node 6 at tcp://chimera14:5556
+[01:45:53][router] async-send 11 token-expert pairs to expert node 0 at tcp://chimera14:5550
+[01:45:53][router] async-send 8 token-expert pairs to expert node 5 at tcp://chimera14:5555
+[01:45:53][router] async-send 6 token-expert pairs to expert node 4 at tcp://chimera14:5554
+[01:45:53][router] async-send 8 token-expert pairs to expert node 2 at tcp://chimera14:5552
+[01:45:53][router] async-recv response from expert node 1 latency_ms=18.777847290039062
+[01:45:53][router] async-recv response from expert node 7 latency_ms=16.992568969726562
+[01:45:53][router] async-recv response from expert node 3 latency_ms=24.150371551513672
+[01:45:53][router] async-recv response from expert node 6 latency_ms=22.666454315185547
+[01:45:53][router] async-recv response from expert node 0 latency_ms=19.861459732055664
+[01:45:53][router] async-recv response from expert node 5 latency_ms=16.04938507080078
+[01:45:53][router] async-recv response from expert node 4 latency_ms=13.484477996826172
+[01:45:53][router] async-recv response from expert node 2 latency_ms=17.139911651611328
+Prompt: What is Bitcoin?
+Decentralized (8 tokens): What is Bitcoin?
+
+Bitcoin is a digital currency
+Took  10.63 seconds
+Original model (8 tokens): What is Bitcoin?
+
+Bitcoin is a digital currency
+Took  0.34 seconds
+All jobs completed.
