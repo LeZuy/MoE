@@ -1,15 +1,15 @@
 import os
 import torch
-
+import time
 from dotenv import load_dotenv
 from transformers import AutoTokenizer
 from models.olmoe.modeling_olmoe import OlmoeForCausalLM
 from models.olmoe.decentralized.attngate import AttnGate
-from models.olmoe.decentralized.network.router_agent import Router
+from network.router_agent import Router
 
 EXMPL_PROMPT = "What is Bitcoin?"
-MAX_LENGTH = 1
-CONFIG_PATH = "./models/olmoe/decentralized/network/config.yaml"
+MAX_LENGTH = 16
+CONFIG_PATH = "/home/duy.le004/phd/MoE/network/configs/configs.yaml"
 
 if __name__ == "__main__":
 
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # Inference
     inputs = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
     output_ids = inputs["input_ids"]
-
+    start = time.time()
     for _ in range(MAX_LENGTH):
         hidden_states, causal_mask, position_ids, position_embeddings, past_key_values = attg_module.prepare_inputs(
             input_ids=output_ids,
@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
     print(f"Prompt: {EXMPL_PROMPT}")
     print(f"Decentralized ({MAX_LENGTH} tokens): {outputs}")
-
+    print(f"Took {time.time() - start: .2f} seconds")
     encoding = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
     with torch.no_grad():
         out = model.generate(**encoding, max_new_tokens=MAX_LENGTH)

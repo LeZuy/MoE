@@ -5,13 +5,15 @@ import torch
 import io
 import os
 import yaml
+import fcntl
 from dotenv import load_dotenv
 
-from ..local_expert import LocalExpert
-from ...modeling_olmoe import OlmoeForCausalLM
-from .utils import load_placement, get_client_config
+from models.olmoe.decentralized.local_expert import LocalExpert
+from models.olmoe.modeling_olmoe import OlmoeForCausalLM
+from network.utils import load_placement, get_client_config, request_to_log_obj
 
-CONFIG_PATH = "./models/olmoe/decentralized/network/config.yaml"
+CONFIG_PATH = "/home/duy.le004/phd/MoE/network/configs/configs.yaml"
+ADDRS_PATH = "/home/duy.le004/phd/MoE/network/configs/expert_addrs.yaml"
 
 def encode_torch(obj: dict) -> bytes:
     """
@@ -25,6 +27,38 @@ def encode_torch(obj: dict) -> bytes:
 def decode_torch(payload: bytes) -> dict:
     buffer = io.BytesIO(payload)
     return torch.load(buffer, map_location="cpu")
+
+def register_address_locked(
+    rank: int,
+    host: str,
+    port: int,
+    path: str = ADDRS_PATH,
+):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    lock_path = str(path) + ".lock"
+    tmp_path = str(path) + f".tmp.{os.getpid()}"
+
+    address = f"tcp://{host}:{port}"
+
+    with open(lock_path, "w") as lock_file:
+        fcntl.flock(lock_file, fcntl.LOCK_EX)
+
+        try:
+            if os.path.exists(path):
+                with open(path, "r") as f:
+                    data = yaml.safe_load(f) or {}
+            else:
+                data = {}
+
+            data[int(rank)] = address
+
+            with open(tmp_path, "w") as f:
+                yaml.safe_dump(data, f, sort_keys=True)
+
+            os.replace(tmp_path, path)
+
+        finally:
+            fcntl.flock(lock_file, fcntl.LOCK_UN)
 
 class ExpertClient:
     def __init__(self, address: str, timeout_ms: int = 30000):
@@ -87,12 +121,13 @@ if __name__ == "__main__":
     }
 
     print(f"[{host}:{port}] agent {rank} holds {expert_ids}", flush=True)
-   
-    try: 
+    try:
         context = zmq.Context()
         socket = context.socket(zmq.REP)
+        socket.setsockopt(zmq.LINGER, 0)
         socket.bind(f"tcp://{host}:{port}")
-        print(f"[expert-agent {rank}] listening on tcp://{host}:{port}", flush=True)
+        print(f"[{host}:{port}] expert-agent {rank} listening on tcp://{host}:{port}", flush=True)
+        register_address_locked(rank=rank, host=host, port=port)
         while True:
             request = None
 
@@ -101,7 +136,7 @@ if __name__ == "__main__":
                 request = decode_torch(payload)
 
                 print(
-                    f"[expert-agent {rank}] received request_id={request.get('request_id')} "
+                    f"[{host}:{port}] expert-agent {rank} received request_id={request.get('request_id')} "
                     f"keys={list(request.keys())}",
                     flush=True,
                 )
@@ -122,9 +157,9 @@ if __name__ == "__main__":
 
                 os.makedirs(f"./logs/packets/agent_{rank}", exist_ok=True)
 
-                with open(os.path.join(f"./logs/packets/agent_{rank}", 
-                                       f"REQ_{request['request_id']}.txt"),"w",) as f:
-                    yaml.dump(request, f)
+                with open(os.path.join(f"./logs/packets/agent_{rank}",
+                                       f"REQ_{request['request_id']}.txt"), "w") as f:
+                    yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
 
                 started = time.time()
 
@@ -175,9 +210,9 @@ if __name__ == "__main__":
                     "latency_ms": latency_ms,
                 }
 
-                with open(os.path.join(f"./logs/packets/agent_{rank}", 
-                                       f"RES_{request['request_id']}.txt"), "w",) as f:
-                    yaml.dump(response, f)
+                with open(os.path.join(f"./logs/packets/agent_{rank}",
+                                       f"RES_{request['request_id']}.txt"), "w") as f:
+                    yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
 
                 print(
                     f"[{host}:{port}] expert-agent {rank} sending response: "
@@ -196,19 +231,17 @@ if __name__ == "__main__":
                     "error": repr(exc),
                 }
 
-                print(
-                    f"[expert-agent {rank}] ERROR: {repr(exc)}",
+                print(f"[{host}:{port}] expert-agent {rank} ERROR: {repr(exc)}",
                     flush=True,
                 )
 
                 socket.send(encode_torch(err_response))
-    
+
     except KeyboardInterrupt:
         print("Shutting down server...")
 
     finally:
-        # GRACEFULL TERMINATION
-        socket.setsockopt(zmq.LINGER, 0)  # to avoid hanging infinitely
-        socket.close()                      # .close()  for all sockets & devices
-        context.term()        
+        socket.setsockopt(zmq.LINGER, 0)
+        socket.close()
+        context.term()
         context.destroy()

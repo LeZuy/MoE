@@ -82,21 +82,6 @@ conda activate perft-moe
 
 echo "Starting inference task ..."
 
-ADDRESS_FILE="$SLURM_SUBMIT_DIR/expert_adds.yaml"
-
-echo "Writing expert address file to $ADDRESS_FILE"
-EXPERT_HOST=$(hostname)
-cat > "$ADDRESS_FILE.tmp" <<EOF
-0: "tcp://$EXPERT_HOST:5550"
-1: "tcp://$EXPERT_HOST:5551"
-2: "tcp://$EXPERT_HOST:5552"
-3: "tcp://$EXPERT_HOST:5553"
-4: "tcp://$EXPERT_HOST:5554"
-5: "tcp://$EXPERT_HOST:5555"
-6: "tcp://$EXPERT_HOST:5556"
-7: "tcp://$EXPERT_HOST:5557"
-EOF
-
 for i in {0..7}; do
   rm -rf /home/duy.le004/phd/MoE/logs/packets/agent_$i/*
 done 
@@ -107,7 +92,7 @@ srun -N1 -n8 -c1 --cpu-bind=cores \
     RANK=$SLURM_PROCID
     HOST=$(hostname)
 
-    exec /home/duy.le004/.conda/envs/perft-moe/bin/python -m models.olmoe.decentralized.network.expert_agent \
+    exec /home/duy.le004/.conda/envs/perft-moe/bin/python -m network.expert_agent \
       --rank $RANK \
       --host $HOST
   '

@@ -3,11 +3,11 @@ import yaml
 import uuid
 import torch
 
-from .expert_agent import ExpertClient
-from .utils import load_placement, map_ec
+from network.expert_agent import ExpertClient
+from network.utils import load_placement, map_ec, request_to_log_obj
 
-CONFIG_PATH = "./models/olmoe/decentralized/network/config.yaml"
-EXPERT_ADDS_PATH = "/home/duy.le004/phd/MoE/expert_adds.yaml.tmp"
+CONFIG_PATH = "/home/duy.le004/phd/MoE/network/configs/configs.yaml"
+EXPERT_ADDS_PATH = "/home/duy.le004/phd/MoE/network/configs/expert_addrs.yaml"
 
 def get_expert_address(adds_path: str = CONFIG_PATH) -> dict[int, str]:
     with open(adds_path, "r") as f:
@@ -34,6 +34,34 @@ class Router:
         } 
         print(f"[router] Got expert node addresses: {self.map_expert_addr}")
 
+    def _build_node_requests(self, layer_idx, hidden_cpu, index_cpu, weights_cpu):
+        """Group token-expert pairs by remote expert node."""
+        grouped_pairs: dict[int, list[tuple[int, int]]] = {}
+
+        num_tokens, top_k = index_cpu.shape
+        for token_idx in range(num_tokens):
+            for top_k_pos in range(top_k):
+                expert_id = int(index_cpu[token_idx, top_k_pos].item())
+                node_id = self.map_node_expert[expert_id]["rank"]
+                grouped_pairs.setdefault(node_id, []).append((token_idx, top_k_pos))
+
+        requests = {}
+        for node_id, pairs in grouped_pairs.items():
+            token_idx = torch.tensor([p[0] for p in pairs], dtype=torch.long)
+            top_k_pos = torch.tensor([p[1] for p in pairs], dtype=torch.long)
+
+            requests[node_id] = {
+                "type": "forward",
+                "request_id": str(uuid.uuid4()),
+                "layer_idx": layer_idx,
+                "hidden_states": hidden_cpu[token_idx],
+                "expert_ids": index_cpu[token_idx, top_k_pos],
+                "weights": weights_cpu[token_idx, top_k_pos],
+                "token_idx": token_idx,
+            }
+
+        return requests
+    
     @torch.no_grad()
     def forward(self, layer_idx, hidden_states, top_k_index, top_k_weights):
         original_device = hidden_states.device
@@ -58,7 +86,7 @@ class Router:
             client = self.expert_clients[node_id]
 
             with open(os.path.join("./logs/packets/router", f"REQ_{request['request_id']}.txt"), "w") as f:
-                yaml.dump(request, f)
+                    yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
 
             print(
                 f"[router] async-send {len(request['token_idx'])} token-expert pairs "
@@ -89,7 +117,7 @@ class Router:
             final.index_add_(0, response_token_idx, partial_output)
 
             with open(os.path.join("./logs/packets/router", f"RES_{response['request_id']}.txt"), "w") as f:
-                yaml.dump(response, f)
+                    yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
 
             print(
                 f"[router] async-recv response from expert node {node_id} "

@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+import torch
 import yaml
 
 def load_placement(path: str | Path) -> dict[str, Any]:
@@ -77,3 +78,33 @@ def map_ec (placement: dict[str, Any]) -> dict[int, dict[str, Any]]:
             }
 
     return expert_to_client
+
+def tensor_to_log_obj(x, max_items: int = 20):
+    if not torch.is_tensor(x):
+        return x
+
+    x_cpu = x.detach().cpu()
+
+    obj = {
+        "type": "torch.Tensor",
+        "shape": list(x_cpu.shape),
+        "dtype": str(x_cpu.dtype),
+        "device": str(x.device),
+    }
+
+    flat = x_cpu.flatten()
+
+    if flat.numel() <= max_items:
+        obj["values"] = flat.tolist()
+    else:
+        obj["values_preview"] = flat[:max_items].tolist()
+        obj["numel"] = flat.numel()
+
+    return obj
+
+
+def request_to_log_obj(request: dict) -> dict:
+    return {
+        key: tensor_to_log_obj(value)
+        for key, value in request.items()
+    }
