@@ -1,0 +1,104 @@
+import os
+import yaml
+import uuid
+import torch
+
+from .expert_agent import ExpertClient
+from .utils import load_placement, map_ec
+
+CONFIG_PATH = "./models/olmoe/decentralized/network/config.yaml"
+EXPERT_ADDS_PATH = "/home/duy.le004/phd/MoE/expert_adds.yaml.tmp"
+
+def get_expert_address(adds_path: str = CONFIG_PATH) -> dict[int, str]:
+    with open(adds_path, "r") as f:
+        return yaml.safe_load(f)
+
+def get_map_node_expert(config_path:str = CONFIG_PATH) -> dict[int, int]:
+    return map_ec(load_placement(config_path))
+
+class Router:
+    def __init__(self, config_path: str = CONFIG_PATH):
+        """
+        expert_nodes:
+            node_id -> address
+            {
+                0: "tcp://127.0.0.1:5000",
+                1: "tcp://127.0.0.1:5001",
+            }
+        """
+        self.map_node_expert = get_map_node_expert(config_path)
+        self.map_expert_addr = get_expert_address(EXPERT_ADDS_PATH)
+        self.expert_clients = {
+            expert_id: ExpertClient(address)
+            for expert_id, address in self.map_expert_addr.items()
+        } 
+        print(f"[router] Got expert node addresses: {self.map_expert_addr}")
+
+    @torch.no_grad()
+    def forward(self, layer_idx, hidden_states, top_k_index, top_k_weights):
+        original_device = hidden_states.device
+        original_dtype = hidden_states.dtype
+
+        hidden_cpu = hidden_states.detach().to("cpu")
+        index_cpu = top_k_index.detach().to("cpu")
+        weights_cpu = top_k_weights.detach().to("cpu")
+
+        final = torch.zeros_like(hidden_cpu)
+        os.makedirs("./logs/packets/router", exist_ok=True)
+
+        node_requests = self._build_node_requests(
+            layer_idx=layer_idx,
+            hidden_cpu=hidden_cpu,
+            index_cpu=index_cpu,
+            weights_cpu=weights_cpu,
+        )
+
+        # send to every expert node.
+        for node_id, request in node_requests.items():
+            client = self.expert_clients[node_id]
+
+            with open(os.path.join("./logs/packets/router", f"REQ_{request['request_id']}.txt"), "w") as f:
+                yaml.dump(request, f)
+
+            print(
+                f"[router] async-send {len(request['token_idx'])} token-expert pairs "
+                f"to expert node {node_id} at {client.address}",
+                flush=True,
+            )
+
+            client.send(request)
+
+        # receive from every expert node and accumulate outputs.
+        for node_id, request in node_requests.items():
+            client = self.expert_clients[node_id]
+            response = client.recv()
+
+            if not response["ok"]:
+                raise RuntimeError(f"Expert node {node_id} failed: {response}")
+
+            if response.get("request_id") != request["request_id"]:
+                raise RuntimeError(
+                    f"Mismatched response from expert node {node_id}: "
+                    f"expected request_id={request['request_id']}, "
+                    f"got request_id={response.get('request_id')}"
+                )
+
+            partial_output = response["partial_output"]
+            response_token_idx = response["token_idx"]
+
+            final.index_add_(0, response_token_idx, partial_output)
+
+            with open(os.path.join("./logs/packets/router", f"RES_{response['request_id']}.txt"), "w") as f:
+                yaml.dump(response, f)
+
+            print(
+                f"[router] async-recv response from expert node {node_id} "
+                f"latency_ms={response.get('latency_ms')}",
+                flush=True,
+            )
+
+        return final.to(device=original_device, dtype=original_dtype)
+
+    def close(self) -> None:
+        for client in self.expert_clients.values():
+            client.close()

@@ -10,14 +10,14 @@
 #
 #
 # set name of job
-#SBATCH --job-name=slurm-sample
+#SBATCH --job-name=OLMoE-1B-7B.expert
 #
 # set the number of processors/tasks needed
 ##SBATCH -n 4
 # for hyperthreaded,shared memory jobs, set 1 task, 1 node,
 # and set --cpus-per-task to total number of threads
-#SBATCH -n 64
-#SBATCH --ntasks-per-node=64
+#SBATCH -n 8
+#SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=1
 
 # set the number of Nodes needed.  Set to 1 for shared 
@@ -35,14 +35,14 @@
 #SBATCH --time=00-10:00:00
 
 # set a memory request
-#SBATCH --mem=1gb
+#SBATCH --mem=160gb
 
 # Set filenames for stdout and stderr.  %j can be used
 # for the jobid.
 # see "filename patterns" section of the sbatch man page for
 # additional options
-#SBATCH --error=test.err
-#SBATCH --output=test.out
+#SBATCH --error=logs/OLMoE-1B-7B.expert.err
+#SBATCH --output=logs/OLMoE-1B-7B.expert.log
 #
 
 # set the partition where the job will run.  Multiple partitions can
@@ -76,26 +76,43 @@
 echo "using $SLURM_CPUS_ON_NODE CPUs"
 echo `date`
 
-hostname
-
-echo "Job ID: $SLURM_JOB_ID"
-echo "Node list: $SLURM_JOB_NODELIST"
-echo "Tasks: $SLURM_NTASKS"
-echo "Tasks per node: $SLURM_TASKS_PER_NODE"
-echo "CPUs per task: $SLURM_CPUS_PER_TASK"
-
-export OMP_NUM_THREADS=1
-export MKL_NUM_THREADS=1
-export OPENBLAS_NUM_THREADS=1
-
 echo "Activating Conda ..."
 source /share/apps/linux-ubuntu20.04-zen2/anaconda3-2021.05/etc/profile.d/conda.sh
 conda activate perft-moe
-python --version
-PYTHON_BIN=$(which python)
-echo "Using PYTHON_BIN=$PYTHON_BIN"
 
-srun --ntasks=64 --cpu-bind=cores --export=ALL "$PYTHON_BIN" worker_probe.py
+echo "Starting inference task ..."
+
+ADDRESS_FILE="$SLURM_SUBMIT_DIR/expert_adds.yaml"
+
+echo "Writing expert address file to $ADDRESS_FILE"
+EXPERT_HOST=$(hostname)
+cat > "$ADDRESS_FILE.tmp" <<EOF
+0: "tcp://$EXPERT_HOST:5550"
+1: "tcp://$EXPERT_HOST:5551"
+2: "tcp://$EXPERT_HOST:5552"
+3: "tcp://$EXPERT_HOST:5553"
+4: "tcp://$EXPERT_HOST:5554"
+5: "tcp://$EXPERT_HOST:5555"
+6: "tcp://$EXPERT_HOST:5556"
+7: "tcp://$EXPERT_HOST:5557"
+EOF
+
+for i in {0..7}; do
+  rm -rf /home/duy.le004/phd/MoE/logs/packets/agent_$i/*
+done 
+
+echo "Starting expert agents ..."
+srun -N1 -n8 -c1 --cpu-bind=cores \
+  /bin/bash -lc '
+    RANK=$SLURM_PROCID
+    HOST=$(hostname)
+
+    exec /home/duy.le004/.conda/envs/perft-moe/bin/python -m models.olmoe.decentralized.network.expert_agent \
+      --rank $RANK \
+      --host $HOST
+  '
+  
+echo "All jobs completed."
 
 # Diagnostic/Logging Information
 echo "Finish Run"

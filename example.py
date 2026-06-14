@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 from transformers import AutoTokenizer
 from models.olmoe.modeling_olmoe import OlmoeForCausalLM
 from models.olmoe.decentralized.attngate import AttnGate
-from models.olmoe.decentralized.local_expert import LocalExpert
-from models.olmoe.decentralized.dispatch import ExpertDispatcher
+from models.olmoe.decentralized.network.router_agent import Router
 
 EXMPL_PROMPT = "What is Bitcoin?"
-MAX_LENGTH = 64
+MAX_LENGTH = 1
+CONFIG_PATH = "./models/olmoe/decentralized/network/config.yaml"
 
 if __name__ == "__main__":
 
@@ -29,34 +29,23 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(pretrained_path)
     print(f"Tokenizer: {tokenizer}")
 
-    # each client holds 64/8 = 8 experts
-    module1 = AttnGate(model).eval()
-    expert_clients = [
-        LocalExpert(
-            model=model,
-            expert_id=expert_id,
-            device="cpu",
-        ).eval()
-        for expert_id in range(model.config.num_experts)
-    ]
+    attg_module = AttnGate(model).eval()
 
-    dispatcher = ExpertDispatcher(
-        expert_clients=expert_clients,
-        device=device,
-    )
+    # each client holds 64/8 = 8 experts
+    router = Router(CONFIG_PATH)
 
     # Inference
     inputs = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
     output_ids = inputs["input_ids"]
 
     for _ in range(MAX_LENGTH):
-        hidden_states, causal_mask, position_ids, position_embeddings, past_key_values = module1.prepare_inputs(
+        hidden_states, causal_mask, position_ids, position_embeddings, past_key_values = attg_module.prepare_inputs(
             input_ids=output_ids,
             attention_mask= torch.ones_like(output_ids, device=output_ids.device),
         )
 
         for layer_idx in range(model.config.num_hidden_layers):
-            ffn_residual, req = module1.run_attention_and_gate(
+            ffn_residual, req = attg_module.run_attention_and_gate(
                 layer_idx=layer_idx,
                 hidden_states=hidden_states,
                 causal_mask=causal_mask,
@@ -65,20 +54,20 @@ if __name__ == "__main__":
                 past_key_values=past_key_values,
             )
 
-            expert_output = dispatcher.dispatch(
+            expert_output = router.forward(
                 layer_idx=req["layer_idx"],
-                hidden_states=req["hidden_states"].to(dispatcher.device),
+                hidden_states=req["hidden_states"],
                 top_k_index=req["top_k_index"],
                 top_k_weights=req["top_k_weights"],
             )
 
-            hidden_states = module1.merge_expert_output(
+            hidden_states = attg_module.merge_expert_output(
                 ffn_residual=ffn_residual,
                 expert_output=expert_output,
                 original_shape=req["original_shape"],
             )
 
-        logits = module1.final_logits(hidden_states)
+        logits = attg_module.final_logits(hidden_states)
         next_token_logits = logits[:, -1, :]
         next_token_id = torch.argmax(next_token_logits, dim=-1, keepdim=True)
         output_ids = torch.cat([output_ids, next_token_id], dim=-1)

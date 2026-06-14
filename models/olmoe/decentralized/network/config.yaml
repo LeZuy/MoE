@@ -1,0 +1,53 @@
+num_clients: 8
+num_experts: 64
+experts_per_client: 8
+base_port: 5550
+
+clients:
+  - rank: 0
+    host: "127.0.0.1"
+    port: 5550
+    device: "cpu"
+    expert_ids: [0, 1, 2, 3, 4, 5, 6, 7]
+
+  - rank: 1
+    host: "127.0.0.1"
+    port: 5551
+    device: "cpu"
+    expert_ids: [8, 9, 10, 11, 12, 13, 14, 15]
+
+  - rank: 2
+    host: "127.0.0.1"
+    port: 5552
+    device: "cpu"
+    expert_ids: [16, 17, 18, 19, 20, 21, 22, 23]
+
+  - rank: 3
+    host: "127.0.0.1"
+    port: 5553
+    device: "cpu"
+    expert_ids: [24, 25, 26, 27, 28, 29, 30, 31]
+
+  - rank: 4
+    host: "127.0.0.1"
+    port: 5554
+    device: "cpu"
+    expert_ids: [32, 33, 34, 35, 36, 37, 38, 39]
+
+  - rank: 5
+    host: "127.0.0.1"
+    port: 5555
+    device: "cpu"
+    expert_ids: [40, 41, 42, 43, 44, 45, 46, 47]
+
+  - rank: 6
+    host: "127.0.0.1"
+    port: 5556
+    device: "cpu"
+    expert_ids: [48, 49, 50, 51, 52, 53, 54, 55]
+
+  - rank: 7
+    host: "127.0.0.1"
+    port: 5557
+    device: "cpu"
+    expert_ids: [56, 57, 58, 59, 60, 61, 62, 63]
