@@ -2,6 +2,7 @@ import os
 import yaml
 import uuid
 import torch
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from network.expert_agent import ExpertClient
 from network.utils import load_placement, map_ec, request_to_log_obj
@@ -95,33 +96,43 @@ class Router:
 
             client.send(request)
 
-        # receive from every expert node and accumulate outputs.
-        for node_id, request in node_requests.items():
-            client = self.expert_clients[node_id]
-            response = client.recv()
+        # Receive from all expert nodes concurrently — whichever replies first
+        # is processed first, avoiding head-of-line blocking.
+        # Each node has its own ExpertClient/ZMQ socket, so concurrent recv
+        # across *different* sockets is safe.
+        with ThreadPoolExecutor(max_workers=len(node_requests)) as executor:
+            future_to_node = {
+                executor.submit(self.expert_clients[node_id].recv): node_id
+                for node_id in node_requests
+            }
 
-            if not response["ok"]:
-                raise RuntimeError(f"Expert node {node_id} failed: {response}")
+            for future in as_completed(future_to_node):
+                node_id = future_to_node[future]
+                request = node_requests[node_id]
+                response = future.result()  # re-raises any recv exception
 
-            if response.get("request_id") != request["request_id"]:
-                raise RuntimeError(
-                    f"Mismatched response from expert node {node_id}: "
-                    f"expected request_id={request['request_id']}, "
-                    f"got request_id={response.get('request_id')}"
+                if not response["ok"]:
+                    raise RuntimeError(f"Expert node {node_id} failed: {response}")
+
+                if response.get("request_id") != request["request_id"]:
+                    raise RuntimeError(
+                        f"Mismatched response from expert node {node_id}: "
+                        f"expected request_id={request['request_id']}, "
+                        f"got request_id={response.get('request_id')}"
+                    )
+
+                partial_output = response["partial_output"]
+                response_token_idx = response["token_idx"]
+
+                final.index_add_(0, response_token_idx, partial_output)
+
+                with open(os.path.join("./logs/packets/router", f"RES_{response['request_id']}.txt"), "w") as f:
+                        yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
+
+                print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-recv response from expert node {node_id} "
+                    f"latency_ms={response.get('latency_ms')}",
+                    flush=True,
                 )
-
-            partial_output = response["partial_output"]
-            response_token_idx = response["token_idx"]
-
-            final.index_add_(0, response_token_idx, partial_output)
-
-            with open(os.path.join("./logs/packets/router", f"RES_{response['request_id']}.txt"), "w") as f:
-                    yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
-
-            print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-recv response from expert node {node_id} "
-                f"latency_ms={response.get('latency_ms')}",
-                flush=True,
-            )
 
         return final.to(device=original_device, dtype=original_dtype)
 
