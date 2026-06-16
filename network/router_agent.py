@@ -7,11 +7,16 @@ import torch
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime
+from pathlib import Path
 from network.expert_agent import ExpertClient
 from network.utils import load_placement, map_ec, request_to_log_obj
 
-CONFIG_PATH = "/home/duy.le004/phd/MoE/network/configs/configs.yaml"
-EXPERT_ADDS_PATH = "/home/duy.le004/phd/MoE/network/configs/expert_addrs.yaml"
+# Paths are resolved relative to this file's location so the code works on
+# any machine.  Set MOE_CONFIG_PATH / MOE_EXPERT_ADDS_PATH env vars to
+# override these defaults (e.g. for CI or non-standard layouts).
+_CONFIGS_DIR = Path(__file__).parent / "configs"
+CONFIG_PATH = os.environ.get("MOE_CONFIG_PATH", str(_CONFIGS_DIR / "configs.yaml"))
+EXPERT_ADDS_PATH = os.environ.get("MOE_EXPERT_ADDS_PATH", str(_CONFIGS_DIR / "expert_addrs.yaml"))
 
 def get_expert_address(adds_path: str = CONFIG_PATH) -> dict[int, str]:
     with open(adds_path, "r") as f:
