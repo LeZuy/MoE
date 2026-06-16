@@ -38,20 +38,25 @@ if __name__ == "__main__":
     inputs = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
     output_ids = inputs["input_ids"]
     start = time.time()
-    for _ in range(MAX_LENGTH):
-        hidden_states, causal_mask, position_ids, position_embeddings, past_key_values = attg_module.prepare_inputs(
+    for _ in range(MAX_LENGTH): 
+        preprocessed = attg_module.preprocess_inputs(
+            input_ids=output_ids,
+            attention_mask= torch.ones_like(output_ids, device=output_ids.device),
+        )
+
+        hidden_states, causal_mask, position_ids, position_embeddings, past_key_values = attg_module.preprocess_inputs(
             input_ids=output_ids,
             attention_mask= torch.ones_like(output_ids, device=output_ids.device),
         )
 
         for layer_idx in range(model.config.num_hidden_layers):
-            ffn_residual, req = attg_module.run_attention_and_gate(
+            ffn_residual, req = attg_module.forward(
                 layer_idx=layer_idx,
-                hidden_states=hidden_states,
-                causal_mask=causal_mask,
-                position_ids=position_ids,
-                position_embeddings=position_embeddings,
-                past_key_values=past_key_values,
+                hidden_states=preprocessed["inputs_embeds"],
+                causal_mask=preprocessed["causal_mask"],
+                position_ids=preprocessed["position_ids"],
+                position_embeddings=preprocessed["position_embeddings"],
+                past_key_values=preprocessed["past_key_values"],
             )
 
             expert_output = router.forward(

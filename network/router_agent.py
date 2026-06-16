@@ -1,6 +1,8 @@
 import os
+import zmq
 import yaml
 import uuid
+import time
 import torch
 from datetime import datetime
 from network.expert_agent import ExpertClient
@@ -85,8 +87,8 @@ class Router:
         for node_id, request in node_requests.items():
             client = self.expert_clients[node_id]
 
-            with open(os.path.join("./logs/packets/router", f"REQ_{request['request_id']}.txt"), "w") as f:
-                    yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
+            # with open(os.path.join("./logs/packets/router", f"REQ_{request['request_id']}.txt"), "w") as f:
+            #         yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
 
             print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-send {len(request['token_idx'])} token-expert pairs "
                 f"to expert node {node_id} at {client.address}",
@@ -96,33 +98,66 @@ class Router:
             client.send(request)
 
         # receive from every expert node and accumulate outputs.
-        for node_id, request in node_requests.items():
+        poller = zmq.Poller()
+
+        pending = set(node_requests.keys())
+        socket_to_node = {}
+
+        for node_id in pending:
             client = self.expert_clients[node_id]
-            response = client.recv()
+            poller.register(client.socket, zmq.POLLIN)
+            socket_to_node[client.socket] = node_id
 
-            if not response["ok"]:
-                raise RuntimeError(f"Expert node {node_id} failed: {response}")
+        timeout_ms = 1200_000
+        deadline = time.time() + timeout_ms / 1000.0
 
-            if response.get("request_id") != request["request_id"]:
-                raise RuntimeError(
-                    f"Mismatched response from expert node {node_id}: "
-                    f"expected request_id={request['request_id']}, "
-                    f"got request_id={response.get('request_id')}"
-                )
+        while pending:
+            remaining_ms = int((deadline - time.time()) * 1000)
 
-            partial_output = response["partial_output"]
-            response_token_idx = response["token_idx"]
+            if remaining_ms <= 0:
+                raise TimeoutError(f"Timed out waiting for expert nodes: {sorted(pending)}")
 
-            final.index_add_(0, response_token_idx, partial_output)
+            events = dict(poller.poll(remaining_ms))
 
-            with open(os.path.join("./logs/packets/router", f"RES_{response['request_id']}.txt"), "w") as f:
-                    yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
+            if not events:
+                raise TimeoutError(f"Timed out waiting for expert nodes: {sorted(pending)}")
 
-            print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-recv response from expert node {node_id} "
-                f"latency_ms={response.get('latency_ms')}",
-                flush=True,
-            )
+            for socket, event in events.items():
+                if not (event & zmq.POLLIN):
+                    continue
 
+                node_id = socket_to_node[socket]
+                client = self.expert_clients[node_id]
+                request = node_requests[node_id]
+
+                response = client.recv()
+
+                poller.unregister(client.socket)
+                pending.remove(node_id)
+
+                if not response["ok"]:
+                    raise RuntimeError(f"[{datetime.now().strftime('%H:%M:%S')}] Expert node {node_id} failed: {response}")
+
+                if response.get("request_id") != request["request_id"]:
+                    raise RuntimeError(
+                        f"Mismatched response from expert node {node_id}: "
+                        f"expected request_id={request['request_id']}, "
+                        f"got request_id={response.get('request_id')}"
+                    )
+
+                partial_output = response["partial_output"]
+                response_token_idx = response["token_idx"]
+
+                final.index_add_(0, response_token_idx, partial_output)
+
+                # with open(os.path.join("./logs/packets/router", 
+                #                  f"RES_{response['request_id']}.txt",), "w",) as f:
+                #     yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
+
+                # print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-recv response from expert node {node_id} "
+                #     f"latency_ms={response.get('latency_ms')}",
+                #     flush=True,)
+                
         return final.to(device=original_device, dtype=original_dtype)
 
     def close(self) -> None:

@@ -40,6 +40,6 @@ nvidia-smi --query-gpu=timestamp,index,utilization.gpu,utilization.memory,memory
 echo "Starting inference task ..."
 echo "Router is running at $HOSTNAME:$PORT"
 rm -rf /home/duy.le004/phd/MoE/logs/packets/router/*
-python example.py
-
+# python example.py
+python -m eval.mmlu
 echo "All jobs completed."

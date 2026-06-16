@@ -32,16 +32,17 @@
 This repo implemented distributed experts for OlMoE. 64 experts of the sparse layer are distributed to 8 nodes (8 experts per node) running on CPUs. Tokens will first go through attention and gating modules running on a single GPU, then will be distributed to the nodes of the chosen experts by the routing node.\
 1. Run slurm script ```./slurm/olmoe_expert_infrc.sh ``` to set up expert nodes.
 2. Run ```./slurm/olmoe_router_infrc.sh ``` to start main node (process attention and gating, forward to expert nodes).
+
 ```
 Prompt: What is Bitcoin?
 Decentralized (8 tokens): What is Bitcoin?
 
 Bitcoin is a digital currency
-Took  10.45 seconds
+Took  10.05 seconds
 Original model (8 tokens): What is Bitcoin?
 
 Bitcoin is a digital currency
-Took  0.46 seconds
+Took  0.35 seconds
 ```
 
 #### Fine tuning a LLM
