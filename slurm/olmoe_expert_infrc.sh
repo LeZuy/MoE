@@ -83,7 +83,7 @@ conda activate perft-moe
 echo "Starting inference task ..."
 
 for i in {0..7}; do
-  rm -rf /home/duy.le004/phd/MoE/logs/packets/agent_$i/*
+  rm -rf "$SLURM_SUBMIT_DIR"/logs/packets/agent_$i/*
 done 
 
 echo "Starting expert agents ..."
@@ -92,7 +92,7 @@ srun -N1 -n8 -c1 --cpu-bind=cores \
     ID=$SLURM_PROCID
     HOST=$(hostname)
 
-    exec /home/duy.le004/.conda/envs/perft-moe/bin/python -m network.expert_agent \
+    exec python -m network.expert_agent \
       --id $ID \
       --host $HOST
   '
