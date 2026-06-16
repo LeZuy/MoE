@@ -63,18 +63,54 @@ def register_address_locked(
 class ExpertClient:
     def __init__(self, address: str, timeout_ms: int = 30000):
         self.address = address
+        self.timeout_ms = timeout_ms
         self.context = zmq.Context.instance()
+        self._make_socket()
+
+    def _make_socket(self) -> None:
+        """Create (or re-create) a fresh REQ socket with the configured options."""
         self.socket = self.context.socket(zmq.REQ)
-        self.socket.setsockopt(zmq.RCVTIMEO, timeout_ms)
-        self.socket.setsockopt(zmq.SNDTIMEO, timeout_ms)
+        self.socket.setsockopt(zmq.RCVTIMEO, self.timeout_ms)
+        self.socket.setsockopt(zmq.SNDTIMEO, self.timeout_ms)
         self.socket.setsockopt(zmq.LINGER, 0)
-        self.socket.connect(address)
+        self.socket.connect(self.address)
+
+    def _reconnect(self) -> None:
+        """Close the broken socket and open a fresh one.
+
+        zmq.REQ enforces a strict send→recv state machine. After a timeout or
+        a remote crash, the socket stays in EXPECTING_REPLY and every subsequent
+        send raises EFSM — there is no in-place recovery. Closing and re-creating
+        the socket is the only safe reset.
+        """
+        try:
+            self.socket.close()
+        except Exception:
+            pass
+        self._make_socket()
 
     def send(self, request: dict) -> None:
-        self.socket.send(encode_torch(request))
+        try:
+            self.socket.send(encode_torch(request))
+        except zmq.ZMQError as exc:
+            # EAGAIN  → send timed out (SNDTIMEO elapsed).
+            # EFSM    → socket is in wrong state (broken after a prior timeout).
+            # Either way, reset the socket so the next forward pass can start clean.
+            self._reconnect()
+            raise TimeoutError(
+                f"[ExpertClient] send to {self.address} failed ({exc}); socket has been reset."
+            ) from exc
 
     def recv(self) -> dict:
-        return decode_torch(self.socket.recv())
+        try:
+            return decode_torch(self.socket.recv())
+        except zmq.ZMQError as exc:
+            # EAGAIN → recv timed out (RCVTIMEO elapsed, likely expert node crashed).
+            # Reset so the next call can attempt a fresh send→recv cycle.
+            self._reconnect()
+            raise TimeoutError(
+                f"[ExpertClient] recv from {self.address} timed out ({exc}); socket has been reset."
+            ) from exc
 
     def forward(self, request: dict) -> dict:
         """Synchronous compatibility path: send one request and wait for it."""
