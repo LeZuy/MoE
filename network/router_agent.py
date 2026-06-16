@@ -46,33 +46,59 @@ class Router:
         self.expert_clients = {
             expert_id: ExpertClient(address)
             for expert_id, address in self.map_expert_addr.items()
-        } 
+        }
+
+        # Pre-build a LongTensor lookup: expert_id → node_id (rank).
+        # Avoids per-call dict lookups inside _build_node_requests.
+        num_experts = len(self.map_node_expert)
+        expert_to_node = torch.zeros(num_experts, dtype=torch.long)
+        for expert_id, info in self.map_node_expert.items():
+            expert_to_node[expert_id] = info["rank"]
+        self._expert_to_node = expert_to_node  # shape: [num_experts]
+        self._node_ids = sorted(set(expert_to_node.tolist()))  # unique node ranks
+
         print(f"[{datetime.now().strftime('%H:%M:%S')}][router] Got expert node addresses: {self.map_expert_addr}")
 
     def _build_node_requests(self, layer_idx, hidden_cpu, index_cpu, weights_cpu):
-        """Group token-expert pairs by remote expert node."""
-        grouped_pairs: dict[int, list[tuple[int, int]]] = {}
+        """Group token-expert pairs by remote expert node (fully vectorized).
 
+        index_cpu : LongTensor [num_tokens, top_k]  — expert IDs per token slot
+        hidden_cpu: Tensor     [num_tokens, hidden]  — pre-gate hidden states
+        weights_cpu: Tensor    [num_tokens, top_k]   — softmax router weights
+
+        Returns a dict mapping node_id -> request dict.  No Python loops over
+        tokens or top_k positions.
+        """
         num_tokens, top_k = index_cpu.shape
-        for token_idx in range(num_tokens):
-            for top_k_pos in range(top_k):
-                expert_id = int(index_cpu[token_idx, top_k_pos].item())
-                node_id = self.map_node_expert[expert_id]["rank"]
-                grouped_pairs.setdefault(node_id, []).append((token_idx, top_k_pos))
 
+        # --- 1. Map every (token, top_k) slot to its node in one op ----------
+        flat_expert_ids = index_cpu.flatten()              # [num_tokens * top_k]
+        flat_node_ids   = self._expert_to_node[flat_expert_ids]  # [num_tokens * top_k]
+
+        # flat row index i corresponds to token_idx = i // top_k,
+        #                                  top_k_pos = i  % top_k
+        flat_indices = torch.arange(num_tokens * top_k, dtype=torch.long)
+        flat_token_idx  = flat_indices // top_k            # [num_tokens * top_k]
+        flat_top_k_pos  = flat_indices  % top_k            # [num_tokens * top_k]
+
+        # --- 2. Build one request dict per node without any Python loops ------
         requests = {}
-        for node_id, pairs in grouped_pairs.items():
-            token_idx = torch.tensor([p[0] for p in pairs], dtype=torch.long)
-            top_k_pos = torch.tensor([p[1] for p in pairs], dtype=torch.long)
+        for node_id in self._node_ids:
+            mask = flat_node_ids == node_id                # bool [num_tokens * top_k]
+            if not mask.any():
+                continue
+
+            token_idx = flat_token_idx[mask]               # indices into hidden_cpu rows
+            top_k_pos = flat_top_k_pos[mask]
 
             requests[node_id] = {
-                "type": "forward",
-                "request_id": str(uuid.uuid4()),
-                "layer_idx": layer_idx,
-                "hidden_states": hidden_cpu[token_idx],
-                "expert_ids": index_cpu[token_idx, top_k_pos],
-                "weights": weights_cpu[token_idx, top_k_pos],
-                "token_idx": token_idx,
+                "type":         "forward",
+                "request_id":   str(uuid.uuid4()),
+                "layer_idx":    layer_idx,
+                "hidden_states": hidden_cpu[token_idx],          # [pairs, hidden]
+                "expert_ids":   index_cpu[token_idx, top_k_pos], # [pairs]
+                "weights":      weights_cpu[token_idx, top_k_pos],# [pairs]
+                "token_idx":    token_idx,                        # [pairs]
             }
 
         return requests
