@@ -1,11 +1,12 @@
 import os
-import io
 import zmq
 import time
 import yaml
 import fcntl
 import torch
+import msgpack
 import argparse
+import numpy as np
 from datetime import datetime
 from dotenv import load_dotenv
 from models.olmoe.modeling_olmoe import OlmoeForCausalLM
@@ -15,18 +16,65 @@ from network.utils import load_placement, get_client_config, request_to_log_obj
 CONFIG_PATH = "./network/configs/configs.yaml"
 ADDRS_PATH = "./network/configs/expert_addrs.yaml"
 
-def encode_torch(obj: dict) -> bytes:
-    """
-    Serialize Python dict with torch.Tensor.
-    To be repraced with msgpack/numpy later.
-    """
-    buffer = io.BytesIO()
-    torch.save(obj, buffer)
-    return buffer.getvalue()
+# ---------------------------------------------------------------------------
+# Wire codec: msgpack + raw numpy bytes
+# ---------------------------------------------------------------------------
+# Tensors are tagged with {"__tensor__": True, "dtype": ..., "shape": [...],
+# "data": <raw bytes>} so that no Python object graph ever crosses the wire.
+# bfloat16 has no native NumPy equivalent, so we reinterpret its storage as
+# uint16 and cast back on the receiving side.
+# ---------------------------------------------------------------------------
 
-def decode_torch(payload: bytes) -> dict:
-    buffer = io.BytesIO(payload)
-    return torch.load(buffer, map_location="cpu")
+def _tensor_to_entry(t: torch.Tensor) -> dict:
+    t = t.detach().cpu()
+    dtype_str = str(t.dtype)  # e.g. "torch.bfloat16"
+    if t.dtype == torch.bfloat16:
+        raw = t.view(torch.uint8).numpy().tobytes()
+    else:
+        raw = t.numpy().tobytes()
+    return {
+        "__tensor__": True,
+        "dtype": dtype_str,
+        "shape": list(t.shape),
+        "data": raw,
+    }
+
+def _entry_to_tensor(d: dict) -> torch.Tensor:
+    dtype = getattr(torch, d["dtype"].replace("torch.", ""))
+    raw = d["data"]
+    if dtype == torch.bfloat16:
+        # Reconstruct via uint8 view, then cast to bfloat16
+        arr = np.frombuffer(raw, dtype=np.uint8)
+        return torch.from_numpy(arr.copy()).view(torch.bfloat16).reshape(d["shape"])
+    np_dtype = torch.empty(0, dtype=dtype).numpy().dtype
+    arr = np.frombuffer(raw, dtype=np_dtype).reshape(d["shape"])
+    return torch.from_numpy(arr.copy())
+
+def _encode_value(v):
+    if isinstance(v, torch.Tensor):
+        return _tensor_to_entry(v)
+    if isinstance(v, dict):
+        return {k: _encode_value(val) for k, val in v.items()}
+    if isinstance(v, list):
+        return [_encode_value(item) for item in v]
+    return v
+
+def _decode_value(v):
+    if isinstance(v, dict):
+        if v.get("__tensor__"):
+            return _entry_to_tensor(v)
+        return {k: _decode_value(val) for k, val in v.items()}
+    if isinstance(v, list):
+        return [_decode_value(item) for item in v]
+    return v
+
+def encode_msg(obj: dict) -> bytes:
+    """Serialize a dict (possibly containing torch.Tensors) to msgpack bytes."""
+    return msgpack.packb(_encode_value(obj), use_bin_type=True)
+
+def decode_msg(payload: bytes) -> dict:
+    """Deserialize msgpack bytes back to a dict with torch.Tensors restored."""
+    return _decode_value(msgpack.unpackb(payload, raw=False))
 
 def register_address_locked(
     rank: int,
@@ -91,7 +139,7 @@ class ExpertClient:
 
     def send(self, request: dict) -> None:
         try:
-            self.socket.send(encode_torch(request))
+            self.socket.send(encode_msg(request))
         except zmq.ZMQError as exc:
             # EAGAIN  → send timed out (SNDTIMEO elapsed).
             # EFSM    → socket is in wrong state (broken after a prior timeout).
@@ -103,7 +151,7 @@ class ExpertClient:
 
     def recv(self) -> dict:
         try:
-            return decode_torch(self.socket.recv())
+            return decode_msg(self.socket.recv())
         except zmq.ZMQError as exc:
             # EAGAIN → recv timed out (RCVTIMEO elapsed, likely expert node crashed).
             # Reset so the next call can attempt a fresh send→recv cycle.
@@ -169,7 +217,7 @@ if __name__ == "__main__":
 
             try:
                 payload = socket.recv()
-                request = decode_torch(payload)
+                request = decode_msg(payload)
 
                 # print(
                 #     f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} received request_id={request.get('request_id')} "
@@ -178,7 +226,7 @@ if __name__ == "__main__":
                 # )
 
                 if request.get("type") == "shutdown":
-                    socket.send(encode_torch({
+                    socket.send(encode_msg({
                         "ok": True,
                         "request_id": request.get("request_id"),
                         "type": "shutdown_ack",
@@ -256,7 +304,7 @@ if __name__ == "__main__":
                     flush=True,
                 )
 
-                socket.send(encode_torch(response))
+                socket.send(encode_msg(response))
 
             except Exception as exc:
                 err_response = {
@@ -270,7 +318,7 @@ if __name__ == "__main__":
                 #     flush=True,
                 # )
 
-                socket.send(encode_torch(err_response))
+                socket.send(encode_msg(err_response))
 
     except KeyboardInterrupt:
         print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] node {rank} shutting down agent...")
