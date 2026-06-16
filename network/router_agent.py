@@ -1,6 +1,8 @@
 import os
+import zmq
 import yaml
 import uuid
+import time
 import torch
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
@@ -86,8 +88,8 @@ class Router:
         for node_id, request in node_requests.items():
             client = self.expert_clients[node_id]
 
-            with open(os.path.join("./logs/packets/router", f"REQ_{request['request_id']}.txt"), "w") as f:
-                    yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
+            # with open(os.path.join("./logs/packets/router", f"REQ_{request['request_id']}.txt"), "w") as f:
+            #         yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
 
             print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-send {len(request['token_idx'])} token-expert pairs "
                 f"to expert node {node_id} at {client.address}",

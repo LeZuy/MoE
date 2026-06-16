@@ -334,7 +334,6 @@ class OlmoeExperts(nn.Module):
             current_hidden_states = nn.functional.linear(current_hidden_states, self.down_proj[expert_idx])
             current_hidden_states = current_hidden_states * top_k_weights[token_idx, top_k_pos, None]
             final_hidden_states.index_add_(0, token_idx, current_hidden_states.to(final_hidden_states.dtype))
-
         return final_hidden_states
 
 
@@ -441,7 +440,6 @@ class OlmoePreTrainedModel(PreTrainedModel):
             init.normal_(module.down_proj, mean=0.0, std=self.config.initializer_range)
         elif isinstance(module, OlmoeTopKRouter):
             init.normal_(module.weight, mean=0.0, std=self.config.initializer_range)
-
 
 @auto_docstring
 class OlmoeModel(OlmoePreTrainedModel):

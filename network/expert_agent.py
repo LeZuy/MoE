@@ -12,8 +12,8 @@ from models.olmoe.modeling_olmoe import OlmoeForCausalLM
 from models.olmoe.decentralized.local_expert import LocalExpert
 from network.utils import load_placement, get_client_config, request_to_log_obj
 
-CONFIG_PATH = "/home/duy.le004/phd/MoE/network/configs/configs.yaml"
-ADDRS_PATH = "/home/duy.le004/phd/MoE/network/configs/expert_addrs.yaml"
+CONFIG_PATH = "./network/configs/configs.yaml"
+ADDRS_PATH = "./network/configs/expert_addrs.yaml"
 
 def encode_torch(obj: dict) -> bytes:
     """
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     host = args.host
     rank = args.id
 
-    print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert node {rank} is loading pretrained ...", flush=True)
+    # print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert node {rank} is loading pretrained ...", flush=True)
     
     base_model = OlmoeForCausalLM.from_pretrained(
         pretrained_model_name_or_path=pretrained_path,
@@ -120,13 +120,13 @@ if __name__ == "__main__":
         ) for expert_id in expert_ids
     }
 
-    print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] agent {rank} holds {expert_ids}", flush=True)
+    # print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] agent {rank} holds {expert_ids}", flush=True)
     try:
         context = zmq.Context()
         socket = context.socket(zmq.REP)
         socket.setsockopt(zmq.LINGER, 0)
         socket.bind(f"tcp://{host}:{port}")
-        print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} listening on tcp://{host}:{port}", flush=True)
+        # print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} listening on tcp://{host}:{port}", flush=True)
         register_address_locked(rank=rank, host=host, port=port)
         while True:
             request = None
@@ -135,11 +135,11 @@ if __name__ == "__main__":
                 payload = socket.recv()
                 request = decode_torch(payload)
 
-                print(
-                    f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} received request_id={request.get('request_id')} "
-                    f"keys={list(request.keys())}",
-                    flush=True,
-                )
+                # print(
+                #     f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} received request_id={request.get('request_id')} "
+                #     f"keys={list(request.keys())}",
+                #     flush=True,
+                # )
 
                 if request.get("type") == "shutdown":
                     socket.send(encode_torch({
@@ -155,11 +155,10 @@ if __name__ == "__main__":
                 weights = request["weights"]
                 original_token_idx = request["token_idx"]
 
-                os.makedirs(f"./logs/packets/agent_{rank}", exist_ok=True)
-
-                with open(os.path.join(f"./logs/packets/agent_{rank}",
-                                       f"REQ_{request['request_id']}.txt"), "w") as f:
-                    yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
+                # os.makedirs(f"./logs/packets/agent_{rank}", exist_ok=True)
+                # with open(os.path.join(f"./logs/packets/agent_{rank}",
+                #                        f"REQ_{request['request_id']}.txt"), "w") as f:
+                #     yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
 
                 started = time.time()
 
@@ -176,11 +175,11 @@ if __name__ == "__main__":
 
                     expert = experts[expert_id]
 
-                    print(
-                        f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert {expert_id} processing "
-                        f"{pair_pos.numel()} token-expert pairs",
-                        flush=True,
-                    )
+                    # print(
+                    #     f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert {expert_id} processing "
+                    #     f"{pair_pos.numel()} token-expert pairs",
+                    #     flush=True,
+                    # )
 
                     result = expert.forward(
                         layer_idx=layer_idx,
@@ -210,9 +209,9 @@ if __name__ == "__main__":
                     "latency_ms": latency_ms,
                 }
 
-                with open(os.path.join(f"./logs/packets/agent_{rank}",
-                                       f"RES_{request['request_id']}.txt"), "w") as f:
-                    yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
+                # with open(os.path.join(f"./logs/packets/agent_{rank}",
+                #                        f"RES_{request['request_id']}.txt"), "w") as f:
+                #     yaml.safe_dump(request_to_log_obj(response), f, sort_keys=False)
 
                 print(
                     f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} sending response: "
@@ -231,9 +230,9 @@ if __name__ == "__main__":
                     "error": repr(exc),
                 }
 
-                print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} ERROR: {repr(exc)}",
-                    flush=True,
-                )
+                # print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} ERROR: {repr(exc)}",
+                #     flush=True,
+                # )
 
                 socket.send(encode_torch(err_response))
 
