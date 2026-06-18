@@ -5,51 +5,48 @@ from typing import Optional
 
 import torch
 import torch.nn.functional as F
-
+from transformers.modeling_outputs import CausalLMOutputWithPast
+from transformers import GenerationMixin, GenerationConfig, PreTrainedModel
 
 @dataclass
 class DecodeState:
     past_key_values: object | None
     attention_mask: torch.Tensor
 
-class DistributedOlmoe:
-    """
-    High-level inference engine for decentralized OLMoE.
-
-    Responsibilities:
-    - run one distributed forward pass
-    - maintain KV-cache during generation
-    - prefill prompt once
-    - decode one token at a time
-    - provide generate() API for GSM8K / normal generation
-    - provide scoring utilities for MMLU / log-prob evaluation
-    """
-    def __init__(
-        self,
-        attg_module,
-        router,
-        tokenizer=None,
-        device: Optional[torch.device] = None,
-    ):
+class DistributedOlmoe(PreTrainedModel, GenerationMixin):
+    main_input_name = "input_ids"
+    _supports_sdpa = True 
+    _supports_flash_attn = False
+    _supports_grouped_mm = False
+    def __init__(self, attg_module, router, tokenizer=None, device=None):
+        super().__init__(attg_module.config) 
         self.attg = attg_module.eval()
         self.router = router
         self.tokenizer = tokenizer
         self.config = attg_module.config
+        self.generation_config = GenerationConfig.from_model_config(self.config)
+        # self.device = device or next(attg_module.parameters()).device
+        
+    def _check_and_adjust_attn_implementation(self, *args, **kwargs):
+        return "eager"
 
-        if device is None:
-            # fallback: infer from model parameters
-            device = next(attg_module.parameters()).device
+    def _check_and_adjust_experts_implementation(self, *args, **kwargs):
+        return "eager"
+    
+    def can_generate(self) -> bool:
+        return True
+    
+    def _init_weights(self, module):
+        pass # Weight loaded at AttnGate Module 
 
-        self.device = device
-
-    @torch.inference_mode()
     def forward(
         self,
         input_ids: torch.LongTensor,
         attention_mask: Optional[torch.Tensor] = None,
         past_key_values=None,
         use_cache: bool = True,
-    ):
+        **kwargs,
+    ) -> CausalLMOutputWithPast:
         """
         Distributed forward.
 
@@ -60,21 +57,6 @@ class DistributedOlmoe:
             input_ids shape = [batch, 1]
         """
         input_ids = input_ids.to(self.device)
-
-        if attention_mask is None:
-            past_len = (
-                past_key_values.get_seq_length()
-                if past_key_values is not None
-                else 0
-            )
-            attention_mask = torch.ones(
-                input_ids.shape[0],
-                past_len + input_ids.shape[1],
-                device=self.device,
-                dtype=torch.long,
-            )
-        else:
-            attention_mask = attention_mask.to(self.device)
 
         preprocessed = self.attg.preprocess_inputs(
             input_ids=input_ids,
@@ -110,76 +92,10 @@ class DistributedOlmoe:
 
         logits = self.attg.final_logits(hidden_states)
 
-        return logits, DecodeState(
+        return CausalLMOutputWithPast(
+            logits=logits,
             past_key_values=preprocessed["past_key_values"],
-            attention_mask=attention_mask,
         )
-
-    @torch.inference_mode()
-    def prefill(self, input_ids: torch.LongTensor) -> tuple[torch.Tensor, DecodeState]:
-        attention_mask = torch.ones_like(input_ids, device=self.device)
-        return self.forward(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            past_key_values=None,
-            use_cache=True,
-        )
-
-    @torch.inference_mode()
-    def decode_step(
-        self,
-        next_token: torch.LongTensor,
-        state: DecodeState,
-    ) -> tuple[torch.Tensor, DecodeState]:
-        """
-        Decode exactly one token using existing KV-cache.
-        """
-        next_token = next_token.to(self.device)
-
-        attention_mask = torch.cat(
-            [
-                state.attention_mask,
-                torch.ones(
-                    state.attention_mask.shape[0],
-                    1,
-                    device=self.device,
-                    dtype=state.attention_mask.dtype,
-                ),
-            ],
-            dim=1,
-        )
-
-        return self.forward(
-            input_ids=next_token,
-            attention_mask=attention_mask,
-            past_key_values=state.past_key_values,
-            use_cache=True,
-        )
-
-    @torch.inference_mode()
-    def generate(
-        self,
-        input_ids: torch.LongTensor,
-        max_new_tokens: int = 128,
-        eos_token_id: Optional[int] = None,
-    ) -> torch.LongTensor:
-        logits, state = self.prefill(input_ids)
-
-        next_token = torch.argmax(logits[:, -1, :], dim=-1, keepdim=True)
-        generated = [next_token]
-
-        if eos_token_id is None and self.tokenizer is not None:
-            eos_token_id = self.tokenizer.eos_token_id
-
-        for _ in range(max_new_tokens - 1):
-            if eos_token_id is not None and next_token.item() == eos_token_id:
-                break
-
-            logits, state = self.decode_step(next_token, state)
-            next_token = torch.argmax(logits[:, -1, :], dim=-1, keepdim=True)
-            generated.append(next_token)
-
-        return torch.cat([input_ids.to(self.device)] + generated, dim=1)
 
     @torch.inference_mode()
     def generate_text(
