@@ -8,9 +8,10 @@ from models.olmoe.decentralized.distributed import DistributedOlmoe
 from models.olmoe.decentralized.attngate import AttnGate
 from network.router_agent import Router
 
-EXMPL_PROMPT = "What is Bitcoin?"
-MAX_LENGTH = 8
 CONFIG_PATH = "/home/duy.le004/phd/MoE/network/configs/configs.yaml"
+BATCH_SIZE = [1, 4, 8, 16]
+MAX_LENGTH = 64
+EXMPL_PROMPT = "What is Bitcoin?"
 
 if __name__ == "__main__":
 
@@ -29,6 +30,8 @@ if __name__ == "__main__":
     
     tokenizer = AutoTokenizer.from_pretrained(pretrained_path)
     # print(f"Tokenizer: {tokenizer}")
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
 
     attg_module = AttnGate(model).eval()
 
@@ -37,15 +40,30 @@ if __name__ == "__main__":
 
     dist_model = DistributedOlmoe(attg_module, router, tokenizer, device)
     # Inference
-    encoding = tokenizer(EXMPL_PROMPT, return_tensors="pt").to(device)
+    prompts = [
+        "What is Bitcoin?",
+        "Explain machine learning.",
+        "What is a GPU?",
+        "Define blockchain.",
+    ]
+
+    encoding = tokenizer(prompts, return_tensors="pt", padding=True).to(device)
     start = time.time()
-    out = dist_model.generate(**encoding, max_new_tokens=MAX_LENGTH)
-    print(f"Prompt: {EXMPL_PROMPT}")
-    print(f"Decentralized ({MAX_LENGTH} tokens): {tokenizer.decode(out[0])}")
+    
+    out = dist_model.generate(**encoding, max_new_tokens=MAX_LENGTH, do_sample=False)
+    
+    print(f"Prompt: {prompts}")
+    print(f"Decentralized ({MAX_LENGTH} tokens):")
+    decoded = tokenizer.batch_decode(out, skip_special_tokens=True)
+    for i, text in enumerate(decoded):
+        print(f"[{i}] {text}")
     print(f"Took {time.time() - start: .2f} seconds")
 
     start = time.time()
     with torch.no_grad():
-        out = model.generate(**encoding, max_new_tokens=MAX_LENGTH)
-    print(f"Original model ({MAX_LENGTH} tokens): {tokenizer.decode(out[0])}")
+        out = model.generate(**encoding, max_new_tokens=MAX_LENGTH, do_sample=False)
+    print(f"Original model ({MAX_LENGTH} tokens):")
+    decoded = tokenizer.batch_decode(out, skip_special_tokens=True)
+    for i, text in enumerate(decoded):
+        print(f"[{i}] {text}")
     print(f"Took {time.time() - start: .2f} seconds")

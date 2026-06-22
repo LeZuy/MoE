@@ -18,6 +18,7 @@ class AttnGate(nn.Module):
         self,
         input_ids: torch.LongTensor,
         attention_mask: torch.Tensor | None = None,
+        position_ids: torch.Tensor | None = None,
         past_key_values=None,
         use_cache: bool = True,
     ):
@@ -35,11 +36,24 @@ class AttnGate(nn.Module):
             else 0
         )
 
-        position_ids = torch.arange(
-            inputs_embeds.shape[1],
-            device=inputs_embeds.device,
-        ) + past_seen_tokens
-        position_ids = position_ids.unsqueeze(0)
+        if position_ids is None:
+            if attention_mask is not None:
+                position_ids = attention_mask.long().cumsum(dim=-1) - 1
+                position_ids.masked_fill_(attention_mask == 0, 0)
+
+                if position_ids.shape[1] != input_ids.shape[1]:
+                    position_ids = position_ids[:, -input_ids.shape[1]:]
+            else:
+                past_seen_tokens = (
+                    past_key_values.get_seq_length()
+                    if past_key_values is not None
+                    else 0
+                )
+                position_ids = torch.arange(
+                    inputs_embeds.shape[1],
+                    device=inputs_embeds.device,
+                ) + past_seen_tokens
+                position_ids = position_ids.unsqueeze(0)
 
         if attention_mask is None:
             attention_mask = torch.ones(

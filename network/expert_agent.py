@@ -149,6 +149,78 @@ if __name__ == "__main__":
                     }))
                     break
 
+                if request.get("type") == "forward_grouped":
+                    layer_idx = request["layer_idx"]
+                    hidden_states = request["hidden_states"]
+                    original_token_idx = request["original_token_idx"]
+                    groups = request["groups"]
+
+                    started = time.time()
+
+                    partial_output_by_token = torch.zeros_like(hidden_states)
+
+                    for expert_id, group in groups.items():
+                        expert_id = int(expert_id)
+
+                        if expert_id not in experts:
+                            raise KeyError(f"Expert {expert_id} is not hosted by rank={rank}")
+
+                        local_pos = group["local_pos"].long()
+                        current_state = hidden_states[local_pos]
+                        current_weights = group["weights"]
+
+                        expert = experts[expert_id]
+
+                        result = expert.forward(
+                            layer_idx=layer_idx,
+                            token_idx=local_pos,
+                            hidden_states=current_state,
+                            weights=current_weights,
+                        )
+
+                        returned_local_pos = result["token_idx"].to(partial_output_by_token.device)
+                        partial_output = result["partial_output"].to(partial_output_by_token.device)
+
+                        partial_output_by_token.index_add_(
+                            0,
+                            returned_local_pos,
+                            partial_output.to(partial_output_by_token.dtype),
+                        )
+
+                    latency_ms = (time.time() - started) * 1000
+
+                    response = {
+                        "ok": True,
+                        "request_id": request.get("request_id"),
+                        "rank": rank,
+                        "token_idx": original_token_idx.cpu(),
+                        "partial_output": partial_output_by_token.cpu(),
+                        "latency_ms": latency_ms,
+                    }
+
+                    num_items = (
+                        len(request["token_idx"])
+                        if "token_idx" in request
+                        else sum(len(group["local_pos"]) for group in request["groups"].values())
+                    )
+
+                    num_unique_tokens = (
+                        len(request["token_idx"])
+                        if "token_idx" in request
+                        else len(request["original_token_idx"])
+                    )
+
+                    print(
+                        f"[{datetime.now().strftime('%H:%M:%S')}][router] async-send "
+                        f"{num_items} token-expert pairs, "
+                        f"{num_unique_tokens} unique tokens "
+                        f"to expert node {rank} at tcp://{host}:{port}",
+                        flush=True,
+                    )
+
+                    socket.send(encode_torch(response))
+                    continue
+                
                 layer_idx = request["layer_idx"]
                 hidden_states = request["hidden_states"]
                 request_expert_ids = request["expert_ids"]
@@ -223,12 +295,20 @@ if __name__ == "__main__":
                 socket.send(encode_torch(response))
 
             except Exception as exc:
+                print(
+                    f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] "
+                    f"expert-agent {rank} ERROR: {repr(exc)}",
+                    flush=True,
+                )
+
                 err_response = {
                     "ok": False,
                     "request_id": request.get("request_id") if request is not None else None,
                     "rank": rank,
                     "error": repr(exc),
                 }
+
+                socket.send(encode_torch(err_response))
 
                 # print(f"[{datetime.now().strftime('%H:%M:%S')}][{host}:{port}] expert-agent {rank} ERROR: {repr(exc)}",
                 #     flush=True,

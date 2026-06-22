@@ -18,11 +18,11 @@ class DistributedOlmoe(PreTrainedModel, GenerationMixin):
     _supports_sdpa = True 
     _supports_flash_attn = False
     _supports_grouped_mm = False
-    def __init__(self, attg_module, router, tokenizer=None, device=None):
+
+    def __init__(self, attg_module, router):
         super().__init__(attg_module.config) 
         self.attg = attg_module.eval()
         self.router = router
-        self.tokenizer = tokenizer
         self.config = attg_module.config
         self.generation_config = GenerationConfig.from_model_config(self.config)
         # self.device = device or next(attg_module.parameters()).device
@@ -96,22 +96,3 @@ class DistributedOlmoe(PreTrainedModel, GenerationMixin):
             logits=logits,
             past_key_values=preprocessed["past_key_values"],
         )
-
-    @torch.inference_mode()
-    def generate_text(
-        self,
-        prompt: str,
-        max_new_tokens: int = 128,
-    ) -> str:
-        if self.tokenizer is None:
-            raise ValueError("generate_text requires tokenizer")
-
-        input_ids = self.tokenizer(prompt, return_tensors="pt")["input_ids"].to(self.device)
-
-        output_ids = self.generate(
-            input_ids=input_ids,
-            max_new_tokens=max_new_tokens,
-            eos_token_id=self.tokenizer.eos_token_id,
-        )
-
-        return self.tokenizer.decode(output_ids[0], skip_special_tokens=True)

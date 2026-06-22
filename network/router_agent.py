@@ -5,6 +5,7 @@ import uuid
 import time
 import torch
 from datetime import datetime
+from collections import defaultdict
 from network.expert_agent import ExpertClient
 from network.utils import load_placement, map_ec, request_to_log_obj
 
@@ -31,35 +32,59 @@ class Router:
         self.map_node_expert = get_map_node_expert(config_path)
         self.map_expert_addr = get_expert_address(EXPERT_ADDS_PATH)
         self.expert_clients = {
-            expert_id: ExpertClient(address)
-            for expert_id, address in self.map_expert_addr.items()
+            node_id: ExpertClient(address)
+            for node_id, address in self.map_expert_addr.items()
         } 
         print(f"[{datetime.now().strftime('%H:%M:%S')}][router] Got expert node addresses: {self.map_expert_addr}")
 
     def _build_node_requests(self, layer_idx, hidden_cpu, index_cpu, weights_cpu):
         """Group token-expert pairs by remote expert node."""
-        grouped_pairs: dict[int, list[tuple[int, int]]] = {}
+        grouped_pairs: dict[int, dict[int, list[tuple[int, int]]]] = defaultdict(lambda: defaultdict(list))
 
         num_tokens, top_k = index_cpu.shape
+
         for token_idx in range(num_tokens):
             for top_k_pos in range(top_k):
                 expert_id = int(index_cpu[token_idx, top_k_pos].item())
                 node_id = self.map_node_expert[expert_id]["rank"]
-                grouped_pairs.setdefault(node_id, []).append((token_idx, top_k_pos))
+
+                grouped_pairs[node_id][expert_id].append((token_idx, top_k_pos))
 
         requests = {}
-        for node_id, pairs in grouped_pairs.items():
-            token_idx = torch.tensor([p[0] for p in pairs], dtype=torch.long)
-            top_k_pos = torch.tensor([p[1] for p in pairs], dtype=torch.long)
+
+        for node_id, expert_groups in grouped_pairs.items():
+            token_to_local: dict[int, int] = {}
+            unique_tokens: list[int] = []
+            for pairs in expert_groups.values():
+                for token_idx, _ in pairs:
+                    if token_idx not in token_to_local:
+                        token_to_local[token_idx] = len(unique_tokens)
+                        unique_tokens.append(token_idx)
+
+            original_token_idx = torch.tensor(unique_tokens, dtype=torch.long)
+            groups = {}
+
+            for expert_id, pairs in expert_groups.items():
+                pair_token_idx = torch.tensor([p[0] for p in pairs], dtype=torch.long)
+                pair_top_k_pos = torch.tensor([p[1] for p in pairs], dtype=torch.long)
+
+                local_pos = torch.tensor(
+                    [token_to_local[int(t)] for t in pair_token_idx],
+                    dtype=torch.long,
+                )
+
+                groups[int(expert_id)] = {
+                    "local_pos": local_pos,
+                    "weights": weights_cpu[pair_token_idx, pair_top_k_pos],
+                }
 
             requests[node_id] = {
-                "type": "forward",
+                "type": "forward_grouped",
                 "request_id": str(uuid.uuid4()),
                 "layer_idx": layer_idx,
-                "hidden_states": hidden_cpu[token_idx],
-                "expert_ids": index_cpu[token_idx, top_k_pos],
-                "weights": weights_cpu[token_idx, top_k_pos],
-                "token_idx": token_idx,
+                "hidden_states": hidden_cpu[original_token_idx],
+                "original_token_idx": original_token_idx,
+                "groups": groups,
             }
 
         return requests
@@ -89,11 +114,24 @@ class Router:
 
             # with open(os.path.join("./logs/packets/router", f"REQ_{request['request_id']}.txt"), "w") as f:
             #         yaml.safe_dump(request_to_log_obj(request), f, sort_keys=False)
-
-            print(f"[{datetime.now().strftime('%H:%M:%S')}][router] async-send {len(request['token_idx'])} token-expert pairs "
-                f"to expert node {node_id} at {client.address}",
-                flush=True,
+            num_items = (
+                len(request["token_idx"])
+                if "token_idx" in request
+                else sum(len(group["local_pos"]) for group in request["groups"].values())
             )
+
+            # num_unique_tokens = (
+            #     len(request["token_idx"])
+            #     if "token_idx" in request
+            #     else len(request["original_token_idx"])
+            # )
+
+            # print(f"[{datetime.now().strftime('%H:%M:%S')}][router] \
+            #       async-send {num_items} token-expert pairs,\
+            #         {num_unique_tokens} unique tokens token-expert pairs\
+            #         to expert node {node_id} at {client.address}",
+            #     flush=True,
+            # )
 
             client.send(request)
 
