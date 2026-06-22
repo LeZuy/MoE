@@ -47,6 +47,7 @@ def gen_prompt(ds_inst: dict, dev_examples : list, subject: str) -> str:
     prompt += format_example(ds_inst, include_answer=False)
 
     return prompt
+
 def load_distributed_model() -> tuple[DistributedOlmoe, PreTrainedTokenizerBase]:
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -95,6 +96,7 @@ def evaluate_subject(
     ds_dev = load_dataset(DATASET_NAME, subject)["dev"]
 
     limit = len(ds_test) if num_examples <= 0 else min(num_examples, len(ds_test))
+    
     print(f"\nSubject: {subject}")
     print(f"Test examples: {len(ds_test)}; evaluating: {limit}")
 
@@ -111,17 +113,13 @@ def evaluate_subject(
             subject=subject,
         )
 
-        scores = {
-            answer: score_choice(
+        scores = score_choice(
                 model=model,
                 tokenizer=tokenizer,
                 prompt=prompt,
-                answer_letter=answer,
             )
-            for answer in CHOICES
-        }
 
-        prediction = max(scores, key=scores.get)
+        prediction = max(scores)
         is_correct = prediction == gold
         correct += int(is_correct)
 
@@ -140,61 +138,45 @@ def score_choice(
     model: DistributedOlmoe | OlmoeForCausalLM,
     tokenizer: PreTrainedTokenizerBase,
     prompt: str,
-    answer_letter: str,
 ) -> float:
+    
     started = time.time()
-
-    prompt_ids = tokenizer(
-        prompt,
+    
+    prompts = [prompt + f"{choice}" for choice in CHOICES]
+    input_ids = tokenizer(
+        prompts,
         add_special_tokens=False,
         return_tensors="pt",
-    )["input_ids"]
+        padding=True,
+    )["input_ids"].to(model.device) # [B,S] = [num_choices, seq_len]
 
-    answer_ids = tokenizer(
-        f" {answer_letter}",
-        add_special_tokens=False,
-        return_tensors="pt",
-    )["input_ids"]
-
-    input_ids = torch.cat([prompt_ids, answer_ids], dim=1).to(model.device)
     attention_mask = torch.ones_like(input_ids, device=model.device)
 
-    print(f"Prompt ID shape: {prompt_ids.shape}")
-    print(f"Answer ID shape: {answer_ids.shape}")
     print(f"Input ID shape: {input_ids.shape}")
     print(f"Tokenization took {time.time() - started:.2f}s")
 
     tick = time.time()
-    if isinstance(model, DistributedOlmoe):
-        logits, _ = model.forward(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            past_key_values=None,
-            use_cache=False, 
-        )
-    elif isinstance(model, OlmoeForCausalLM):
-        logits = model(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            past_key_values=None,
-            use_cache=False,
-        ).logits
+   
+    logits = model(
+        input_ids=input_ids,
+        attention_mask=attention_mask,
+        past_key_values=None,
+        use_cache=False,
+    ).logits
     print(f"Took {time.time() - tick:.2f}s")
 
-    prompt_len = prompt_ids.shape[1]
-    answer_len = answer_ids.shape[1]
-
-    answer_logits = logits[:, prompt_len - 1 : prompt_len - 1 + answer_len, :].float()
-    answer_targets = input_ids[:, prompt_len : prompt_len + answer_len]
+    answer_logits = logits[:, -2, :].float()  # [B, S, V]
+    answer_targets = input_ids[:, -1] # [B, -1]
 
     selected_log_probs = F.log_softmax(answer_logits, dim=-1).gather(
         dim=-1,
         index=answer_targets.unsqueeze(-1),
     ).squeeze(-1)
 
-    score = selected_log_probs.sum().item()
-    print(f"Finished answer {answer_letter}: score={score:.4f}")
-    return score
+    # score = selected_log_probs.sum(dim=-1).item()
+    print(f"Finished! Score={[f'{score:.4f}' for score in selected_log_probs]}")
+    print(f"Took {time.time() - started:.2f}s")
+    return selected_log_probs
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -218,13 +200,18 @@ if __name__ == "__main__":
 
     base_model.eval()
 
-    dist_model, tokenizer = load_distributed_model()
+    dist_model = DistributedOlmoe(
+        attg_module=AttnGate(base_model).eval(),
+        router=Router(CONFIG_PATH),
+    )
     
+    tokenizer = AutoTokenizer.from_pretrained(pretrained_path, token=hf_token)
+
     subjects = [
         s for s in get_dataset_config_names(DATASET_NAME)
         if s not in {"all", "auxiliary_train"}
     ]
-    eval_subjects = [subjects[0]]
+    eval_subjects = subjects
 
     print(f"Subjects: {eval_subjects}")
 
@@ -247,7 +234,7 @@ if __name__ == "__main__":
         f"Overall MMLU accuracy: {overall_accuracy:.4f} "
         # f"({all_correct}/{all_total})"
     )
-    print(f"Total took {time.time() - overall_started:.2f}s")
+    print(f"Based model took {time.time() - overall_started:.2f}s")
     
     overall_started = time.time()
     for subject in eval_subjects:
@@ -265,5 +252,5 @@ if __name__ == "__main__":
         f"Overall MMLU accuracy: {overall_accuracy:.4f} "
         # f"({all_correct}/{all_total})"
     )
-    print(f"Total took {time.time() - overall_started:.2f}s")
+    print(f"Distributed model took {time.time() - overall_started:.2f}s")
 
